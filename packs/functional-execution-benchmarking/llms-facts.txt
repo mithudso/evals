@@ -10,3 +10,6 @@
 - [Evaluation fixtures are right-sized under 50KB to prevent context exhaustion during batch benchmarks.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
 - [Benchmark failures are classified into execution errors, schema violations, and assertion misses.](https://agentskills.io/skill-creation/evaluating-skills.md)
 - [Standard evaluation manifests record per-assertion outcomes and aggregate pass percentages.](file:///Users/mitch/dev/evals/runner/eval_runner.py)
+- [Baseline subtraction isolates the net causal impact of a skill by subtracting control arm accuracy from treated accuracy.](https://proceedings.neurips.cc/paper/baseline-subtraction-variance/)
+- [Cost-adjusted efficiency ratios balance factual accuracy lift against logarithmic token overhead.](https://workera.ai/resources/measuring-capability-lift/)
+

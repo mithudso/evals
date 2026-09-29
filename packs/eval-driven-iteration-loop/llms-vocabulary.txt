@@ -16,3 +16,8 @@
   - *Related*: Surgical Patching, Localized Tuning, Delta Editing
 - **Trajectory Inspection**: Analyzing the full chronological trace of an agent's reasoning, tool use, and file actions to locate errors.
   - *Related*: Step-by-Step Debugging, Execution Audit, Session Trace
+- **Champion-Challenger Canary Gating**: The release protocol requiring candidates to satisfy 100% of golden regression tests before progressive traffic shifting.
+  - *Related*: Canary Rollout, Regression Net, Safety Gating
+- **Shadow Evaluation**: Mirroring production user requests asynchronously to candidate models to observe behavior without real-world execution risk.
+  - *Related*: Dark Launch, Passive Testing, Trajectory Mirroring
+

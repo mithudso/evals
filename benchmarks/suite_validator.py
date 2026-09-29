@@ -42,32 +42,33 @@ def validate_suite(eval_file: str) -> Dict[str, Any]:
         positives = [q for q in data if q.get("should_trigger") is True]
         negatives = [q for q in data if q.get("should_trigger") is False]
         
-        # Pass D: Near-miss & false-positive coverage
-        if len(negatives) < 5:
+        # Pass D: Near-miss & false-positive coverage (Trigger Calibration)
+        if len(negatives) < 10:
             findings.append({
                 "pass": "Pass D",
-                "severity": "High",
-                "finding": f"Insufficient negative queries ({len(negatives)} found, min 10 required for trigger calibration)",
-                "recommendation": "Add realistic near-miss queries that share keywords but belong to adjacent skills."
+                "severity": "High" if len(negatives) < 5 else "Medium",
+                "finding": f"Insufficient negative near-miss queries ({len(negatives)} found, min 10 required for trigger calibration)",
+                "recommendation": "Add realistic near-miss queries with contrasting intent (Verb_competing + Noun_shared)."
             })
             
-        if len(positives) < 5:
+        if len(positives) < 10:
             findings.append({
                 "pass": "Pass H",
-                "severity": "High",
+                "severity": "High" if len(positives) < 5 else "Medium",
                 "finding": f"Insufficient positive queries ({len(positives)} found, min 10 required)",
-                "recommendation": "Expand positive queries to cover casual, terse, domain-specific, and formal intents."
+                "recommendation": "Expand positive queries to cover direct, symptom, terse, and context-rich intents."
             })
             
         # Pass A: Realism
-        robotic = [q["query"] for q in data if "please run the skill" in q.get("query", "").lower() or "test query" in q.get("query", "").lower()]
+        robotic = [q["query"] for q in data if any(k in q.get("query", "").lower() for k in ["please run the skill", "test query", "execute skill", "using standard parameters"])]
         if robotic:
             findings.append({
                 "pass": "Pass A",
                 "severity": "Medium",
                 "finding": f"Robotic or synthetic prompt phrasing in {len(robotic)} queries",
-                "recommendation": "Rewrite prompts to reflect authentic, natural user phrasing."
+                "recommendation": "Rewrite prompts to reflect authentic, natural user phrasing and pain points."
             })
+
     else:
         # Validate functional evals
         skill_name = data.get("skill_name")
@@ -97,13 +98,13 @@ def validate_suite(eval_file: str) -> Dict[str, Any]:
             expected = ev.get("expected_output", "")
             assertions = ev.get("assertions", [])
             
-            # Pass C: Assertion objectivity
+            # Pass C: Assertion objectivity & Negative Tripwires
             if not assertions:
                 findings.append({
                     "pass": "Pass C",
                     "severity": "High",
                     "finding": f"Eval #{eid} '{name}' has no assertions",
-                    "recommendation": "Add at least 2 objectively verifiable assertions."
+                    "recommendation": "Add at least 2 objectively verifiable assertions (Structural, Schema, Deterministic, Negative Bounds)."
                 })
             else:
                 for a in assertions:
@@ -113,17 +114,31 @@ def validate_suite(eval_file: str) -> Dict[str, Any]:
                             "pass": "Pass C",
                             "severity": "Medium",
                             "finding": f"Subjective/vague assertion '{txt}' in eval #{eid}",
-                            "recommendation": "Replace with concrete structural or content checks."
+                            "recommendation": "Replace with concrete structural, schema, or negative bounds checks."
                         })
                         
-            # Pass F: Answer leakage
-            if skill_name and skill_name in prompt.lower() and "run the" in prompt.lower():
+            # Pass F: Answer leakage & N-gram priming
+            if skill_name and skill_name in prompt.lower():
                 findings.append({
                     "pass": "Pass F",
-                    "severity": "Low",
-                    "finding": f"Prompt in eval #{eid} directly references skill name '{skill_name}'",
-                    "recommendation": "Test intent without explicitly telling the agent which skill to run."
+                    "severity": "High" if "run the " + skill_name.lower() in prompt.lower() else "Medium",
+                    "finding": f"Prompt in eval #{eid} directly leaks skill name '{skill_name}'",
+                    "recommendation": "Apply Natural User Persona Transform: describe user symptoms without naming the skill."
                 })
+                
+            # Pass G: Fixture size and isolation
+            files = ev.get("files", [])
+            for fpath in files:
+                fp = Path(fpath)
+                if not fp.is_absolute():
+                    fp = path.parent / fpath
+                if fp.exists() and fp.stat().st_size > 50 * 1024:
+                    findings.append({
+                        "pass": "Pass G",
+                        "severity": "Medium",
+                        "finding": f"Fixture '{fpath}' in eval #{eid} exceeds 50KB ({fp.stat().st_size // 1024}KB)",
+                        "recommendation": "Minify fixture dataset to minimal reproducible representation under 50KB."
+                    })
                 
             # Pass I: Expected output precision
             if not expected or len(expected.split()) < 3:
@@ -133,6 +148,7 @@ def validate_suite(eval_file: str) -> Dict[str, Any]:
                     "finding": f"Underspecified expected output in eval #{eid}",
                     "recommendation": "Detail the exact required artifact sections, shapes, or behavior."
                 })
+
 
     return {
         "file": str(path),

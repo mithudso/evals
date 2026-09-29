@@ -16,3 +16,8 @@
   - *Related*: Benchmark Accuracy, Success Ratio, Score
 - **Failure Taxonomy**: Standardized categorization of benchmark execution defects into runtime, instruction, or factual errors.
   - *Related*: Defect Classification, Root Cause Analysis, Error Tagging
+- **Capability Lift**: The net increase in verifiable task completion directly attributable to skill presence rather than base model priors.
+  - *Related*: Marginal Lift, Net Gain, Treatment Effect
+- **Baseline Subtraction**: The technique of deducting unassisted control arm accuracy from treated arm accuracy to eliminate environmental bias.
+  - *Related*: Variance Reduction, Control Arm, Null Normalization
+

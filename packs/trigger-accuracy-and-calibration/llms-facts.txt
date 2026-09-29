@@ -10,3 +10,6 @@
 - [Evaluation suites must partition queries into a 60 percent training set and a 40 percent held-out validation set to avoid overfitting.](https://agentskills.io/skill-creation/optimizing-descriptions.md)
 - [Explicit SKIP clauses in descriptions establish negative boundary controls against adjacent agent skills.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
 - [Automated trigger runners execute queries against model routing prompts and output JSON summary reports.](file:///Users/mitch/dev/evals/runner/trigger_runner.py)
+- [Hard negative near-misses must pair shared domain nouns with competing action verbs to test boundary discrimination.](https://futureagi.com/blog/hard-negative-mining-llm-routing/)
+- [Production routing failure traces are harvested into permanent regression distractor suites to prevent recurrent over-triggering.](https://blog.langchain.dev/evaluating-tool-selection/)
+

@@ -16,3 +16,8 @@
   - *Related*: Qualitative Vibe, Subjective Scoring, Grading Flakiness
 - **Binary Grader**: An automated function that maps artifact outputs strictly to 1 (Pass) or 0 (Fail).
   - *Related*: Indicator Function, Discrete Scorer, Strict Verification
+- **Negative Boundary Tripwire**: An invariant check that triggers an immediate failure and zeroed composite score upon detecting a prohibited artifact or side-effect.
+  - *Related*: Circuit Breaker, Hard Constraint, Hallucination Tripwire
+- **Circuit Breaker Multiplier**: The mathematical evaluation property where violating a negative bound zeroes the entire score via boolean multiplication ($S_{\text{pos}} \times \prod_j (1 - T^-_j)$).
+  - *Related*: Zero-Tolerance Gating, Multiplicative Nulling, Tripwire Gate
+

@@ -16,3 +16,8 @@
   - *Related*: Minimal Fixture, Mock Dataset, Pass G
 - **Schema Compliance**: Conformance of evaluation definition files to formal specification schemas.
   - *Related*: evals.schema.json, Structural Validation, Pass L
+- **N-Gram Overlap Scanner**: An algorithmic validator that checks word-level n-grams between test prompts and skill instructions to detect prompt priming ($\mathcal{C}_4 \le 0.05, \mathcal{C}_6 = 0$).
+  - *Related*: Pass F, Decontamination Scanner, Leakage Check
+- **Natural User Persona Transform**: The process of refactoring leaked or prescriptive prompts into authentic problem-oriented user statements.
+  - *Related*: Prompt Realism, Pass A, Decontamination Transform
+

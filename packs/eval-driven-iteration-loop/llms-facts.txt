@@ -10,3 +10,6 @@
 - [Execution logs capture full multi-turn agent trajectories to diagnose failure mechanisms.](file:///Users/mitch/dev/evals/runner/eval_runner.py)
 - [Golden evaluation regression suites protect previously passing capabilities from being broken during iterative tuning.](https://agentskills.io/skill-creation/evaluating-skills.md)
 - [Resource consumption metrics ensure candidate skill revisions do not introduce runaway token overhead.](file:///Users/mitch/dev/evals/README.md)
+- [The golden non-regression invariant requires that challenger versions pass every test case previously satisfied by the champion.](https://martinfowler.com/articles/cd4ml.html)
+- [Shadow evaluation mirrors live production traffic asynchronously to candidate skills without exposing end users to execution risk.](https://www.anthropic.com/research/evaluating-ai-systems)
+

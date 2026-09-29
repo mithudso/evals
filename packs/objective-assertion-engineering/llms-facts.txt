@@ -10,3 +10,6 @@
 - [Automated assertion runners evaluate test case outputs without requiring human-in-the-loop intervention.](file:///Users/mitch/dev/evals/runner/eval_runner.py)
 - [Assertion suites compute composite scores as the mean of binary outcomes across all assertions.](file:///Users/mitch/dev/evals/runner/eval_runner.py)
 - [Pass C of the Deep Eval Optimizer systematically refactors subjective grading rules into verifiable assertions.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Negative boundary tripwires operate multiplicatively where any single violation immediately zeroes the composite score.](https://mastra.ai/docs/guide/tripwires-guardrails/)
+- [Honeypot canary files placed in sandboxes detect rogue and unauthorized agent filesystem exploration.](https://secbyte.org/papers/agent-tripwires-honeypots/)
+

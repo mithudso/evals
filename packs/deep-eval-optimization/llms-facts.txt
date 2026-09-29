@@ -10,3 +10,6 @@
 - [Pass G validates fixture integrity and compresses mock files to under 50 kilobytes.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
 - [Pass H maps surface coverage across standard workflows, error handling, and boundary edge cases.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
 - [Pass L verifies strict schema compliance of evaluation files against the official JSON schema.](file:///Users/mitch/dev/evals/schemas/evals.schema.json)
+- [Pass F enforces n-gram overlap boundaries where 4-gram overlap between prompt and skill must not exceed 5 percent.](https://zeroentropy.dev/blog/detecting-prompt-contamination/)
+- [The Natural User Persona Transform purges answer leakage by rewriting prompts from the perspective of an end user unaware of skill internals.](https://getmaxim.ai/blog/evaluating-llm-contamination/)
+

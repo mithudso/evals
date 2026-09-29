@@ -16,3 +16,8 @@
   - *Related*: Anti-Overfitting, Generalization Gate, Train-Test Partition
 - **Routing Precision**: The proportion of total activations that represent true positive intents.
   - *Related*: Specificity, Calibration, Precision Score
+- **Near-Miss Distractor Engineering**: The practice of mining and curating hard negative queries with shared lexical domains to sharpen routing margins.
+  - *Related*: Hard Negative Mining, Contrastive Sampling, Boundary Tightening
+- **Contrasting Intent**: The structural property of a distractor query that pairs shared domain nouns with competing action verbs ($\text{Verb}_{\text{competing}} + \text{Noun}_{\text{shared}}$).
+  - *Related*: Inverted Predicate, Semantic Disambiguation, Lexical Trap
+
