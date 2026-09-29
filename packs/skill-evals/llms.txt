@@ -1,0 +1,18 @@
+# Skill Evals: Agent Skill Evaluation and Benchmarking
+
+> Comprehensive reference and evaluation harness for AI agent skills. Covers trigger accuracy calibration, functional execution benchmarking, objective assertion engineering, and eval-driven iteration loops.
+
+## Canonical Docs
+
+- [Specification](https://agentskills.io/specification.md): The Agent Skills format specification including progressive disclosure, frontmatter limits, and bundled resources.
+- [Evaluating Skill Output Quality](https://agentskills.io/skill-creation/evaluating-skills.md): Testing skill outputs using isolated execution workspaces, baseline separation, and quantitative assertions.
+- [Optimizing Skill Descriptions](https://agentskills.io/skill-creation/optimizing-descriptions.md): Calibrating skill activation with 20-query positive and near-miss negative test suites.
+- [Best Practices for Skill Creators](https://agentskills.io/skill-creation/best-practices.md): Designing bounded, reliable skills and avoiding anti-patterns.
+
+## Core Concepts
+
+- [Trigger Accuracy Evaluation](file:///Users/mitch/dev/evals/packs/skill-evals/llms-full.md#trigger-accuracy-evaluation): 20-query eval corpus with 10 positive intents and 10 near-miss negative queries.
+- [Functional Execution Benchmarking](file:///Users/mitch/dev/evals/packs/skill-evals/llms-full.md#functional-execution-benchmarking): Workspace isolation (`with_skill/` vs `without_skill/`), timing metrics, and delta scoring.
+- [Objective Assertion Engineering](file:///Users/mitch/dev/evals/packs/skill-evals/llms-full.md#objective-assertion-engineering): Deterministic structural, schema, regex, and negative checks replacing subjective vibes.
+- [Eval-Driven Iteration Loop](file:///Users/mitch/dev/evals/packs/skill-evals/llms-full.md#eval-driven-iteration-loop): Convergence gating, variance reduction, and flaky test mitigation.
+- [Deep Eval Optimization](file:///Users/mitch/dev/evals/packs/skill-evals/llms-full.md#deep-eval-optimization): 12 analytical passes (A-L) for grading and refining evaluation suites.

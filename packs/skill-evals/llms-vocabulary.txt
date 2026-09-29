@@ -1,0 +1,18 @@
+# Skill Evals: Technical Lexicon
+
+- **Trigger Accuracy**: The probability that an agent correctly activates a skill for in-scope tasks while ignoring out-of-scope prompts.
+  - *Related*: False Positive Rate, Activation Rate, Routing Precision
+- **Near-Miss Negative**: A test prompt that shares technical keywords with a skill but requires a different capability or tool.
+  - *Related*: Distractor Query, Discriminative Testing, Hard Negatives
+- **Assertion**: An objective, verifiable proposition checked against an agent's deliverable.
+  - *Related*: Grader, Deterministic Check, Structural Verification
+- **Baseline Separation**: Evaluating task execution without the skill (or with prior version) to quantify net capability lift.
+  - *Related*: with_skill, without_skill, Delta Scoring
+- **Flakiness (Eval Variance)**: Non-deterministic pass/fail oscillation across identical evaluation prompts.
+  - *Related*: Standard Deviation, Temperature Tuning, Prompt Ambiguity
+- **Progressive Disclosure**: A hierarchical loading pattern where metadata is always in context, body is loaded on trigger, and resources on demand.
+  - *Related*: Description Ceiling, Context Budget, Index Bloat
+- **Deep Eval Optimization**: Multi-pass algorithmic review of evaluation suites to ensure ecological validity, schema compliance, and discriminative power.
+  - *Related*: DEO, 12 Passes, Convergence Loop
+- **Answer Contamination**: The defect where an eval prompt leaks the skill name or internal solution rules, invalidating test objectivity.
+  - *Related*: Answer Leakage, Tautological Evals, Pass F

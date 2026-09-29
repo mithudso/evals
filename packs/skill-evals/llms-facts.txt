@@ -1,0 +1,12 @@
+# Skill Evals: Atomic Facts
+
+- [Standard trigger evaluation corpus consists of approximately 20 queries, divided into 10 positive intents and 10 near-miss negatives.](https://agentskills.io/skill-creation/optimizing-descriptions.md)
+- [Target performance threshold for skill descriptions requires positive activation >= 90% and false positive rate <= 10%.](https://agentskills.io/skill-creation/optimizing-descriptions.md)
+- [Skills use progressive disclosure where only name and description are loaded into the always-on routing context.](https://agentskills.io/specification.md)
+- [Agent skill descriptions are subject to a strict character ceiling of 1024 characters to prevent context window bloat.](https://agentskills.io/specification.md)
+- [Functional evals compare performance across isolated with_skill and without_skill workspace directories.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Multi-run trigger accuracy benchmarks execute each query 3 times to derive a statistical activation rate.](https://agentskills.io/skill-creation/optimizing-descriptions.md)
+- [Objective assertions verify explicit output structures, schemas, and content rather than subjective vibes.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Standard deviation across eval iterations detects flaky assertions caused by ambiguous instructions or high variance.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Deep Eval Optimizer runs 12 analytical passes to eliminate answer leakage, non-discriminating assertions, and artificial prompt phrasing.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Benchmark aggregators calculate total assertions passed, duration seconds, and delta relative to baseline.](file:///Users/mitch/dev/evals/README.md)

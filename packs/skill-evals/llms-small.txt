@@ -1,0 +1,21 @@
+# Skill Evals: Compact Reference
+
+## Core Guidelines
+1. **Trigger Accuracy (Pass H)**:
+   - 20-query suite: 10 positive intents, 10 near-miss negatives.
+   - Target: $\ge 90\%$ positive trigger rate, $\le 10\%$ false-positive rate.
+   - Run 3x per query to calculate mean activation frequency.
+2. **Functional Benchmarks**:
+   - Store test cases in `evals/evals.json`.
+   - Run in isolated workspaces: `with_skill/` vs `without_skill/`.
+   - Track pass rate, timing, and delta over baseline.
+3. **Assertion Engineering**:
+   - Write verifiable checks (structural markdown tables, valid JSON, regex, negative bounds).
+   - Eliminate subjective phrases ("looks good", "well-written").
+4. **Deep Eval Optimizer (Passes A–L)**:
+   - Pass A: Realistic user prompts (terse, informal, jargon).
+   - Pass B: High discriminative power against baseline.
+   - Pass C: Objective assertions with automated evidence.
+   - Pass D: High-signal near-miss negatives.
+   - Pass F: Zero answer leakage or skill name leaks.
+   - Pass L: Schema conformity.

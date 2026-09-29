@@ -1,0 +1,61 @@
+# Skill Evals: Complete Architecture and Implementation Reference
+
+## 1. Overview
+Skill evaluation is the empirical discipline of measuring whether an AI agent capability activates reliably and produces correct, instruction-adherent artifacts.
+
+## 2. Trigger Accuracy Evaluation
+Trigger accuracy measures routing performance—ensuring skills activate on relevant tasks without absorbing queries intended for other tools.
+
+### Query Distribution
+- **10 Positives (`should_trigger: true`)**:
+  - Direct naming: "Analyze this CSV"
+  - Symptom/problem based: "My manager wants a chart from this quarterly file"
+  - Casual and terse: "clean up this table"
+  - Context-rich: Prompts with local file paths, column names, and domain specifics
+- **10 Negatives (`should_trigger: false`)**:
+  - Near-misses: Queries sharing keywords but belonging to another tool (e.g. updating formulas in Excel vs analyzing CSV data)
+  - Broad requests: General coding queries where base model tools suffice
+  - Explicit non-triggers: Tasks covered by `SKIP:` clauses
+
+### Performance Thresholds
+- **Positive Activation Rate**: $\ge 90\%$ (at least 9/10 positive queries activate)
+- **False Positive Rate**: $\le 10\%$ (at most 1/10 negative queries misfire)
+- **Multi-run sampling**: 3 runs per query to calculate mean activation rate $\ge 0.5$
+
+## 3. Functional Execution Benchmarking
+Functional evaluations test output correctness, formatting adherence, and constraint compliance.
+
+### Workspace Isolation
+Each evaluation run executes in an isolated environment without cross-run context bleed:
+- `<skill>-workspace/iteration-<N>/eval-<ID>/with_skill/`
+- `<skill>-workspace/iteration-<N>/eval-<ID>/without_skill/` (or `old_skill/`)
+
+### Key Metrics
+- **Pass Rate**: Percentage of defined assertions passed.
+- **Delta ($\Delta$)**: Gain in quality relative to baseline token/time overhead.
+- **Flakiness (Variance)**: Standard deviation across runs; high variance flags ambiguous prompts or nondeterministic instructions.
+
+## 4. Objective Assertion Engineering
+Assertions must be concrete, deterministic, and verifiable.
+
+### Categories of Assertions
+1. **Structural**: Verifies markdown tables (`|-`), headings (`#`), or list formatting.
+2. **Schema**: Verifies valid JSON, YAML, or strict schema validation.
+3. **Deterministic Content**: Verifies specific entities, formulas, or numbers trace directly to input.
+4. **Negative Bounds**: Verifies absence of hallucinations, banned AI-isms, or unrequested features.
+5. **Reconciling Counts**: Verifies item count headers match the actual rows in the output.
+
+## 5. Deep Eval Optimization (Passes A–L)
+The 12 analytical passes for grading and optimizing evals:
+- **Pass A (Prompt Realism)**: Eliminate synthetic phrasing; ensure authentic user messy prompts.
+- **Pass B (Discriminative Power)**: Eliminate assertions that pass trivially without the skill.
+- **Pass C (Assertion Objectivity)**: Replace vibes with code/regex/schema checks.
+- **Pass D (Near-Miss Coverage)**: Ensure negatives test plausible domain overlap.
+- **Pass E (Determinism Hygiene)**: Freeze dates, isolate inputs to `<INPUT>/`.
+- **Pass F (Answer Leakage)**: Prevent prompts from quoting system prompt instructions.
+- **Pass G (Fixture Integrity)**: Validate input files and minimize token sizes.
+- **Pass H (Surface Coverage)**: Ensure happy path, edge cases, and transforms are represented.
+- **Pass I (Output Precision)**: Full specification in `expected_output`.
+- **Pass J (Token Efficiency)**: Right-size eval context.
+- **Pass K (Anti-Overfitting)**: Maintain held-out validation sets.
+- **Pass L (Schema Compliance)**: Validate canonical JSON schema.

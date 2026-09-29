@@ -1,0 +1,17 @@
+# Categorical Rollup: Agent Skill Evals & Benchmarks
+
+> Comprehensive categorical family index for AI agent skill evaluation, calibration, and benchmarking.
+
+## Family Members
+
+- [Skill Evals Core Pack](file:///Users/mitch/dev/evals/packs/skill-evals/llms.txt): Base architecture, trigger calibration, and execution benchmarking.
+- [Full Text](file:///Users/mitch/dev/evals/packs/skill-evals/llms-full.txt): Comprehensive deep-dive documentation and patterns.
+- [Compact Study Reference](file:///Users/mitch/dev/evals/packs/skill-evals/llms-small.txt): Fast in-context rules and thresholds.
+- [Atomic Facts](file:///Users/mitch/dev/evals/packs/skill-evals/llms-facts.txt): Sourced propositions and standards.
+- [Vocabulary & Lexicon](file:///Users/mitch/dev/evals/packs/skill-evals/llms-vocabulary.txt): Concept relationships and technical terms.
+
+## Evaluation Tooling & Repositories
+
+- [Evals Harness & Templates](https://github.com/mithudso/evals): Public repository containing test runners, templates, and benchmark reports.
+- [Deep Eval Optimizer](file:///Users/mitch/dev/skills/deep-eval-optimizer/SKILL.md): 12-pass convergence loop skill for auditing and generating eval suites.
+- [Skill Optimizer](file:///Users/mitch/dev/skills/skill-optimizer/SKILL.md): Skill production quality gate with automatic missing-eval generation.
