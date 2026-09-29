@@ -15,3 +15,5 @@
 
 - [Dynamic Honeypot Syscall Interception audits execution traces in kernel-space, trapping transient violations that escape post-hoc git diff checks.](file:///Users/mitch/dev/evals/research/tier3-expansion/dynamic-honeypot-syscall-interception/dr-report.md)
 - [Any unauthorized open or write to seeded canary files instantly transitions evaluation DFA to a failure state and collapses the test score to zero.](file:///Users/mitch/dev/evals/research/tier3-expansion/dynamic-honeypot-syscall-interception/rabbithole-dossier.md)
+- [eBPF VFS kprobes attached to vfs_write and vfs_unlink track physical device and inode numbers, eliminating path traversal and symlink evasion.](file:///Users/mitch/dev/evals/research/tier4-expansion/ebpf-vfs-kprobe-tracepoint-harness/dr-report.md)
+- [In-kernel trap policies emit SIGKILL directly from BPF probes upon detecting unauthorized write operations to monitored honeypot files.](file:///Users/mitch/dev/evals/research/tier4-expansion/ebpf-vfs-kprobe-tracepoint-harness/rabbithole-dossier.md)

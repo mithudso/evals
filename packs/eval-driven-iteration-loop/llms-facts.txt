@@ -15,3 +15,5 @@
 
 - [Bayesian Sequential Canary Early Stopping utilizes Wald's SPRT to dynamically terminate failing candidate skill evaluations with minimum sample waste.](file:///Users/mitch/dev/evals/research/tier3-expansion/bayesian-sequential-canary-early-stopping/dr-report.md)
 - [Sequential log-likelihood tracking cuts evaluation inference expenditure by up to 90 percent on regressed agent updates.](file:///Users/mitch/dev/evals/research/tier3-expansion/bayesian-sequential-canary-early-stopping/rabbithole-dossier.md)
+- [Wald SPRT martingale linear decision boundaries bound candidate false promotion rate alpha by invoking Doob's Optional Stopping Theorem.](file:///Users/mitch/dev/evals/research/tier4-expansion/wald-sprt-log-odds-martingale-gating/dr-report.md)
+- [Precomputed integer boundary grids determine sequential promotion and abortion decisions in O(1) runtime without floating-point accumulation errors.](file:///Users/mitch/dev/evals/research/tier4-expansion/wald-sprt-log-odds-martingale-gating/rabbithole-dossier.md)

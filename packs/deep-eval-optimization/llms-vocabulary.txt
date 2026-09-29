@@ -23,3 +23,5 @@
 
 - Attention Gradient Saliency Decontamination: Mechanistic interpretability audit using Integrated Gradients to detect prompt tokens that trivially dictate output syntax.
 - Prompt Attention Entropy: The normalized Shannon entropy of backpropagated gradient weights across prompt token positions.
+- Gauss-Legendre Quadrature: Optimal orthogonal polynomial numerical integration minimizing discretization error in path attribution integrals.
+- Completeness Axiom: The formal mathematical requirement that feature attributions sum identically to the total change in model output.

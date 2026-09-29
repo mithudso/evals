@@ -15,3 +15,5 @@
 
 - [Attention Gradient Saliency Decontamination uses Integrated Gradients and attention entropy to identify prompt giveaways and cognitive priming.](file:///Users/mitch/dev/evals/research/tier3-expansion/attention-gradient-saliency-decontamination/dr-report.md)
 - [Prompts with answer leakage scores exceeding 0.40 are programmatically neutralized to preserve benchmark problem-solving integrity.](file:///Users/mitch/dev/evals/research/tier3-expansion/attention-gradient-saliency-decontamination/rabbithole-dossier.md)
+- [Gauss-Legendre quadrature evaluates Integrated Gradients over optimal Legendre polynomial roots, reducing required interpolation steps to m=20.](file:///Users/mitch/dev/evals/research/tier4-expansion/riemann-integrated-gradients-attribution/dr-report.md)
+- [Verification of the Completeness Axiom guarantees that all output logit shifts are accounted for across prompt token attributions.](file:///Users/mitch/dev/evals/research/tier4-expansion/riemann-integrated-gradients-attribution/rabbithole-dossier.md)

@@ -23,3 +23,5 @@
 
 - Causal Shapley Token Attribution: Game-theoretic axiomatic decomposition of skill evaluation lift into marginal payoffs for individual instruction tokens or clauses.
 - Negative Value Pruning: The automated removal of prompt instructions whose evaluated marginal contribution reduces overall benchmark success.
+- Stratified Kernel SHAP: Allocation of evaluation sample budgets across cardinality strata weighted by the Shapley kernel.
+- DAG Poset Constraints: Directed acyclic graph reachability requirements preventing evaluation of isolated sub-clauses lacking schema preambles.

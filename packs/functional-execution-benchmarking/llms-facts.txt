@@ -15,3 +15,5 @@
 
 - [Causal Shapley Token Attribution uniquely satisfies efficiency and decomposes net capability lift down to individual instruction clauses.](file:///Users/mitch/dev/evals/research/tier3-expansion/causal-shapley-token-attribution/dr-report.md)
 - [Pruning prompt clauses with negative Shapley values yields simultaneous gains in task accuracy and reduction in context token consumption.](file:///Users/mitch/dev/evals/research/tier3-expansion/causal-shapley-token-attribution/rabbithole-dossier.md)
+- [Kernel SHAP Power Set Stratification evaluates boundary singletons and leave-one-out coalitions deterministically to minimize attribution variance.](file:///Users/mitch/dev/evals/research/tier4-expansion/kernel-shap-power-set-stratification/dr-report.md)
+- [Topological DAG poset constraints filter out unparseable and syntactically invalid instruction subsets during regression solving.](file:///Users/mitch/dev/evals/research/tier4-expansion/kernel-shap-power-set-stratification/rabbithole-dossier.md)

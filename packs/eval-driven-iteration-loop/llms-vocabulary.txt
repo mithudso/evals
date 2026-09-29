@@ -23,3 +23,5 @@
 
 - Bayesian Sequential Early Stopping: Applying Wald's Sequential Probability Ratio Test to dynamic Canary rollout decision boundaries.
 - Log-Likelihood Ratio: The accumulated log-odds of candidate superiority over the baseline champion across sequential trials.
+- Martingale Linear Boundaries: Parallel threshold lines in the sample-success coordinate plane derived from Wald likelihood ratios.
+- Optional Stopping Invariance: The mathematical property that stopping rule choices cannot inflate Type I error under martingale expectations.

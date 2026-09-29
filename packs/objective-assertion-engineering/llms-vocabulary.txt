@@ -23,3 +23,5 @@
 
 - Dynamic Honeypot Syscall Interception: Synchronous or asynchronous tracing of OS kernel system calls to detect unauthorized file, network, or process access.
 - Canary Traps: High-attraction synthetic decoy files (.env, credentials) planted to catch boundary violations.
+- eBPF VFS Inode Probes: Kernel tracepoints attached to virtual filesystem functions matching file inode keys in BPF hash maps.
+- BPF Ring Buffer: Monotonic zero-copy event transport conveying kernel trap violations to userspace runners.

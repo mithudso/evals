@@ -15,3 +15,5 @@
 
 - [Semantic Vector Boundary Mining constructs negative trigger probes located within the annular shell cos in [tau - delta, tau) to stress-test classifier margin sharpness.](file:///Users/mitch/dev/evals/research/tier3-expansion/semantic-vector-boundary-mining/dr-report.md)
 - [Projected gradient descent on continuous token embeddings generates adversarial near-miss triggers while preserving negative ground-truth oracle labels.](file:///Users/mitch/dev/evals/research/tier3-expansion/semantic-vector-boundary-mining/rabbithole-dossier.md)
+- [HotFlip token gradient projection uses directional derivatives across token embeddings to synthesize grammatical near-miss queries at the boundary margin.](file:///Users/mitch/dev/evals/research/tier4-expansion/hotflip-token-gradient-projection/dr-report.md)
+- [Linearizing router loss surfaces reduces discrete token replacement search across large vocabularies from exponential to O(1) dot product complexity.](file:///Users/mitch/dev/evals/research/tier4-expansion/hotflip-token-gradient-projection/rabbithole-dossier.md)

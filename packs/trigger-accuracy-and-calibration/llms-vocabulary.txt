@@ -23,3 +23,5 @@
 
 - Semantic Vector Boundary Mining: Algorithmic identification and synthesis of adversarial trigger queries positioned precisely on the decision boundary manifold of an agent router.
 - Annular Shell Sampling: Sampling vectors from the high-dimensional hypersphere band immediately adjacent to the activation threshold.
+- HotFlip Gradient Projection: First-order Taylor approximation projecting continuous loss gradients onto the discrete token vocabulary matrix.
+- POS-Constrained Search: Restricting adversarial token candidate replacements strictly to identical grammatical parts-of-speech.
