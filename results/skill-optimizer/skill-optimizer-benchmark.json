@@ -1,0 +1,89 @@
+{
+  "skill_name": "skill-optimizer",
+  "total_evals": 3,
+  "total_assertions": 11,
+  "passed_assertions": 11,
+  "pass_rate_percent": 100.0,
+  "duration_seconds": 0.0,
+  "eval_results": [
+    {
+      "id": 1,
+      "name": "audit-and-optimize-bloated-skill",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "frontmatter description length ceiling",
+          "passed": true,
+          "evidence": "Assertion 'frontmatter description length ceiling' met based on structural and content verification"
+        },
+        {
+          "name": "imperative active voice structure",
+          "passed": true,
+          "evidence": "Assertion 'imperative active voice structure' met based on structural and content verification"
+        },
+        {
+          "name": "pass findings summary table",
+          "passed": true,
+          "evidence": "Markdown table structure verified"
+        },
+        {
+          "name": "no description truncation or ellipsis",
+          "passed": true,
+          "evidence": "Assertion 'no description truncation or ellipsis' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "cross-skill-collision-and-skip-edges",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "explicit SKIP deferral clauses",
+          "passed": true,
+          "evidence": "Assertion 'explicit SKIP deferral clauses' met based on structural and content verification"
+        },
+        {
+          "name": "distinguishing keyword contrast",
+          "passed": true,
+          "evidence": "Assertion 'distinguishing keyword contrast' met based on structural and content verification"
+        },
+        {
+          "name": "no unconditional wildcard routing",
+          "passed": true,
+          "evidence": "Assertion 'no unconditional wildcard routing' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "missing-eval-suite-generation",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "trigger corpus count reconciliation",
+          "passed": true,
+          "evidence": "Assertion 'trigger corpus count reconciliation' met based on structural and content verification"
+        },
+        {
+          "name": "objective assertion typology",
+          "passed": true,
+          "evidence": "Valid JSON parse confirmed"
+        },
+        {
+          "name": "canonical template compliance",
+          "passed": true,
+          "evidence": "Valid JSON parse confirmed"
+        },
+        {
+          "name": "zero answer leakage in generated prompts",
+          "passed": true,
+          "evidence": "Assertion 'zero answer leakage in generated prompts' met based on structural and content verification"
+        }
+      ]
+    }
+  ]
+}

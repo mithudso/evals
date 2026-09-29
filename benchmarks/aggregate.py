@@ -14,7 +14,7 @@ def aggregate_results(results_dir: str, output_md: str = None):
         print(f"Directory {results_dir} does not exist.", file=sys.stderr)
         sys.exit(1)
 
-    benchmark_files = list(dir_path.glob("*-benchmark.json"))
+    benchmark_files = list(dir_path.rglob("*-benchmark.json"))
     if not benchmark_files:
         print(f"No *-benchmark.json files found in {results_dir}")
         return

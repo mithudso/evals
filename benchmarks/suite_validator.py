@@ -7,6 +7,7 @@ Audits eval suites across Passes A through L and outputs findings with recommend
 import sys
 import json
 from pathlib import Path
+import math
 from typing import Dict, Any, List
 
 PASSES = {
