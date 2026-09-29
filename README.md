@@ -57,3 +57,14 @@ Measures routing precision:
 - **10 Positives (`should_trigger: true`)**: Varied natural user requests.
 - **10 Negatives (`should_trigger: false`)**: Near-misses with overlapping keywords that belong to sister skills or baseline queries.
 - Pass Bar: $\ge 90\%$ Positive Trigger Rate, $\le 10\%$ False Positive Rate.
+
+## Research & Knowledge Dossiers
+
+Complete multi-source deep research (`/dr`), 5-neighborhood conceptual maps (`CFE`), and depth-first saturation dossiers (`rabbithole`) for all 5 core concepts:
+
+- [Trigger Accuracy & Calibration](research/trigger-accuracy-and-calibration/) ([DR Report](research/trigger-accuracy-and-calibration/dr-report.md) · [Family Map](research/trigger-accuracy-and-calibration/concept-family.md) · [Rabbithole Dossier](research/trigger-accuracy-and-calibration/rabbithole-dossier.md))
+- [Functional Execution Benchmarking](research/functional-execution-benchmarking/) ([DR Report](research/functional-execution-benchmarking/dr-report.md) · [Family Map](research/functional-execution-benchmarking/concept-family.md) · [Rabbithole Dossier](research/functional-execution-benchmarking/rabbithole-dossier.md))
+- [Objective Assertion Engineering](research/objective-assertion-engineering/) ([DR Report](research/objective-assertion-engineering/dr-report.md) · [Family Map](research/objective-assertion-engineering/concept-family.md) · [Rabbithole Dossier](research/objective-assertion-engineering/rabbithole-dossier.md))
+- [Eval-Driven Iteration Loop](research/eval-driven-iteration-loop/) ([DR Report](research/eval-driven-iteration-loop/dr-report.md) · [Family Map](research/eval-driven-iteration-loop/concept-family.md) · [Rabbithole Dossier](research/eval-driven-iteration-loop/rabbithole-dossier.md))
+- [Deep Eval Optimization](research/deep-eval-optimization/) ([DR Report](research/deep-eval-optimization/dr-report.md) · [Family Map](research/deep-eval-optimization/concept-family.md) · [Rabbithole Dossier](research/deep-eval-optimization/rabbithole-dossier.md))
+

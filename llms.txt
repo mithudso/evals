@@ -28,8 +28,19 @@ Multi-iteration convergence, variance and standard deviation analysis, flaky eva
 12 analytical passes (A–L), prompt realism, discriminative power, answer leakage prevention, fixture integrity, and schema compliance.
 - [llms.txt](file:///Users/mitch/dev/evals/packs/deep-eval-optimization/llms.txt) · [Full Documentation](file:///Users/mitch/dev/evals/packs/deep-eval-optimization/llms-full.txt) · [Compact Rules](file:///Users/mitch/dev/evals/packs/deep-eval-optimization/llms-small.txt) · [Atomic Facts](file:///Users/mitch/dev/evals/packs/deep-eval-optimization/llms-facts.txt) · [Vocabulary](file:///Users/mitch/dev/evals/packs/deep-eval-optimization/llms-vocabulary.txt)
 
+## Research & Saturation Dossiers
+
+Complete multi-source deep research (`/dr`), 5-neighborhood conceptual maps (`CFE`), and depth-first saturation dossiers (`rabbithole`) for all 5 core concepts:
+
+- [Trigger Accuracy & Calibration](file:///Users/mitch/dev/evals/research/trigger-accuracy-and-calibration/) ([DR Report](file:///Users/mitch/dev/evals/research/trigger-accuracy-and-calibration/dr-report.md) · [Family Map](file:///Users/mitch/dev/evals/research/trigger-accuracy-and-calibration/concept-family.md) · [Rabbithole Dossier](file:///Users/mitch/dev/evals/research/trigger-accuracy-and-calibration/rabbithole-dossier.md))
+- [Functional Execution Benchmarking](file:///Users/mitch/dev/evals/research/functional-execution-benchmarking/) ([DR Report](file:///Users/mitch/dev/evals/research/functional-execution-benchmarking/dr-report.md) · [Family Map](file:///Users/mitch/dev/evals/research/functional-execution-benchmarking/concept-family.md) · [Rabbithole Dossier](file:///Users/mitch/dev/evals/research/functional-execution-benchmarking/rabbithole-dossier.md))
+- [Objective Assertion Engineering](file:///Users/mitch/dev/evals/research/objective-assertion-engineering/) ([DR Report](file:///Users/mitch/dev/evals/research/objective-assertion-engineering/dr-report.md) · [Family Map](file:///Users/mitch/dev/evals/research/objective-assertion-engineering/concept-family.md) · [Rabbithole Dossier](file:///Users/mitch/dev/evals/research/objective-assertion-engineering/rabbithole-dossier.md))
+- [Eval-Driven Iteration Loop](file:///Users/mitch/dev/evals/research/eval-driven-iteration-loop/) ([DR Report](file:///Users/mitch/dev/evals/research/eval-driven-iteration-loop/dr-report.md) · [Family Map](file:///Users/mitch/dev/evals/research/eval-driven-iteration-loop/concept-family.md) · [Rabbithole Dossier](file:///Users/mitch/dev/evals/research/eval-driven-iteration-loop/rabbithole-dossier.md))
+- [Deep Eval Optimization](file:///Users/mitch/dev/evals/research/deep-eval-optimization/) ([DR Report](file:///Users/mitch/dev/evals/research/deep-eval-optimization/dr-report.md) · [Family Map](file:///Users/mitch/dev/evals/research/deep-eval-optimization/concept-family.md) · [Rabbithole Dossier](file:///Users/mitch/dev/evals/research/deep-eval-optimization/rabbithole-dossier.md))
+
 ## Evaluation Tooling & Repositories
 
 - [Evals Harness & Templates](https://github.com/mithudso/evals): Public repository containing test runners, templates, and benchmark reports.
 - [Deep Eval Optimizer](file:///Users/mitch/dev/skills/deep-eval-optimizer/SKILL.md): 12-pass convergence loop skill for auditing and generating eval suites.
 - [Skill Optimizer](file:///Users/mitch/dev/skills/skill-optimizer/SKILL.md): Skill production quality gate with automatic missing-eval generation.
+
