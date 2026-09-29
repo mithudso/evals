@@ -1,0 +1,12 @@
+# Functional Execution Benchmarking: Atomic Facts
+
+- [Benchmarking requires isolated execution environments to prevent cross-run context bleed.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Comparative benchmarking evaluates identical tasks across with_skill and without_skill directories.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Skills must demonstrate a strictly positive quality score delta over unassisted base model performance.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Timing metrics including wall-clock duration and tool call count are persisted to timing.json files.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Input test fixtures must be maintained in immutable repositories and copied cleanly before each execution.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Execution tracing captures all tool invocations, token counts, and intermediate console streams.](file:///Users/mitch/dev/evals/runner/eval_runner.py)
+- [Eval runner scripts execute parameterized test cases defined in canonical JSON suites.](file:///Users/mitch/dev/evals/runner/eval_runner.py)
+- [Evaluation fixtures are right-sized under 50KB to prevent context exhaustion during batch benchmarks.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Benchmark failures are classified into execution errors, schema violations, and assertion misses.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Standard evaluation manifests record per-assertion outcomes and aggregate pass percentages.](file:///Users/mitch/dev/evals/runner/eval_runner.py)

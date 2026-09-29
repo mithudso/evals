@@ -1,0 +1,60 @@
+# Functional Execution Benchmarking: Complete Architecture Reference
+
+## 1. Overview
+Functional execution benchmarking evaluates whether an agent equipped with a skill executes tasks correctly, conforms to strict constraints, and delivers higher quality deliverables than the unassisted base model. It measures not just semantic plausibility, but concrete artifact changes in isolated filesystems.
+
+## 2. Workspace Isolation
+To prevent cross-contamination and test contamination between iterations, every benchmark trial runs in a dedicated, isolated filesystem directory.
+
+### Directory Structure
+```
+<skill>-workspace/
+└── iteration-<N>/
+    └── eval-<ID>/
+        ├── with_skill/
+        │   ├── input/             # Clean copies of test fixtures
+        │   ├── output/            # Produced artifacts
+        │   ├── timing.json        # Latency, tool call counts, duration
+        │   └── eval_result.json   # Grader output and assertion results
+        └── without_skill/
+            ├── input/             # Identical clean fixtures
+            ├── output/            # Unassisted baseline deliverables
+            ├── timing.json        # Baseline resource consumption
+            └── eval_result.json   # Baseline grader output
+```
+
+- **Idempotency**: Input fixtures are copied fresh prior to every trial.
+- **Hermeticity**: Running tests must not read or write outside the assigned sandbox folder.
+
+## 3. Execution Tracing
+A complete trace captures the agent's full behavioral trajectory:
+- **Tool Invocations**: Total tool calls, specific tools called, invalid calls, and recovery loops.
+- **Duration ($\Delta t$)**: Wall-clock seconds from initial user prompt to final completion.
+- **Token Overhead**: Input prompt tokens, generated response tokens, and total context footprint.
+- **Output Artifacts**: Git diff or file hash verification of produced files.
+
+## 4. Delta Scoring ($\Delta$)
+The purpose of a skill is to provide a positive quality delta over the base model without imposing unreasonable latency or token overhead.
+
+### Quality Lift Formula
+$$\Delta_{\text{quality}} = \text{Score}_{\text{with\_skill}} - \text{Score}_{\text{without\_skill}}$$
+
+Where:
+- $\text{Score} = \frac{\text{Assertions Passed}}{\text{Total Assertions}}$
+- A valid skill must demonstrate $\Delta_{\text{quality}} > 0$. If $\Delta_{\text{quality}} \le 0$, the skill is redundant or degraded.
+
+### Cost-Benefit Metric
+$$\text{Efficiency Ratio} = \frac{\Delta_{\text{quality}}}{\log_{10}(\text{Tokens}_{\text{with\_skill}} / \text{Tokens}_{\text{without\_skill}} + 1)}$$
+
+## 5. Failure Taxonomy
+Execution runs that fail to pass assertions are categorized into standard failure classes:
+1. **Crash / System Error**: Unhandled exception, syntax failure, or execution timeout.
+2. **Instruction Violation**: Agent ignored explicit constraints (e.g. wrote to forbidden paths).
+3. **Artifact Malformation**: Produced file failed schema validation (e.g. invalid JSON syntax).
+4. **Assertion Assertion Miss**: Concrete factual checks failed (e.g. calculated value diverged from truth).
+5. **Context Window Exhaustion**: Run halted due to runaway loops or context limits.
+
+## 6. Test Fixture Management
+- Fixtures must be stored under `evals/fixtures/` and copied into sandbox inputs.
+- Fixtures must be minimal: strip multi-megabyte datasets down to minimal reproducible subsets (< 50KB) to preserve eval execution speed and token budgets.
+- Include corrupted or boundary fixtures to evaluate error-handling pathways.

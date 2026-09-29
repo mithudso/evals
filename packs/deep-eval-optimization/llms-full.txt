@@ -1,0 +1,75 @@
+# Deep Eval Optimization: Complete Architecture Reference
+
+## 1. Overview
+Deep Eval Optimization (DEO) is an algorithmic meta-evaluation framework that audits and hardens evaluation suites themselves. It prevents "evaluation illusion"—scenarios where an evaluation suite reports high scores because the tests are trivially easy, leak answers, or lack discriminative power against unassisted models.
+
+## 2. The 12 Analytical Passes (A–L)
+
+### Pass A: Prompt Realism & Ecological Validity
+- **Objective**: Eliminate artificial, robotic prompts that mimic system documentation.
+- **Rules**: Prompts must include authentic user characteristics: terse phrasing, informal syntax, conversational context, typos, or domain jargon. Reject prompts that read like formal test specifications.
+
+### Pass B: Discriminative Power & Baseline Separation
+- **Objective**: Ensure the eval discriminates between an agent with the skill versus an agent without the skill.
+- **Rules**: Identify and eliminate assertions that pass trivially on base models. If unassisted models score 100% on a test case, increase difficulty or add domain-specific constraints.
+
+### Pass C: Assertion Objectivity & Verifiability
+- **Objective**: Convert subjective vibe assessments into programmatic binary checks.
+- **Rules**: Eliminate all qualitative criteria ("well written", "looks complete"). Enforce structural markdown, regex, JSON schema, or numerical equality checks.
+
+### Pass D: Near-Miss Coverage & Negative Density
+- **Objective**: Protect against over-triggering and greedy skill routing.
+- **Rules**: Verify the presence of at least 10 high-signal negative queries sharing domain vocabulary with the target skill but requiring alternate tooling or base model execution.
+
+### Pass E: Determinism & Environmental Hygiene
+- **Objective**: Eliminate non-deterministic factors from test environments.
+- **Rules**: Freeze dates/timestamps (no dynamic `Date.now()` without mocking); isolate input paths strictly to `<INPUT>/`; ensure test fixtures are reproducible and read-only.
+
+### Pass F: Answer Leakage & Prompt Contamination
+- **Objective**: Prevent evaluation prompts from revealing the expected solution.
+- **Rules**: Ensure the prompt does not cite skill file names, copy verbatim rule blocks from `SKILL.md`, or prescribe step-by-step algorithms that trivialize problem-solving.
+
+### Pass G: Fixture Integrity & Resource Optimization
+- **Objective**: Validate input fixtures and eliminate token bloat.
+- **Rules**: Fixtures must be syntactically valid files sized appropriately (< 50KB). Trim multi-megabyte mock files down to minimal reproducible units.
+
+### Pass H: Surface Coverage & Edge Case Mapping
+- **Objective**: Ensure comprehensive testing of all operational modes.
+- **Rules**: Test suites must cover standard happy path, error handling, missing inputs, corrupted data, and extreme scale boundaries.
+
+### Pass I: Output Precision & Expected State Definition
+- **Objective**: Guarantee that every expected output artifact is explicitly documented.
+- **Rules**: Ensure `expected_output` fields detail exact files, required keys, formatting rules, and success criteria.
+
+### Pass J: Token Efficiency & Context Economy
+- **Objective**: Prevent excessive token consumption during test runs.
+- **Rules**: Bounded eval prompts and right-sized fixtures ensure test runs complete within token quotas without triggering rate limits.
+
+### Pass K: Anti-Overfitting & Held-Out Partitioning
+- **Objective**: Prevent skill authors from optimizing descriptions solely for a static test set.
+- **Rules**: Enforce a strict 60/40 partition between development training queries and held-out evaluation queries.
+
+### Pass L: Schema Compliance & Structural Validity
+- **Objective**: Guarantee that eval files adhere to canonical schemas.
+- **Rules**: Validate `evals.json` against the official JSON schema. Ensure all fields (`eval_id`, `prompt`, `type`, `should_trigger`, `assertions`) are validly typed.
+
+## 3. Grading the Grader: Pass Scorecard
+When running Deep Eval Optimization across an evaluation suite, a scorecard is generated:
+
+| Pass | Name | Target Standard | Status | Remediation |
+|---|---|---|---|---|
+| A | Prompt Realism | authentic user messy queries | PASS / FAIL | Rewrite synthetic prompts |
+| B | Discriminative Power | Delta > 0.30 over baseline | PASS / FAIL | Add specialized assertions |
+| C | Assertion Objectivity | 100% deterministic checks | PASS / FAIL | Replace vibes with regex/schema |
+| D | Near-Miss Coverage | >= 10 near-miss negatives | PASS / FAIL | Add competing domain queries |
+| E | Determinism Hygiene | Hermetic sandbox & frozen time | PASS / FAIL | Mock time / isolate inputs |
+| F | Answer Leakage | Zero internal rule leaks | PASS / FAIL | Strip prescriptive hints |
+| G | Fixture Integrity | < 50KB valid fixtures | PASS / FAIL | Minify large mock files |
+| H | Surface Coverage | Happy path + edge cases | PASS / FAIL | Add boundary test cases |
+| I | Output Precision | Explicit artifact spec | PASS / FAIL | Detail output expectations |
+| J | Token Efficiency | < 4k context overhead | PASS / FAIL | Compress test prompts |
+| K | Anti-Overfitting | 60/40 train/val split | PASS / FAIL | Split corpus into subsets |
+| L | Schema Compliance | Strict JSON schema match | PASS / FAIL | Fix malformed JSON fields |
+
+## 4. Remediation Engine
+The optimization pass does not merely report defects; it automatically rewrites flawed test suites into compliant, high-discrimination evaluation harnesses.

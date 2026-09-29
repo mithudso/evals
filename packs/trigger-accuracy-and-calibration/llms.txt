@@ -1,0 +1,17 @@
+# Trigger Accuracy and Calibration: Technical Specification
+
+> Empirical methodology for calibrating AI agent skill activation, routing precision, and trigger descriptions using balanced evaluation corpora and statistical multi-run sampling.
+
+## Canonical Docs
+
+- [Optimizing Skill Descriptions](https://agentskills.io/skill-creation/optimizing-descriptions.md): Standard procedure for 20-query positive and negative test corpus creation and evaluation.
+- [Specification](https://agentskills.io/specification.md): Progressive disclosure model and the 1024-character description ceiling.
+- [Evaluating Skills](https://agentskills.io/skill-creation/evaluating-skills.md): Foundational evaluation and benchmarking concepts for agent capabilities.
+
+## Architecture & Concepts
+
+- [Corpus Composition](file:///Users/mitch/dev/evals/packs/trigger-accuracy-and-calibration/llms-full.txt#corpus-composition): Balanced 20-query distribution (10 positive, 10 near-miss negative).
+- [Threshold Calibration](file:///Users/mitch/dev/evals/packs/trigger-accuracy-and-calibration/llms-full.txt#threshold-calibration): Target metrics (>=90% positive activation, <=10% false positive rate).
+- [Multi-Run Variance Sampling](file:///Users/mitch/dev/evals/packs/trigger-accuracy-and-calibration/llms-full.txt#multi-run-variance-sampling): 3-run trial execution to detect stochastic routing divergence.
+- [Train/Validation Partitioning](file:///Users/mitch/dev/evals/packs/trigger-accuracy-and-calibration/llms-full.txt#trainvalidation-partitioning): 60/40 splits protecting against description prompt overfitting.
+- [Optimization Workflow](file:///Users/mitch/dev/evals/packs/trigger-accuracy-and-calibration/llms-full.txt#optimization-workflow): Iterative description rewriting, keyword calibration, and SKIP clause hardening.

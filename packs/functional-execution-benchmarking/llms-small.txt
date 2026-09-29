@@ -1,0 +1,18 @@
+# Functional Execution Benchmarking: Compact Reference
+
+## Core Rules
+1. **Workspace Sandboxing**:
+   - Run tests in `<skill>-workspace/iteration-<N>/eval-<ID>/`.
+   - Always run dual arms: `with_skill/` and `without_skill/`.
+   - Refresh input fixtures cleanly before every run.
+2. **Metrics Tracked**:
+   - Assertion Pass Rate ($P_{\text{pass}} = \text{Passed} / \text{Total}$)
+   - Quality Delta ($\Delta = \text{Score}_{\text{with}} - \text{Score}_{\text{without}}$)
+   - Duration (seconds recorded in `timing.json`)
+   - Token overhead and tool call count.
+3. **Acceptance Threshold**:
+   - $\Delta > 0$ required (skill must beat base model).
+   - Zero fatal crashes or unhandled exceptions.
+4. **Fixture Discipline**:
+   - Strip test fixtures to minimal representations (< 50KB).
+   - Keep fixtures immutable in `evals/fixtures/`.

@@ -1,0 +1,18 @@
+# Objective Assertion Engineering: Technical Lexicon
+
+- **Objective Assertion**: A deterministic, programmatically verifiable test statement that evaluates to boolean True or False.
+  - *Related*: Grader Check, Deterministic Assertion, Automated Test
+- **Structural Assertion**: A check verifying the syntax layout, document hierarchy, or markdown formatting of an artifact.
+  - *Related*: Heading Check, Table Validator, Format Verification
+- **Schema Assertion**: A programmatic validation checking payload structure, types, and required keys against a formal schema.
+  - *Related*: JSON Schema, Pydantic Validator, Type Safety
+- **Deterministic Content Assertion**: A verification that specific string literals, entity names, or calculated values match truth.
+  - *Related*: Exact Match, Ground Truth Check, Value Equality
+- **Negative Bounding Assertion**: A check designed specifically to confirm the absence of unwanted artifacts or behaviors.
+  - *Related*: Hallucination Check, Anti-Pattern Guard, Boundary Constraint
+- **Reconciling Count Assertion**: A validation confirming that summary numbers match the exact count of listed items in the body.
+  - *Related*: Parity Check, Count Consistency, Total Verification
+- **Vibe Evaluation**: Non-deterministic, subjective grading based on qualitative human or LLM impressions.
+  - *Related*: Qualitative Vibe, Subjective Scoring, Grading Flakiness
+- **Binary Grader**: An automated function that maps artifact outputs strictly to 1 (Pass) or 0 (Fail).
+  - *Related*: Indicator Function, Discrete Scorer, Strict Verification

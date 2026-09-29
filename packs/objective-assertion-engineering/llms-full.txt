@@ -1,0 +1,82 @@
+# Objective Assertion Engineering: Complete Architecture Reference
+
+## 1. Overview
+Subjective evaluations ("output looks good", "well-written explanation", "clear tone") introduce high variance and render benchmarks unrepeatable. Objective Assertion Engineering is the practice of formalizing evaluation expectations into deterministic, binary (pass/fail) checks executed programmatically without ambiguity.
+
+## 2. Assertion Taxonomy
+All production assertions fall into 5 distinct categories:
+
+### 1. Structural Assertions
+Verify that the output adheres to requested file layout, section hierarchies, or markdown components:
+- Verifies existence of required markdown headings (e.g. `^## Execution Plan`).
+- Verifies markdown table formatting (`\|[- ]+\|`).
+- Verifies numbered list sequencing or nested code fence syntax.
+
+### 2. Schema Assertions
+Validate that structured data satisfies formal type, field, and constraint specifications:
+- JSON Schema validation checking required fields, regex formats, and value ranges.
+- YAML structure validation ensuring valid nesting and scalar types.
+- TypeScript / Pydantic interface verification for generated API types.
+
+### 3. Deterministic Content Assertions
+Verify that specific calculations, identifiers, or tokens match exact expected values:
+- Direct arithmetic equality (e.g. Total Revenue = $12,450.50).
+- Presence of exact referenced database column names or Git commit hashes.
+- URL links format validation (`https://...` with valid hostnames).
+
+### 4. Negative Bounding Assertions
+Verify the explicit absence of defects, hallucinations, or unrequested alterations:
+- Asserting zero occurrences of placeholder text (`TODO`, `FIXME`, `lorem ipsum`).
+- Asserting zero unrequested file creations outside target directories.
+- Asserting absence of banned conversational filler ("As an AI language model...", "Sure, I can help with that").
+- Asserting zero security regressions (e.g. no hardcoded API secrets).
+
+### 5. Reconciling Count Assertions
+Verify mathematical parity between metadata summaries and rendered lists:
+- If header declares "Top 5 Findings", assert exactly 5 bullet points or table rows exist.
+- If summary metadata records `total_errors: 3`, assert exactly 3 error blocks exist in the artifact.
+
+## 3. Eliminating Vibes
+Transforming ambiguous criteria into deterministic assertions:
+
+| Subjective Vibe Criterion | Objective Assertion Translation |
+|---|---|
+| "Provide a comprehensive analysis" | Assert artifact contains >= 4 distinct H2 sections and word count >= 400. |
+| "Include clear visual presentation" | Assert output contains a Markdown table with >= 3 columns and >= 5 rows. |
+| "Write clean, valid JSON" | Execute `json.loads(output)` and validate against JSON Schema. |
+| "Be concise and to the point" | Assert total word count <= 150 words and zero conversational intro phrases. |
+| "Properly cite sources" | Assert every bullet ends with a regex markdown link matching `\[.+\]\(https?://.+\)`. |
+
+## 4. Assertion Implementation Patterns
+Assertions should be implemented using resilient, programmatic methods:
+
+### Regex Boundary Pattern
+Use multiline mode and non-greedy matching:
+```python
+import re
+
+def assert_has_markdown_table(text: str) -> bool:
+    table_pattern = re.compile(r"\|[^\n]+\|\n\|[- :|]+\|\n(\|?[^\n]+\|\n?)+")
+    return bool(table_pattern.search(text))
+```
+
+### JSON Schema Pattern
+Validate structure independently of key ordering:
+```python
+import json
+import jsonschema
+
+def assert_valid_schema(text: str, schema: dict) -> bool:
+    try:
+        data = json.loads(text)
+        jsonschema.validate(instance=data, schema=schema)
+        return True
+    except (json.JSONDecodeError, jsonschema.ValidationError):
+        return False
+```
+
+## 5. Grading and Scoring
+- Each test case defines a list of assertions ($A_1, A_2, \dots, A_m$).
+- Each assertion yields a binary score $s_j \in \{0, 1\}$.
+- Test case score: $S = \frac{1}{m} \sum_{j=1}^m s_j$.
+- A test case passes if and only if $S = 1.0$ (strict mode) or $S \ge \tau$ (soft thresholding).

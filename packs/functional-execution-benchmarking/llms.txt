@@ -1,0 +1,17 @@
+# Functional Execution Benchmarking: Technical Specification
+
+> Rigorous benchmarking framework for measuring agent skill execution fidelity, workspace isolation, execution tracing, token overhead, and differential quality scoring.
+
+## Canonical Docs
+
+- [Evaluating Skill Output Quality](https://agentskills.io/skill-creation/evaluating-skills.md): Testing agent outputs with isolated workspaces, baseline comparison, and quantitative grading.
+- [Specification](https://agentskills.io/specification.md): Agent skills operational contract and filesystem layout.
+- [Best Practices](https://agentskills.io/skill-creation/best-practices.md): Bounding execution side-effects and ensuring reproducibility.
+
+## Architecture & Concepts
+
+- [Workspace Isolation](file:///Users/mitch/dev/evals/packs/functional-execution-benchmarking/llms-full.txt#workspace-isolation): Directory sandboxing (`with_skill/` vs `without_skill/`).
+- [Execution Tracing](file:///Users/mitch/dev/evals/packs/functional-execution-benchmarking/llms-full.txt#execution-tracing): Capturing tool calls, stdout/stderr, token metrics, and execution timing.
+- [Delta Scoring](file:///Users/mitch/dev/evals/packs/functional-execution-benchmarking/llms-full.txt#delta-scoring): Quantifying net performance gain over the default base model baseline.
+- [Failure Taxonomy](file:///Users/mitch/dev/evals/packs/functional-execution-benchmarking/llms-full.txt#failure-taxonomy): Categorizing execution halts, schema violations, assertion misses, and timeouts.
+- [Test Fixture Management](file:///Users/mitch/dev/evals/packs/functional-execution-benchmarking/llms-full.txt#test-fixture-management): Providing idempotent mock files, databases, and input payloads.

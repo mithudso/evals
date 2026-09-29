@@ -2,13 +2,31 @@
 
 > Comprehensive categorical family index for AI agent skill evaluation, calibration, and benchmarking.
 
-## Family Members
+## Family Concept Packs
 
-- [Skill Evals Core Pack](file:///Users/mitch/dev/evals/packs/skill-evals/llms.txt): Base architecture, trigger calibration, and execution benchmarking.
-- [Full Text](file:///Users/mitch/dev/evals/packs/skill-evals/llms-full.txt): Comprehensive deep-dive documentation and patterns.
-- [Compact Study Reference](file:///Users/mitch/dev/evals/packs/skill-evals/llms-small.txt): Fast in-context rules and thresholds.
-- [Atomic Facts](file:///Users/mitch/dev/evals/packs/skill-evals/llms-facts.txt): Sourced propositions and standards.
-- [Vocabulary & Lexicon](file:///Users/mitch/dev/evals/packs/skill-evals/llms-vocabulary.txt): Concept relationships and technical terms.
+### 1. Skill Evals Core (`skill-evals`)
+Base architecture, trigger calibration, and execution benchmarking overview.
+- [llms.txt](file:///Users/mitch/dev/evals/packs/skill-evals/llms.txt) · [Full Documentation](file:///Users/mitch/dev/evals/packs/skill-evals/llms-full.txt) · [Compact Rules](file:///Users/mitch/dev/evals/packs/skill-evals/llms-small.txt) · [Atomic Facts](file:///Users/mitch/dev/evals/packs/skill-evals/llms-facts.txt) · [Vocabulary](file:///Users/mitch/dev/evals/packs/skill-evals/llms-vocabulary.txt)
+
+### 2. Trigger Accuracy and Calibration (`trigger-accuracy-and-calibration`)
+20-query corpus design (10 pos / 10 neg), activation thresholds (>=90% pos, <=10% false pos), 3-run variance sampling, 60/40 train/val splits.
+- [llms.txt](file:///Users/mitch/dev/evals/packs/trigger-accuracy-and-calibration/llms.txt) · [Full Documentation](file:///Users/mitch/dev/evals/packs/trigger-accuracy-and-calibration/llms-full.txt) · [Compact Rules](file:///Users/mitch/dev/evals/packs/trigger-accuracy-and-calibration/llms-small.txt) · [Atomic Facts](file:///Users/mitch/dev/evals/packs/trigger-accuracy-and-calibration/llms-facts.txt) · [Vocabulary](file:///Users/mitch/dev/evals/packs/trigger-accuracy-and-calibration/llms-vocabulary.txt)
+
+### 3. Functional Execution Benchmarking (`functional-execution-benchmarking`)
+Workspace isolation (`with_skill/` vs `without_skill/`), execution tracing, timing metrics (`timing.json`), token overhead, and quality delta scoring.
+- [llms.txt](file:///Users/mitch/dev/evals/packs/functional-execution-benchmarking/llms.txt) · [Full Documentation](file:///Users/mitch/dev/evals/packs/functional-execution-benchmarking/llms-full.txt) · [Compact Rules](file:///Users/mitch/dev/evals/packs/functional-execution-benchmarking/llms-small.txt) · [Atomic Facts](file:///Users/mitch/dev/evals/packs/functional-execution-benchmarking/llms-facts.txt) · [Vocabulary](file:///Users/mitch/dev/evals/packs/functional-execution-benchmarking/llms-vocabulary.txt)
+
+### 4. Objective Assertion Engineering (`objective-assertion-engineering`)
+Structural assertion design, schema validation, negative bounding checks, deterministic entity checks, and count reconciliation.
+- [llms.txt](file:///Users/mitch/dev/evals/packs/objective-assertion-engineering/llms.txt) · [Full Documentation](file:///Users/mitch/dev/evals/packs/objective-assertion-engineering/llms-full.txt) · [Compact Rules](file:///Users/mitch/dev/evals/packs/objective-assertion-engineering/llms-small.txt) · [Atomic Facts](file:///Users/mitch/dev/evals/packs/objective-assertion-engineering/llms-facts.txt) · [Vocabulary](file:///Users/mitch/dev/evals/packs/objective-assertion-engineering/llms-vocabulary.txt)
+
+### 5. Eval-Driven Iteration Loop (`eval-driven-iteration-loop`)
+Multi-iteration convergence, variance and standard deviation analysis, flaky eval detection, and champion-challenger promotion gating.
+- [llms.txt](file:///Users/mitch/dev/evals/packs/eval-driven-iteration-loop/llms.txt) · [Full Documentation](file:///Users/mitch/dev/evals/packs/eval-driven-iteration-loop/llms-full.txt) · [Compact Rules](file:///Users/mitch/dev/evals/packs/eval-driven-iteration-loop/llms-small.txt) · [Atomic Facts](file:///Users/mitch/dev/evals/packs/eval-driven-iteration-loop/llms-facts.txt) · [Vocabulary](file:///Users/mitch/dev/evals/packs/eval-driven-iteration-loop/llms-vocabulary.txt)
+
+### 6. Deep Eval Optimization (`deep-eval-optimization`)
+12 analytical passes (A–L), prompt realism, discriminative power, answer leakage prevention, fixture integrity, and schema compliance.
+- [llms.txt](file:///Users/mitch/dev/evals/packs/deep-eval-optimization/llms.txt) · [Full Documentation](file:///Users/mitch/dev/evals/packs/deep-eval-optimization/llms-full.txt) · [Compact Rules](file:///Users/mitch/dev/evals/packs/deep-eval-optimization/llms-small.txt) · [Atomic Facts](file:///Users/mitch/dev/evals/packs/deep-eval-optimization/llms-facts.txt) · [Vocabulary](file:///Users/mitch/dev/evals/packs/deep-eval-optimization/llms-vocabulary.txt)
 
 ## Evaluation Tooling & Repositories
 

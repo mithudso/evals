@@ -1,0 +1,17 @@
+# Deep Eval Optimization: Technical Specification
+
+> The 12-pass analytical audit and hardening framework for evaluation suites. Formalizes evaluation grading, discriminative power analysis, answer leakage elimination, and schema compliance.
+
+## Canonical Docs
+
+- [Evaluating Skills](https://agentskills.io/skill-creation/evaluating-skills.md): Fundamental benchmarks and evaluation suite design.
+- [Optimizing Descriptions](https://agentskills.io/skill-creation/optimizing-descriptions.md): Description tuning and trigger test corpus calibration.
+- [Specification](https://agentskills.io/specification.md): Agent skills operational layout and schema standards.
+
+## Architecture & Concepts
+
+- [The 12 Analytical Passes](file:///Users/mitch/dev/evals/packs/deep-eval-optimization/llms-full.txt#the-12-analytical-passes-a-l): Detailed specifications for Passes A through L.
+- [Grading the Grader](file:///Users/mitch/dev/evals/packs/deep-eval-optimization/llms-full.txt#grading-the-grader): Auditing evaluation suites for self-consistency, tautologies, and false rigor.
+- [Answer Leakage Prevention](file:///Users/mitch/dev/evals/packs/deep-eval-optimization/llms-full.txt#answer-leakage-prevention): Identifying prompts that accidentally give away the solution or cite skill internals.
+- [Discriminative Power Analysis](file:///Users/mitch/dev/evals/packs/deep-eval-optimization/llms-full.txt#discriminative-power-analysis): Purging assertions that pass trivially without the skill.
+- [Audit Report & Remediation](file:///Users/mitch/dev/evals/packs/deep-eval-optimization/llms-full.txt#audit-report--remediation): Generating pass-grade scorecards and automated suite transformations.

@@ -1,0 +1,17 @@
+# Eval-Driven Iteration Loop: Technical Specification
+
+> Closed-loop development methodology for AI agent capabilities. Governs continuous skill refinement through multi-iteration execution, variance tracking, flaky test detection, and champion-challenger promotion gating.
+
+## Canonical Docs
+
+- [Evaluating Skills](https://agentskills.io/skill-creation/evaluating-skills.md): Iterative feedback loops using test results to guide skill refinement.
+- [Specification](https://agentskills.io/specification.md): Versioning, resource bundling, and iteration tracking.
+- [Best Practices](https://agentskills.io/skill-creation/best-practices.md): Avoiding regressions and managing iterative changes.
+
+## Architecture & Concepts
+
+- [Iteration Cycle Mechanics](file:///Users/mitch/dev/evals/packs/eval-driven-iteration-loop/llms-full.txt#iteration-cycle-mechanics): Loop stages (Baseline -> Execution -> Grading -> Analysis -> Instruction Patching).
+- [Variance & Flakiness Detection](file:///Users/mitch/dev/evals/packs/eval-driven-iteration-loop/llms-full.txt#variance--flakiness-detection): Identifying unstable assertions across repeated runs ($K \ge 3$).
+- [Champion-Challenger Gating](file:///Users/mitch/dev/evals/packs/eval-driven-iteration-loop/llms-full.txt#champion-challenger-gating): Strict promotion rules requiring positive delta ($\Delta > 0$) without golden set regressions.
+- [Convergence Criteria](file:///Users/mitch/dev/evals/packs/eval-driven-iteration-loop/llms-full.txt#convergence-criteria): Recognizing diminishing returns, plateaus, and stop conditions.
+- [Root Cause Attribution](file:///Users/mitch/dev/evals/packs/eval-driven-iteration-loop/llms-full.txt#root-cause-attribution): Distinguishing prompt ambiguity from instruction gaps and tool failures.

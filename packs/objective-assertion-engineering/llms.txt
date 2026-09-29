@@ -1,0 +1,17 @@
+# Objective Assertion Engineering: Technical Specification
+
+> Engineering deterministic, machine-verifiable evaluation assertions. Replaces subjective human or LLM "vibes" with structural, schema, regex, negative boundary, and count reconciliation checks.
+
+## Canonical Docs
+
+- [Evaluating Skills](https://agentskills.io/skill-creation/evaluating-skills.md): Designing quantitative evaluations and reproducible assertions.
+- [Specification](https://agentskills.io/specification.md): Standardizing file structures and expected artifacts.
+- [Best Practices](https://agentskills.io/skill-creation/best-practices.md): Verifiable output constraints and failure modes.
+
+## Architecture & Concepts
+
+- [Assertion Taxonomy](file:///Users/mitch/dev/evals/packs/objective-assertion-engineering/llms-full.txt#assertion-taxonomy): The 5 classes of deterministic assertions (Structural, Schema, Deterministic Content, Negative Bounding, Reconciling Counts).
+- [Eliminating Vibes](file:///Users/mitch/dev/evals/packs/objective-assertion-engineering/llms-full.txt#eliminating-vibes): Translating subjective quality descriptions into binary automated graders.
+- [Negative Bounding Assertions](file:///Users/mitch/dev/evals/packs/objective-assertion-engineering/llms-full.txt#negative-bounding-assertions): Explicitly asserting the absence of hallucinations, banned phrases, and unrequested side-effects.
+- [Count Reconciliation](file:///Users/mitch/dev/evals/packs/objective-assertion-engineering/llms-full.txt#count-reconciliation): Programmatic parity checks between summary metadata and rendered artifact bodies.
+- [Assertion Implementation](file:///Users/mitch/dev/evals/packs/objective-assertion-engineering/llms-full.txt#assertion-implementation): Writing resilient regex, JSON schemas, and Python AST validators.

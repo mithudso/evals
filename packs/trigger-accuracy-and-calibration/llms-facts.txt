@@ -1,0 +1,12 @@
+# Trigger Accuracy and Calibration: Atomic Facts
+
+- [Standard trigger evaluation corpus consists of 20 queries divided into 10 positive intents and 10 near-miss negatives.](https://agentskills.io/skill-creation/optimizing-descriptions.md)
+- [Target activation rate for in-scope positive triggers must be at or above 90 percent.](https://agentskills.io/skill-creation/optimizing-descriptions.md)
+- [False positive trigger rate on negative near-miss queries must not exceed 10 percent.](https://agentskills.io/skill-creation/optimizing-descriptions.md)
+- [Agent skill descriptions are bounded to a maximum length of 1024 characters to prevent routing context pollution.](https://agentskills.io/specification.md)
+- [Stochastic routing variation requires executing each evaluation prompt across 3 runs to calculate expected activation frequency.](https://agentskills.io/skill-creation/optimizing-descriptions.md)
+- [Positive test suites must include direct, symptom-based, terse, and context-rich queries.](https://agentskills.io/skill-creation/optimizing-descriptions.md)
+- [Negative suites must incorporate hard near-misses that share terminology with competing skills.](https://agentskills.io/skill-creation/optimizing-descriptions.md)
+- [Evaluation suites must partition queries into a 60 percent training set and a 40 percent held-out validation set to avoid overfitting.](https://agentskills.io/skill-creation/optimizing-descriptions.md)
+- [Explicit SKIP clauses in descriptions establish negative boundary controls against adjacent agent skills.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Automated trigger runners execute queries against model routing prompts and output JSON summary reports.](file:///Users/mitch/dev/evals/runner/trigger_runner.py)

@@ -1,0 +1,18 @@
+# Functional Execution Benchmarking: Technical Lexicon
+
+- **Workspace Isolation**: Sandboxing mechanism where each test execution occurs in a separate filesystem subdirectory.
+  - *Related*: Hermeticity, Sandboxing, Test Environment
+- **Delta Scoring ($\Delta$)**: The numerical difference in performance between an assisted agent and an unassisted baseline.
+  - *Related*: Quality Lift, Net Gain, Benchmark Differential
+- **Execution Trace**: A chronological record of all agent interactions, tool calls, stdout/stderr, and token counts.
+  - *Related*: Trajectory, Log, Audit Trail
+- **Baseline Separation**: Testing tasks in parallel without the skill (`without_skill/`) to calibrate minimum difficulty.
+  - *Related*: Control Arm, Unassisted Run, Zero-Skill Baseline
+- **Fixture Idempotency**: The guarantee that test inputs remain unaltered regardless of modifications made during testing.
+  - *Related*: Immutability, Clean State, Sandbox Reset
+- **Token Overhead**: The additional context and output tokens consumed when a skill is active.
+  - *Related*: Cost-Benefit Ratio, Context Bloat, Context Budget
+- **Assertion Pass Rate ($P_{\text{pass}}$)**: The proportion of objective assertions verified successfully in an evaluation run.
+  - *Related*: Benchmark Accuracy, Success Ratio, Score
+- **Failure Taxonomy**: Standardized categorization of benchmark execution defects into runtime, instruction, or factual errors.
+  - *Related*: Defect Classification, Root Cause Analysis, Error Tagging

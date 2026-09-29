@@ -1,0 +1,17 @@
+# Eval-Driven Iteration Loop: Compact Reference
+
+## Quick Rules
+1. **5-Phase Loop**:
+   - Baseline Audit -> Benchmark Execution -> Grader Scoring -> Failure Diagnosis -> Targeted Patch.
+2. **Flakiness Check**:
+   - Run trials 3x ($K=3$).
+   - Standard deviation $\sigma > 0$ flags flakiness.
+   - Fix prompt ambiguities and replace brittle exact strings with regex.
+3. **Promotion Gating (Champion vs Challenger)**:
+   - Must achieve $\Delta > 0$ over champion.
+   - Zero regressions on golden assertion set.
+   - Token/duration increase bounded to $< 20\%$.
+4. **Stop Conditions**:
+   - 100% pass rate achieved.
+   - Plateau reached ($\Delta < 0.02$ over 2 iterations).
+   - Maximum iteration count reached.

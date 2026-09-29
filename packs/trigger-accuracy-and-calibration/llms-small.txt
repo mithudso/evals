@@ -1,0 +1,19 @@
+# Trigger Accuracy & Calibration: Compact Reference
+
+## Quick Rules
+1. **Corpus Size**: 20 queries total (10 positive, 10 near-miss negative).
+2. **Positive Distribution**:
+   - 2-3 direct ("format this SQL")
+   - 2-3 symptom ("query is timing out on join")
+   - 2-3 terse/informal ("fix sql plz")
+   - 2-3 context-rich (schema details, file paths)
+3. **Negative Distribution**:
+   - 5-6 near-misses (adjacent tools/competitor skills)
+   - 2-3 base model tasks (generic syntax/explaining code)
+   - 2 explicit non-triggers (covered by SKIP rules)
+4. **Acceptance Thresholds**:
+   - Positive Activation Rate: $\ge 90\%$ (min 9/10)
+   - False Positive Rate: $\le 10\%$ (max 1/10)
+   - Sampling: 3 runs per query; trigger if mean $\ge 0.5$
+5. **Data Split**: 60% train (12 queries), 40% held-out validation (8 queries).
+6. **Constraint**: `description` field max 1024 characters.

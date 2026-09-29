@@ -1,0 +1,15 @@
+# Deep Eval Optimization: Compact Reference
+
+## Quick Reference (Passes A–L)
+- **Pass A (Prompt Realism)**: Real, messy user queries; no synthetic bot phrasing.
+- **Pass B (Discriminative Power)**: Must produce measurable quality delta ($\Delta > 0$) over base model.
+- **Pass C (Assertion Objectivity)**: 100% deterministic (regex, JSON schema, exact numbers); 0% vibes.
+- **Pass D (Near-Miss Coverage)**: Min 10 negative near-miss queries testing domain borders.
+- **Pass E (Determinism Hygiene)**: Frozen time, isolated `<INPUT>/` sandboxes, clean resets.
+- **Pass F (Answer Leakage)**: Prompts must not quote skill rules, file names, or solution steps.
+- **Pass G (Fixture Integrity)**: Valid, minimal test fixtures (< 50KB).
+- **Pass H (Surface Coverage)**: Test happy path, error handling, missing inputs, and extremes.
+- **Pass I (Output Precision)**: Explicitly specify all output file paths and formats.
+- **Pass J (Token Efficiency)**: Right-size prompts to stay within token quotas.
+- **Pass K (Anti-Overfitting)**: Maintain a 60/40 train vs held-out validation split.
+- **Pass L (Schema Compliance)**: Validate `evals.json` against canonical schema.

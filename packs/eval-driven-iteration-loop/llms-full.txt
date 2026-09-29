@@ -1,0 +1,55 @@
+# Eval-Driven Iteration Loop: Complete Architecture Reference
+
+## 1. Overview
+The Eval-Driven Iteration Loop is the engineering workflow that uses empirical benchmark feedback to refine agent instructions, tools, and constraints. Instead of making arbitrary prompt edits, changes are driven by concrete assertion failures, evaluated across iterations, and gated by regression checks.
+
+## 2. Iteration Cycle Mechanics
+Each iteration follows a formal five-phase loop:
+
+```
+[Phase 1: Baseline Audit] ──> [Phase 2: Execution Benchmark] ──> [Phase 3: Automated Grading]
+                                                                        │
+                                                                        ▼
+[Phase 5: Instruction Patch] <── [Phase 4: Root Cause Diagnosis] <───────┘
+```
+
+1. **Baseline Audit**: Freeze current skill instructions as the champion baseline ($v_n$).
+2. **Execution Benchmark**: Execute all test cases across isolated workspaces (`iteration-<n>/`).
+3. **Automated Grading**: Run objective assertion graders to compute per-eval and aggregate pass rates.
+4. **Root Cause Diagnosis**: Inspect failed assertions and agent trajectories to identify instruction ambiguities.
+5. **Instruction Patching**: Apply targeted minimal diffs to `SKILL.md` to address specific failures, creating challenger revision ($v_{n+1}$).
+
+## 3. Variance & Flakiness Detection
+A flaky evaluation is one whose pass/fail status oscillates across identical runs without code changes.
+
+### Detecting Flakiness
+Execute test cases across $K \ge 3$ repeated trials:
+$$\sigma_i = \sqrt{\frac{1}{K-1} \sum_{k=1}^K (s_{ik} - \bar{s}_i)^2}$$
+
+- **Stable Assertion**: $\sigma_i = 0$ (consistently passes or consistently fails).
+- **Flaky Assertion**: $\sigma_i > 0$ (inconsistent outcomes).
+
+### Flakiness Mitigation Strategies
+- **Prompt Under-Specification**: The test prompt omitted crucial parameters; provide explicit constraints.
+- **Model Non-Determinism**: Soften brittle exact string matches to resilient semantic patterns or regex.
+- **Tool Interactivity Race Conditions**: Ensure filesystem or tool sync states resolve before assertion evaluation.
+
+## 4. Champion-Challenger Gating
+New skill versions are never deployed without empirical validation:
+1. **Quality Delta Check**: The challenger must achieve higher overall pass rate than the champion:
+   $$\Delta_{\text{overall}} = \text{Score}(v_{n+1}) - \text{Score}(v_n) > 0$$
+2. **Zero Golden Set Regressions**: A designated golden regression suite must experience zero newly failing assertions:
+   $$\text{Regressions} = \{A_j \mid s_j(v_n) = 1 \land s_j(v_{n+1}) = 0\} = \emptyset$$
+3. **Token & Latency Bounding**: Challenger must not exceed the champion's duration or token consumption by more than 20% without explicit architectural justification.
+
+## 5. Convergence Criteria
+The iteration loop terminates when one of the following conditions is met:
+- **Benchmark Saturation**: Overall pass rate reaches 100% on the evaluation suite.
+- **Plateau Reached**: Quality delta $\Delta < 0.02$ across two consecutive iterations despite prompt tuning.
+- **Budget Depletion**: Iteration budget (e.g. max 5 iterations) is exhausted.
+
+## 6. Root Cause Attribution
+Failures observed during the loop are attributed to one of three layers:
+- **Instruction Gap**: `SKILL.md` lacked guidance on how to format or calculate the deliverable.
+- **Eval Flaw**: The test assertion was broken, leaked answers, or expected impossible outputs.
+- **Tool / Environment Defect**: Tool MCP server timed out or returned malformed payloads.

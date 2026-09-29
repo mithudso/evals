@@ -1,0 +1,18 @@
+# Trigger Accuracy and Calibration: Technical Lexicon
+
+- **Activation Rate ($R_{\text{pos}}$)**: The percentage of in-scope test prompts that successfully invoke the skill.
+  - *Related*: Sensitivity, Recall, Positive Trigger Rate
+- **False Positive Rate ($R_{\text{fp}}$)**: The percentage of out-of-scope test prompts that mistakenly invoke the skill.
+  - *Related*: Fall-Out, Distractor Absorption, Over-Triggering
+- **Near-Miss Distractor**: An evaluation prompt designed with shared technical nouns but contrasting intent to test boundary discrimination.
+  - *Related*: Hard Negative, Discriminative Query, Boundary Test
+- **SKIP Clause**: An explicit negative routing directive in a skill description that directs the agent to alternate tools.
+  - *Related*: Negative Boundary, Excluded Scope, Routing Constraint
+- **Progressive Disclosure**: Architecture where only metadata (name/description) is loaded at routing time, with full instructions loaded only on demand.
+  - *Related*: Description Ceiling, Context Economy, Tiered Loading
+- **Stochastic Sampling**: Running repeated evaluation trials ($K \ge 3$) on identical prompts to quantify routing stability.
+  - *Related*: Multi-Run Trial, Mean Activation, Variance Testing
+- **Held-Out Validation**: A segregated subset of 40% of evaluation queries reserved exclusively for final quality verification.
+  - *Related*: Anti-Overfitting, Generalization Gate, Train-Test Partition
+- **Routing Precision**: The proportion of total activations that represent true positive intents.
+  - *Related*: Specificity, Calibration, Precision Score

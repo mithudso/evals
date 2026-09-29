@@ -1,0 +1,18 @@
+# Deep Eval Optimization: Technical Lexicon
+
+- **Deep Eval Optimization (DEO)**: A 12-pass analytical methodology for evaluating, auditing, and hardening agent evaluation suites.
+  - *Related*: Pass A-L, Meta-Evaluation, Grader Audit
+- **Answer Leakage**: The defect where an evaluation prompt reveals the solution, rule constraints, or internal skill names to the agent.
+  - *Related*: Prompt Contamination, Tautological Eval, Pass F
+- **Discriminative Power**: The ability of a benchmark to separate skilled agent performance from naive base model performance.
+  - *Related*: Baseline Separation, Delta Scoring, Pass B
+- **Ecological Validity**: The degree to which test prompts mirror genuine, messy user inputs rather than sanitized synthetic test harnesses.
+  - *Related*: Prompt Realism, Natural Queries, Pass A
+- **Determinism Hygiene**: Eliminating non-deterministic variables such as system clocks, dynamic random seeds, and uncontrolled network access during testing.
+  - *Related*: Hermetic Testing, Frozen Clock, Pass E
+- **Evaluation Illusion**: The false perception that a system is robust because test assertions are trivially easy or pass regardless of model output.
+  - *Related*: False Rigor, Trivial Assertions, Degraded Graders
+- **Fixture Integrity**: The syntactic and semantic correctness of mock input datasets used during benchmarking.
+  - *Related*: Minimal Fixture, Mock Dataset, Pass G
+- **Schema Compliance**: Conformance of evaluation definition files to formal specification schemas.
+  - *Related*: evals.schema.json, Structural Validation, Pass L

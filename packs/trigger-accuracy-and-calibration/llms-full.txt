@@ -1,0 +1,61 @@
+# Trigger Accuracy and Calibration: Complete Architecture Reference
+
+## 1. Overview
+Trigger accuracy measures the routing precision of an agent's skill activation layer. In progressive disclosure systems, agents inspect only the skill's name and description within the initial system prompt. If the description is too narrow, the skill fails to trigger when relevant (false negative). If the description is too broad or greedy, it absorbs requests intended for general capabilities or adjacent skills (false positive).
+
+## 2. Corpus Composition
+A calibrated trigger evaluation suite requires exactly 20 diverse, realistic test queries evenly split between positive and negative scenarios.
+
+### Positive Queries (10 Queries, `should_trigger: true`)
+Positive queries must span 4 distinct behavioral categories:
+1. **Explicit / Direct Requests (2–3 queries)**: The user explicitly requests the domain or capability:
+   - "Analyze this customer CSV dataset and report churn."
+2. **Symptom / Problem-Based Requests (2–3 queries)**: The user states a downstream problem without naming tools:
+   - "Our data pipeline dropped half the rows after yesterday's run."
+3. **Terse / Messy Queries (2–3 queries)**: Real users write minimal context with typographical quirks:
+   - "fix this table layout pls"
+4. **Context-Rich / Domain-Specific Queries (2–3 queries)**: Prompts containing file paths, domain identifiers, and system parameters:
+   - "Check `models/finance.py` for circular dependency warnings."
+
+### Negative Queries (10 Queries, `should_trigger: false`)
+Negative queries evaluate resistance to over-activation:
+1. **Near-Miss Distractors (5–6 queries)**: Queries sharing domain nouns but requiring alternative tooling:
+   - Example: Editing formulas in Excel vs parsing raw CSV streams.
+2. **Base Model Sufficiency (2–3 queries)**: Queries in the domain that base LLM capabilities resolve without specialized skills:
+   - "What is the formula for standard deviation?"
+3. **Explicitly Excluded Tasks (2 queries)**: Tasks explicitly handled by other installed skills or documented under `SKIP:` clauses.
+
+## 3. Threshold Calibration
+Evaluation runs are graded against strict quantitative benchmarks:
+- **Positive Activation Rate ($R_{\text{pos}}$)**: $\ge 90\%$ (at least 9 out of 10 positive test queries activate the skill).
+- **False Positive Rate ($R_{\text{fp}}$)**: $\le 10\%$ (at most 1 out of 10 negative test queries activates the skill).
+- **Description Budget**: Skill frontmatter `description` must not exceed 1024 characters.
+
+$$\text{Precision} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}$$
+$$\text{Recall} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}$$
+
+## 4. Multi-Run Variance Sampling
+LLM routing exhibits stochastic variance across runs. A single test pass is insufficient to evaluate borderline triggers.
+- Each of the 20 queries executes across **3 independent evaluation runs** ($K = 3$).
+- The activation indicator $a_{ik} \in \{0, 1\}$ denotes whether query $i$ triggered the skill on run $k$.
+- The expected activation probability is calculated as:
+  $$\bar{a}_i = \frac{1}{K}\sum_{k=1}^K a_{ik}$$
+- A query is classified as activating if $\bar{a}_i \ge 0.5$.
+- Queries with $\bar{a}_i \in \{0.33, 0.67\}$ represent high-variance unstable triggers requiring description disambiguation.
+
+## 5. Train/Validation Partitioning
+To prevent prompt engineers from tailoring descriptions to pass specific synthetic queries, the corpus is divided:
+- **Training Set (60% / 12 queries)**: 6 positive, 6 negative queries used during iterative description refinement.
+- **Validation Set (40% / 8 queries)**: 4 positive, 4 negative queries held out until candidate descriptions pass training benchmarks.
+- A description is promoted only when it satisfies $R_{\text{pos}} \ge 90\%$ and $R_{\text{fp}} \le 10\%$ on the held-out validation set.
+
+## 6. Optimization Workflow
+When calibration fails:
+1. **False Positives Detected**:
+   - Add negative boundaries using `SKIP:` clauses.
+   - Replace broad category verbs ("processes files") with discriminating verbs ("migrates legacy schemas").
+   - Narrow keyword lists to terms exclusive to the skill's specific role.
+2. **False Negatives Detected**:
+   - Add explicit problem-symptom phrases to `description`.
+   - Incorporate synonymous terminology and user-facing pain points.
+   - Verify that triggers reflect actual task initiation syntax rather than end-state definitions.

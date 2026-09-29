@@ -1,0 +1,12 @@
+# Objective Assertion Engineering: Atomic Facts
+
+- [Objective assertions replace subjective qualitative evaluations with deterministic binary pass or fail checks.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Structural assertions programmatically verify markdown elements including headers, bullet lists, and tables.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Schema assertions validate machine-readable payloads against JSON Schema or formal typing definitions.](https://agentskills.io/specification.md)
+- [Negative bounding assertions explicitly test for the absence of hallucinations, placeholder text, and unauthorized edits.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Reconciling count assertions verify that declared numerical counts match the actual count of rendered artifact items.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Deterministic content assertions verify exact numerical outputs calculated from input fixtures.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Subjective grading criteria introduce high variance and degrade benchmark reproducibility across model versions.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Automated assertion runners evaluate test case outputs without requiring human-in-the-loop intervention.](file:///Users/mitch/dev/evals/runner/eval_runner.py)
+- [Assertion suites compute composite scores as the mean of binary outcomes across all assertions.](file:///Users/mitch/dev/evals/runner/eval_runner.py)
+- [Pass C of the Deep Eval Optimizer systematically refactors subjective grading rules into verifiable assertions.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)

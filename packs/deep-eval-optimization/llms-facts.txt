@@ -1,0 +1,12 @@
+# Deep Eval Optimization: Atomic Facts
+
+- [Deep Eval Optimization executes 12 analytical passes to audit and harden evaluation suites.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Pass A eliminates synthetic and robotic prompts in favor of authentic user phrasing and real world typos.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Pass B checks discriminative power to ensure evaluations demonstrate clear quality separation over base models.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Pass C replaces subjective qualitative statements with deterministic programmatic assertions.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Pass D verifies that negative query sets contain near-miss distractors that test domain boundaries.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Pass E enforces environmental determinism by freezing dynamic timestamps and isolating input directories.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Pass F strips answer leakage where prompts inadvertently quote skill rules or solution algorithms.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Pass G validates fixture integrity and compresses mock files to under 50 kilobytes.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Pass H maps surface coverage across standard workflows, error handling, and boundary edge cases.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Pass L verifies strict schema compliance of evaluation files against the official JSON schema.](file:///Users/mitch/dev/evals/schemas/evals.schema.json)

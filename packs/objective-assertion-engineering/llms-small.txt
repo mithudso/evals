@@ -1,0 +1,14 @@
+# Objective Assertion Engineering: Compact Reference
+
+## Quick Rules
+1. **Zero Vibes**: Replace "looks clear" or "well explained" with binary programmatic checks.
+2. **The 5 Assertion Classes**:
+   - **Structural**: Headers (`# Header`), tables (`|-`), list tags.
+   - **Schema**: JSON Schema validation, typed field presence, format checks.
+   - **Deterministic Content**: Exact numbers, calculated sums, entity names.
+   - **Negative Bounds**: Absence of TODOs, hallucinations, banned filler phrases, out-of-scope edits.
+   - **Count Reconciliation**: Declared counts match actual rendered elements.
+3. **Execution**:
+   - Always grade as binary pass (1) or fail (0).
+   - Use programmatic regex, JSON schema, or Python validators.
+   - Strip whitespace/newlines before exact string matching.

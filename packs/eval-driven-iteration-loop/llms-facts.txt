@@ -1,0 +1,12 @@
+# Eval-Driven Iteration Loop: Atomic Facts
+
+- [The iteration loop uses empirical benchmark outcomes to drive targeted improvements to agent skill instructions.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Repeated execution across 3 runs detects flaky assertions exhibiting standard deviation greater than zero.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Champion-challenger promotion gating prevents deploying revisions that introduce regressions on golden test cases.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Skills under iteration execute in versioned workspace subdirectories such as iteration-1 and iteration-2.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Convergence is reached when performance saturates at 100 percent or improvements plateau below 2 percent.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Targeted instruction diffs address specific assertion failures rather than wholesale prompt rewrites.](https://agentskills.io/skill-creation/best-practices.md)
+- [Root cause attribution separates skill instruction omissions from broken evaluation assertions and tool errors.](file:///Users/mitch/dev/skills/deep-eval-optimizer/references/passes.md)
+- [Execution logs capture full multi-turn agent trajectories to diagnose failure mechanisms.](file:///Users/mitch/dev/evals/runner/eval_runner.py)
+- [Golden evaluation regression suites protect previously passing capabilities from being broken during iterative tuning.](https://agentskills.io/skill-creation/evaluating-skills.md)
+- [Resource consumption metrics ensure candidate skill revisions do not introduce runaway token overhead.](file:///Users/mitch/dev/evals/README.md)

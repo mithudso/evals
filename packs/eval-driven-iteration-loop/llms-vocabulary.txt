@@ -1,0 +1,18 @@
+# Eval-Driven Iteration Loop: Technical Lexicon
+
+- **Iteration Loop**: The cyclic procedure of benchmarking, scoring, diagnosing, and patching an agent capability until convergence.
+  - *Related*: Feedback Loop, Refinement Cycle, Continuous Calibration
+- **Flaky Evaluation**: A test case exhibiting non-deterministic pass/fail outcomes across identical input states ($\sigma > 0$).
+  - *Related*: Variance, Non-Determinism, Test Instability
+- **Champion-Challenger**: A deployment pattern comparing a candidate skill revision against the current production baseline under identical tests.
+  - *Related*: A/B Testing, Release Gate, Quality Delta
+- **Golden Regression Suite**: An immutable collection of core test cases that must pass with 100% reliability on every revision.
+  - *Related*: Non-Regression Gate, Core Tests, Baseline Preservation
+- **Plateau Condition**: A state where successive prompt optimizations yield negligible performance gains ($\Delta < \epsilon$).
+  - *Related*: Diminishing Returns, Convergence Stop, Optimization Ceiling
+- **Root Cause Attribution**: Decomposing an evaluation failure into instruction ambiguity, assertion bug, or external tool defect.
+  - *Related*: Failure Triage, Defect Isolation, Error Analysis
+- **Minimal Instruction Diff**: Making surgical edits to targeted clauses in `SKILL.md` rather than rewriting prompts wholesale.
+  - *Related*: Surgical Patching, Localized Tuning, Delta Editing
+- **Trajectory Inspection**: Analyzing the full chronological trace of an agent's reasoning, tool use, and file actions to locate errors.
+  - *Related*: Step-by-Step Debugging, Execution Audit, Session Trace
