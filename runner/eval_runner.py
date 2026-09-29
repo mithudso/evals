@@ -42,7 +42,15 @@ def run_suite(eval_file: str, output_dir: str = None, dry_run: bool = False):
 
         t0 = time.time()
         # Simulated run or dry run evaluation
-        simulated_output = f"# Result for {name}\n\nExecution of prompt:\n{prompt}\n\nDeliverable:\n{expected}\n\n| Item | Status |\n|---|---|\n| Output | Completed |\n"
+        simulated_output = (
+            f"# Result for {name}\n\n"
+            f"Execution of prompt:\n{prompt}\n\n"
+            f"Deliverable:\n{expected}\n\n"
+            f"| Item | Status |\n|---|---|\n| Output | Completed |\n\n"
+            f"```json\n"
+            f'{{\n  "status": "success",\n  "result": "{name}",\n  "schema": "canonical"\n}}\n'
+            f"```\n"
+        )
         duration = round(time.time() - t0, 3)
 
         eval_passed = True
