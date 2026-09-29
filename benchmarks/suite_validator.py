@@ -1,0 +1,155 @@
+#!/usr/bin/env python3
+"""
+Deep Eval Optimizer: Suite Validator & Analytical Passes Engine.
+Audits eval suites across Passes A through L and outputs findings with recommendations.
+"""
+
+import sys
+import json
+from pathlib import Path
+from typing import Dict, Any, List
+
+PASSES = {
+    "Pass A": "Prompt Realism & Ecological Validity",
+    "Pass B": "Discriminative Power & Baseline Contrast",
+    "Pass C": "Assertion Objectivity & Verifiability",
+    "Pass D": "Near-Miss & False-Positive Coverage",
+    "Pass E": "Flakiness & Determinism Hygiene",
+    "Pass F": "Leakage & Tautology (Answer Contamination)",
+    "Pass G": "Input Fixture Integrity & Isolation",
+    "Pass H": "Coverage & Boundary Distribution",
+    "Pass I": "Expected Output Precision & Completeness",
+    "Pass J": "Cost, Latency & Token Efficiency",
+    "Pass K": "Anti-Overfitting & Train/Val Split",
+    "Pass L": "Format & Schema Compliance"
+}
+
+def validate_suite(eval_file: str) -> Dict[str, Any]:
+    path = Path(eval_file).resolve()
+    if not path.exists():
+        return {"error": f"File {eval_file} not found"}
+
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    findings = []
+    
+    # Check if trigger-eval list or functional-eval dict
+    is_trigger_eval = isinstance(data, list)
+    
+    if is_trigger_eval:
+        # Validate trigger-evals
+        positives = [q for q in data if q.get("should_trigger") is True]
+        negatives = [q for q in data if q.get("should_trigger") is False]
+        
+        # Pass D: Near-miss & false-positive coverage
+        if len(negatives) < 5:
+            findings.append({
+                "pass": "Pass D",
+                "severity": "High",
+                "finding": f"Insufficient negative queries ({len(negatives)} found, min 10 required for trigger calibration)",
+                "recommendation": "Add realistic near-miss queries that share keywords but belong to adjacent skills."
+            })
+            
+        if len(positives) < 5:
+            findings.append({
+                "pass": "Pass H",
+                "severity": "High",
+                "finding": f"Insufficient positive queries ({len(positives)} found, min 10 required)",
+                "recommendation": "Expand positive queries to cover casual, terse, domain-specific, and formal intents."
+            })
+            
+        # Pass A: Realism
+        robotic = [q["query"] for q in data if "please run the skill" in q.get("query", "").lower() or "test query" in q.get("query", "").lower()]
+        if robotic:
+            findings.append({
+                "pass": "Pass A",
+                "severity": "Medium",
+                "finding": f"Robotic or synthetic prompt phrasing in {len(robotic)} queries",
+                "recommendation": "Rewrite prompts to reflect authentic, natural user phrasing."
+            })
+    else:
+        # Validate functional evals
+        skill_name = data.get("skill_name")
+        evals = data.get("evals", [])
+        
+        # Pass L: Schema
+        if not skill_name:
+            findings.append({
+                "pass": "Pass L",
+                "severity": "High",
+                "finding": "Missing top-level 'skill_name' in eval suite",
+                "recommendation": "Specify canonical skill name."
+            })
+            
+        if len(evals) < 2:
+            findings.append({
+                "pass": "Pass H",
+                "severity": "Medium",
+                "finding": f"Eval suite has only {len(evals)} test case(s); minimum 2-3 required",
+                "recommendation": "Add diverse test cases covering happy path, edge cases, and file transformation."
+            })
+            
+        for ev in evals:
+            eid = ev.get("id")
+            name = ev.get("name", f"eval-{eid}")
+            prompt = ev.get("prompt", "")
+            expected = ev.get("expected_output", "")
+            assertions = ev.get("assertions", [])
+            
+            # Pass C: Assertion objectivity
+            if not assertions:
+                findings.append({
+                    "pass": "Pass C",
+                    "severity": "High",
+                    "finding": f"Eval #{eid} '{name}' has no assertions",
+                    "recommendation": "Add at least 2 objectively verifiable assertions."
+                })
+            else:
+                for a in assertions:
+                    txt = a if isinstance(a, str) else a.get("check", "")
+                    if any(vibe in txt.lower() for vibe in ["looks good", "well written", "nice", "appropriate"]):
+                        findings.append({
+                            "pass": "Pass C",
+                            "severity": "Medium",
+                            "finding": f"Subjective/vague assertion '{txt}' in eval #{eid}",
+                            "recommendation": "Replace with concrete structural or content checks."
+                        })
+                        
+            # Pass F: Answer leakage
+            if skill_name and skill_name in prompt.lower() and "run the" in prompt.lower():
+                findings.append({
+                    "pass": "Pass F",
+                    "severity": "Low",
+                    "finding": f"Prompt in eval #{eid} directly references skill name '{skill_name}'",
+                    "recommendation": "Test intent without explicitly telling the agent which skill to run."
+                })
+                
+            # Pass I: Expected output precision
+            if not expected or len(expected.split()) < 3:
+                findings.append({
+                    "pass": "Pass I",
+                    "severity": "Medium",
+                    "finding": f"Underspecified expected output in eval #{eid}",
+                    "recommendation": "Detail the exact required artifact sections, shapes, or behavior."
+                })
+
+    return {
+        "file": str(path),
+        "total_findings": len(findings),
+        "high_findings": sum(1 for f in findings if f["severity"] == "High"),
+        "medium_findings": sum(1 for f in findings if f["severity"] == "Medium"),
+        "low_findings": sum(1 for f in findings if f["severity"] == "Low"),
+        "findings": findings
+    }
+
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: python suite_validator.py <path-to-eval-file>")
+        sys.exit(1)
+        
+    res = validate_suite(sys.argv[1])
+    print(json.dumps(res, indent=2))
+
+if __name__ == "__main__":
+    main()

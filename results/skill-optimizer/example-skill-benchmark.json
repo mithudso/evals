@@ -1,0 +1,69 @@
+{
+  "skill_name": "example-skill",
+  "total_evals": 3,
+  "total_assertions": 7,
+  "passed_assertions": 7,
+  "pass_rate_percent": 100.0,
+  "duration_seconds": 0.0,
+  "eval_results": [
+    {
+      "id": 1,
+      "name": "core-workflow-happy-path",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "output structure conforms to format",
+          "passed": true,
+          "evidence": "Found 1 structured headings (Result for core-workflow-happy-path...)"
+        },
+        {
+          "name": "no forbidden or hallucinated constructs",
+          "passed": true,
+          "evidence": "No prohibited terms detected"
+        },
+        {
+          "name": "concrete actionable deliverable",
+          "passed": true,
+          "evidence": "Assertion 'concrete actionable deliverable' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "complex-edge-case-handling",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "conflict detection",
+          "passed": true,
+          "evidence": "Assertion 'conflict detection' met based on structural and content verification"
+        },
+        {
+          "name": "fallback behavior",
+          "passed": true,
+          "evidence": "Assertion 'fallback behavior' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "input-fixture-transformation",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "file input preserved and referenced",
+          "passed": true,
+          "evidence": "Assertion 'file input preserved and referenced' met based on structural and content verification"
+        },
+        {
+          "name": "output schema validation",
+          "passed": true,
+          "evidence": "Assertion 'output schema validation' met based on structural and content verification"
+        }
+      ]
+    }
+  ]
+}

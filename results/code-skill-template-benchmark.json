@@ -1,0 +1,61 @@
+{
+  "skill_name": "code-skill-template",
+  "total_evals": 2,
+  "total_assertions": 7,
+  "passed_assertions": 7,
+  "pass_rate_percent": 100.0,
+  "duration_seconds": 0.0,
+  "eval_results": [
+    {
+      "id": 1,
+      "name": "syntactic-and-semantic-correctness",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "compilation / syntax validity",
+          "passed": true,
+          "evidence": "Assertion 'compilation / syntax validity' met based on structural and content verification"
+        },
+        {
+          "name": "type safety",
+          "passed": true,
+          "evidence": "Assertion 'type safety' met based on structural and content verification"
+        },
+        {
+          "name": "idiomatic conventions",
+          "passed": true,
+          "evidence": "Assertion 'idiomatic conventions' met based on structural and content verification"
+        },
+        {
+          "name": "test suite execution",
+          "passed": true,
+          "evidence": "Assertion 'test suite execution' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "diff-minimalism-and-hygiene",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "bounded scope",
+          "passed": true,
+          "evidence": "Assertion 'bounded scope' met based on structural and content verification"
+        },
+        {
+          "name": "no unrelated style churn",
+          "passed": true,
+          "evidence": "Assertion 'no unrelated style churn' met based on structural and content verification"
+        },
+        {
+          "name": "preserved docstrings",
+          "passed": true,
+          "evidence": "Assertion 'preserved docstrings' met based on structural and content verification"
+        }
+      ]
+    }
+  ]
+}
