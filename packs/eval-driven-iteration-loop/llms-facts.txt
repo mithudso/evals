@@ -13,3 +13,5 @@
 - [The golden non-regression invariant requires that challenger versions pass every test case previously satisfied by the champion.](https://martinfowler.com/articles/cd4ml.html)
 - [Shadow evaluation mirrors live production traffic asynchronously to candidate skills without exposing end users to execution risk.](https://www.anthropic.com/research/evaluating-ai-systems)
 
+- [Bayesian Sequential Canary Early Stopping utilizes Wald's SPRT to dynamically terminate failing candidate skill evaluations with minimum sample waste.](file:///Users/mitch/dev/evals/research/tier3-expansion/bayesian-sequential-canary-early-stopping/dr-report.md)
+- [Sequential log-likelihood tracking cuts evaluation inference expenditure by up to 90 percent on regressed agent updates.](file:///Users/mitch/dev/evals/research/tier3-expansion/bayesian-sequential-canary-early-stopping/rabbithole-dossier.md)

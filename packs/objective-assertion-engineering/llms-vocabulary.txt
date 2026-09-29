@@ -21,3 +21,5 @@
 - **Circuit Breaker Multiplier**: The mathematical evaluation property where violating a negative bound zeroes the entire score via boolean multiplication ($S_{\text{pos}} \times \prod_j (1 - T^-_j)$).
   - *Related*: Zero-Tolerance Gating, Multiplicative Nulling, Tripwire Gate
 
+- Dynamic Honeypot Syscall Interception: Synchronous or asynchronous tracing of OS kernel system calls to detect unauthorized file, network, or process access.
+- Canary Traps: High-attraction synthetic decoy files (.env, credentials) planted to catch boundary violations.

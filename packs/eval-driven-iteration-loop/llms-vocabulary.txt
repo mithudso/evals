@@ -21,3 +21,5 @@
 - **Shadow Evaluation**: Mirroring production user requests asynchronously to candidate models to observe behavior without real-world execution risk.
   - *Related*: Dark Launch, Passive Testing, Trajectory Mirroring
 
+- Bayesian Sequential Early Stopping: Applying Wald's Sequential Probability Ratio Test to dynamic Canary rollout decision boundaries.
+- Log-Likelihood Ratio: The accumulated log-odds of candidate superiority over the baseline champion across sequential trials.

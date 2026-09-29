@@ -21,3 +21,5 @@
 - **Natural User Persona Transform**: The process of refactoring leaked or prescriptive prompts into authentic problem-oriented user statements.
   - *Related*: Prompt Realism, Pass A, Decontamination Transform
 
+- Attention Gradient Saliency Decontamination: Mechanistic interpretability audit using Integrated Gradients to detect prompt tokens that trivially dictate output syntax.
+- Prompt Attention Entropy: The normalized Shannon entropy of backpropagated gradient weights across prompt token positions.

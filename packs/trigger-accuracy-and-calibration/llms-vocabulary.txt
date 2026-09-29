@@ -21,3 +21,5 @@
 - **Contrasting Intent**: The structural property of a distractor query that pairs shared domain nouns with competing action verbs ($\text{Verb}_{\text{competing}} + \text{Noun}_{\text{shared}}$).
   - *Related*: Inverted Predicate, Semantic Disambiguation, Lexical Trap
 
+- Semantic Vector Boundary Mining: Algorithmic identification and synthesis of adversarial trigger queries positioned precisely on the decision boundary manifold of an agent router.
+- Annular Shell Sampling: Sampling vectors from the high-dimensional hypersphere band immediately adjacent to the activation threshold.

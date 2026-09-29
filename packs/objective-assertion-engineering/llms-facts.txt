@@ -13,3 +13,5 @@
 - [Negative boundary tripwires operate multiplicatively where any single violation immediately zeroes the composite score.](https://mastra.ai/docs/guide/tripwires-guardrails/)
 - [Honeypot canary files placed in sandboxes detect rogue and unauthorized agent filesystem exploration.](https://secbyte.org/papers/agent-tripwires-honeypots/)
 
+- [Dynamic Honeypot Syscall Interception audits execution traces in kernel-space, trapping transient violations that escape post-hoc git diff checks.](file:///Users/mitch/dev/evals/research/tier3-expansion/dynamic-honeypot-syscall-interception/dr-report.md)
+- [Any unauthorized open or write to seeded canary files instantly transitions evaluation DFA to a failure state and collapses the test score to zero.](file:///Users/mitch/dev/evals/research/tier3-expansion/dynamic-honeypot-syscall-interception/rabbithole-dossier.md)

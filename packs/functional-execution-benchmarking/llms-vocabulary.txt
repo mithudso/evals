@@ -21,3 +21,5 @@
 - **Baseline Subtraction**: The technique of deducting unassisted control arm accuracy from treated arm accuracy to eliminate environmental bias.
   - *Related*: Variance Reduction, Control Arm, Null Normalization
 
+- Causal Shapley Token Attribution: Game-theoretic axiomatic decomposition of skill evaluation lift into marginal payoffs for individual instruction tokens or clauses.
+- Negative Value Pruning: The automated removal of prompt instructions whose evaluated marginal contribution reduces overall benchmark success.

@@ -13,3 +13,5 @@
 - [Pass F enforces n-gram overlap boundaries where 4-gram overlap between prompt and skill must not exceed 5 percent.](https://zeroentropy.dev/blog/detecting-prompt-contamination/)
 - [The Natural User Persona Transform purges answer leakage by rewriting prompts from the perspective of an end user unaware of skill internals.](https://getmaxim.ai/blog/evaluating-llm-contamination/)
 
+- [Attention Gradient Saliency Decontamination uses Integrated Gradients and attention entropy to identify prompt giveaways and cognitive priming.](file:///Users/mitch/dev/evals/research/tier3-expansion/attention-gradient-saliency-decontamination/dr-report.md)
+- [Prompts with answer leakage scores exceeding 0.40 are programmatically neutralized to preserve benchmark problem-solving integrity.](file:///Users/mitch/dev/evals/research/tier3-expansion/attention-gradient-saliency-decontamination/rabbithole-dossier.md)

@@ -117,7 +117,7 @@ def validate_suite(eval_file: str) -> Dict[str, Any]:
                             "recommendation": "Replace with concrete structural, schema, or negative bounds checks."
                         })
                         
-            # Pass F: Answer leakage & N-gram priming
+            # Pass F: Answer leakage, N-gram priming & Saliency Entropy
             if skill_name and skill_name in prompt.lower():
                 findings.append({
                     "pass": "Pass F",
@@ -125,6 +125,22 @@ def validate_suite(eval_file: str) -> Dict[str, Any]:
                     "finding": f"Prompt in eval #{eid} directly leaks skill name '{skill_name}'",
                     "recommendation": "Apply Natural User Persona Transform: describe user symptoms without naming the skill."
                 })
+            
+            # Tier-3 Saliency Entropy Audit
+            words = prompt.split()
+            if len(words) >= 15:
+                import collections
+                counts = collections.Counter(words)
+                total = len(words)
+                entropy = -sum((c / total) * math.log(c / total) for c in counts.values())
+                max_entropy = math.log(len(counts))
+                if max_entropy > 0 and (entropy / max_entropy) < 0.45:
+                    findings.append({
+                        "pass": "Pass F",
+                        "severity": "Medium",
+                        "finding": f"Low token entropy in eval #{eid} prompt ({entropy:.2f}/{max_entropy:.2f}), suggesting high token concentration or copy-pasted syntax",
+                        "recommendation": "Rewrite prompt with realistic natural user phrasing to ensure high token dispersion."
+                    })
                 
             # Pass G: Fixture size and isolation
             files = ev.get("files", [])

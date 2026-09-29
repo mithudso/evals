@@ -13,3 +13,5 @@
 - [Baseline subtraction isolates the net causal impact of a skill by subtracting control arm accuracy from treated accuracy.](https://proceedings.neurips.cc/paper/baseline-subtraction-variance/)
 - [Cost-adjusted efficiency ratios balance factual accuracy lift against logarithmic token overhead.](https://workera.ai/resources/measuring-capability-lift/)
 
+- [Causal Shapley Token Attribution uniquely satisfies efficiency and decomposes net capability lift down to individual instruction clauses.](file:///Users/mitch/dev/evals/research/tier3-expansion/causal-shapley-token-attribution/dr-report.md)
+- [Pruning prompt clauses with negative Shapley values yields simultaneous gains in task accuracy and reduction in context token consumption.](file:///Users/mitch/dev/evals/research/tier3-expansion/causal-shapley-token-attribution/rabbithole-dossier.md)

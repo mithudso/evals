@@ -13,3 +13,5 @@
 - [Hard negative near-misses must pair shared domain nouns with competing action verbs to test boundary discrimination.](https://futureagi.com/blog/hard-negative-mining-llm-routing/)
 - [Production routing failure traces are harvested into permanent regression distractor suites to prevent recurrent over-triggering.](https://blog.langchain.dev/evaluating-tool-selection/)
 
+- [Semantic Vector Boundary Mining constructs negative trigger probes located within the annular shell cos in [tau - delta, tau) to stress-test classifier margin sharpness.](file:///Users/mitch/dev/evals/research/tier3-expansion/semantic-vector-boundary-mining/dr-report.md)
+- [Projected gradient descent on continuous token embeddings generates adversarial near-miss triggers while preserving negative ground-truth oracle labels.](file:///Users/mitch/dev/evals/research/tier3-expansion/semantic-vector-boundary-mining/rabbithole-dossier.md)
