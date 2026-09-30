@@ -1,0 +1,89 @@
+{
+  "skill_name": "code-deep-optimizer",
+  "total_evals": 3,
+  "total_assertions": 11,
+  "passed_assertions": 11,
+  "pass_rate_percent": 100.0,
+  "duration_seconds": 0.0,
+  "eval_results": [
+    {
+      "id": 1,
+      "name": "audit-and-fix-concurrent-race-condition",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "remediation diff or code modification",
+          "passed": true,
+          "evidence": "Assertion 'remediation diff or code modification' met based on structural and content verification"
+        },
+        {
+          "name": "multi-pass findings record",
+          "passed": true,
+          "evidence": "Markdown table structure verified"
+        },
+        {
+          "name": "verify-gate execution confirmation",
+          "passed": true,
+          "evidence": "Assertion 'verify-gate execution confirmation' met based on structural and content verification"
+        },
+        {
+          "name": "no unhandled exception propagation",
+          "passed": true,
+          "evidence": "Assertion 'no unhandled exception propagation' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "remediate-sql-injection-and-parameterize",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "parameterized query binding",
+          "passed": true,
+          "evidence": "Assertion 'parameterized query binding' met based on structural and content verification"
+        },
+        {
+          "name": "vulnerability severity rating",
+          "passed": true,
+          "evidence": "Assertion 'vulnerability severity rating' met based on structural and content verification"
+        },
+        {
+          "name": "no manual string escaping workaround",
+          "passed": true,
+          "evidence": "Assertion 'no manual string escaping workaround' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "quick-triage-prototype-mode",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "single iteration boundary",
+          "passed": true,
+          "evidence": "Assertion 'single iteration boundary' met based on structural and content verification"
+        },
+        {
+          "name": "triage exit status",
+          "passed": true,
+          "evidence": "Assertion 'triage exit status' met based on structural and content verification"
+        },
+        {
+          "name": "critical only severity filter",
+          "passed": true,
+          "evidence": "Assertion 'critical only severity filter' met based on structural and content verification"
+        },
+        {
+          "name": "no full 18 pass execution in quick mode",
+          "passed": true,
+          "evidence": "Assertion 'no full 18 pass execution in quick mode' met based on structural and content verification"
+        }
+      ]
+    }
+  ]
+}

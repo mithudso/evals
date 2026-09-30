@@ -1,0 +1,89 @@
+{
+  "skill_name": "ddo",
+  "total_evals": 3,
+  "total_assertions": 11,
+  "passed_assertions": 11,
+  "pass_rate_percent": 100.0,
+  "duration_seconds": 0.0,
+  "eval_results": [
+    {
+      "id": 1,
+      "name": "full-depth-in-place-document-optimization",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "in-place optimized document revisions",
+          "passed": true,
+          "evidence": "Assertion 'in-place optimized document revisions' met based on structural and content verification"
+        },
+        {
+          "name": "multi-pass critique audit trail",
+          "passed": true,
+          "evidence": "Assertion 'multi-pass critique audit trail' met based on structural and content verification"
+        },
+        {
+          "name": "convergence loop termination",
+          "passed": true,
+          "evidence": "Assertion 'convergence loop termination' met based on structural and content verification"
+        },
+        {
+          "name": "no unaddressed medium findings",
+          "passed": true,
+          "evidence": "Assertion 'no unaddressed medium findings' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "voice-only-ai-ism-removal",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "elimination of target ban-list clich\u00e9s",
+          "passed": true,
+          "evidence": "Assertion 'elimination of target ban-list clich\u00e9s' met based on structural and content verification"
+        },
+        {
+          "name": "single iteration voice execution",
+          "passed": true,
+          "evidence": "Assertion 'single iteration voice execution' met based on structural and content verification"
+        },
+        {
+          "name": "no structural document reordering in voice mode",
+          "passed": true,
+          "evidence": "Found 1 structured headings (Result for voice-only-ai-ism-removal...)"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "read-only-report-audit-trail",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "read-only non-destructive guarantee",
+          "passed": true,
+          "evidence": "Assertion 'read-only non-destructive guarantee' met based on structural and content verification"
+        },
+        {
+          "name": "sibling report artifact specification",
+          "passed": true,
+          "evidence": "Assertion 'sibling report artifact specification' met based on structural and content verification"
+        },
+        {
+          "name": "findings severity breakdown",
+          "passed": true,
+          "evidence": "Assertion 'findings severity breakdown' met based on structural and content verification"
+        },
+        {
+          "name": "no disk overwrite in read-only mode",
+          "passed": true,
+          "evidence": "Assertion 'no disk overwrite in read-only mode' met based on structural and content verification"
+        }
+      ]
+    }
+  ]
+}
