@@ -1,0 +1,89 @@
+{
+  "skill_name": "prompt-deep-optimizer",
+  "total_evals": 3,
+  "total_assertions": 11,
+  "passed_assertions": 11,
+  "pass_rate_percent": 100.0,
+  "duration_seconds": 0.0,
+  "eval_results": [
+    {
+      "id": 1,
+      "name": "optimize-production-system-prompt-structural",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "drop-in replacement prompt artifact",
+          "passed": true,
+          "evidence": "Assertion 'drop-in replacement prompt artifact' met based on structural and content verification"
+        },
+        {
+          "name": "structured findings table",
+          "passed": true,
+          "evidence": "Markdown table structure verified"
+        },
+        {
+          "name": "named algorithm recommendation",
+          "passed": true,
+          "evidence": "Assertion 'named algorithm recommendation' met based on structural and content verification"
+        },
+        {
+          "name": "no conversational filler or hand-waving",
+          "passed": true,
+          "evidence": "Assertion 'no conversational filler or hand-waving' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "prompt-injection-hardening-and-safety-boundary",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "explicit untrusted input delimiters",
+          "passed": true,
+          "evidence": "Assertion 'explicit untrusted input delimiters' met based on structural and content verification"
+        },
+        {
+          "name": "prohibited operation negative constraints",
+          "passed": true,
+          "evidence": "Valid JSON parse confirmed"
+        },
+        {
+          "name": "no naive blacklisting advice",
+          "passed": true,
+          "evidence": "Assertion 'no naive blacklisting advice' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "champion-challenger-held-out-eval-loop",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "train and validation split specification",
+          "passed": true,
+          "evidence": "Assertion 'train and validation split specification' met based on structural and content verification"
+        },
+        {
+          "name": "non-regression promotion gate",
+          "passed": true,
+          "evidence": "Assertion 'non-regression promotion gate' met based on structural and content verification"
+        },
+        {
+          "name": "must-pass assertion gating",
+          "passed": true,
+          "evidence": "Assertion 'must-pass assertion gating' met based on structural and content verification"
+        },
+        {
+          "name": "no training on validation data",
+          "passed": true,
+          "evidence": "Assertion 'no training on validation data' met based on structural and content verification"
+        }
+      ]
+    }
+  ]
+}
