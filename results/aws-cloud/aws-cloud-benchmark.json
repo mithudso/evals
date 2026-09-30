@@ -1,0 +1,94 @@
+{
+  "skill_name": "aws-cloud",
+  "total_evals": 3,
+  "total_assertions": 12,
+  "passed_assertions": 12,
+  "pass_rate_percent": 100.0,
+  "duration_seconds": 0.0,
+  "eval_results": [
+    {
+      "id": 1,
+      "name": "privatelink-vpc-endpoint-routing-and-resolution",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "spoke reference file routing",
+          "passed": true,
+          "evidence": "Assertion 'spoke reference file routing' met based on structural and content verification"
+        },
+        {
+          "name": "acceptance workflow diagnosis",
+          "passed": true,
+          "evidence": "Assertion 'acceptance workflow diagnosis' met based on structural and content verification"
+        },
+        {
+          "name": "split horizon private dns verification",
+          "passed": true,
+          "evidence": "Assertion 'split horizon private dns verification' met based on structural and content verification"
+        },
+        {
+          "name": "no internet gateway requirement",
+          "passed": true,
+          "evidence": "Assertion 'no internet gateway requirement' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "secretless-workload-identity-oidc-federation",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "secretless auth spoke routing",
+          "passed": true,
+          "evidence": "Assertion 'secretless auth spoke routing' met based on structural and content verification"
+        },
+        {
+          "name": "oidc identity provider specification",
+          "passed": true,
+          "evidence": "Assertion 'oidc identity provider specification' met based on structural and content verification"
+        },
+        {
+          "name": "temporary token assumption call",
+          "passed": true,
+          "evidence": "Assertion 'temporary token assumption call' met based on structural and content verification"
+        },
+        {
+          "name": "no hardcoded secret generation",
+          "passed": true,
+          "evidence": "Assertion 'no hardcoded secret generation' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "aurora-storage-quorum-and-scaling",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "aurora spoke routing",
+          "passed": true,
+          "evidence": "Assertion 'aurora spoke routing' met based on structural and content verification"
+        },
+        {
+          "name": "six way quorum storage architecture",
+          "passed": true,
+          "evidence": "Assertion 'six way quorum storage architecture' met based on structural and content verification"
+        },
+        {
+          "name": "acu scaling mechanics",
+          "passed": true,
+          "evidence": "Assertion 'acu scaling mechanics' met based on structural and content verification"
+        },
+        {
+          "name": "no single az limitation",
+          "passed": true,
+          "evidence": "Assertion 'no single az limitation' met based on structural and content verification"
+        }
+      ]
+    }
+  ]
+}

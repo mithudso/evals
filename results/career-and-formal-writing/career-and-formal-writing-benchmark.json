@@ -1,0 +1,94 @@
+{
+  "skill_name": "career-and-formal-writing",
+  "total_evals": 3,
+  "total_assertions": 12,
+  "passed_assertions": 12,
+  "pass_rate_percent": 100.0,
+  "duration_seconds": 0.0,
+  "eval_results": [
+    {
+      "id": 1,
+      "name": "career-and-formal-wr-spoke1-architectural-routing",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "spoke reference routing",
+          "passed": true,
+          "evidence": "Assertion 'spoke reference routing' met based on structural and content verification"
+        },
+        {
+          "name": "architectural breakdown specification",
+          "passed": true,
+          "evidence": "Assertion 'architectural breakdown specification' met based on structural and content verification"
+        },
+        {
+          "name": "domain configuration guidance",
+          "passed": true,
+          "evidence": "Assertion 'domain configuration guidance' met based on structural and content verification"
+        },
+        {
+          "name": "no unverified assumptions",
+          "passed": true,
+          "evidence": "Assertion 'no unverified assumptions' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "career-and-formal-wr-spoke2-production-configuration",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "spoke reference identification",
+          "passed": true,
+          "evidence": "Assertion 'spoke reference identification' met based on structural and content verification"
+        },
+        {
+          "name": "failure recovery specification",
+          "passed": true,
+          "evidence": "Assertion 'failure recovery specification' met based on structural and content verification"
+        },
+        {
+          "name": "production hardening directives",
+          "passed": true,
+          "evidence": "Assertion 'production hardening directives' met based on structural and content verification"
+        },
+        {
+          "name": "no manual error suppression",
+          "passed": true,
+          "evidence": "Assertion 'no manual error suppression' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "career-and-formal-wr-spoke3-optimization-and-troubleshooting",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "troubleshooting spoke reference",
+          "passed": true,
+          "evidence": "Assertion 'troubleshooting spoke reference' met based on structural and content verification"
+        },
+        {
+          "name": "diagnostic procedure specification",
+          "passed": true,
+          "evidence": "Assertion 'diagnostic procedure specification' met based on structural and content verification"
+        },
+        {
+          "name": "performance parameter tuning",
+          "passed": true,
+          "evidence": "Assertion 'performance parameter tuning' met based on structural and content verification"
+        },
+        {
+          "name": "no blind resource overprovisioning",
+          "passed": true,
+          "evidence": "Assertion 'no blind resource overprovisioning' met based on structural and content verification"
+        }
+      ]
+    }
+  ]
+}

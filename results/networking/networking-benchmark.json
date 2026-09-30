@@ -1,0 +1,94 @@
+{
+  "skill_name": "networking",
+  "total_evals": 3,
+  "total_assertions": 12,
+  "passed_assertions": 12,
+  "pass_rate_percent": 100.0,
+  "duration_seconds": 0.0,
+  "eval_results": [
+    {
+      "id": 1,
+      "name": "dnssec-validation-servfail-triage",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "dns deep dive spoke routing",
+          "passed": true,
+          "evidence": "Assertion 'dns deep dive spoke routing' met based on structural and content verification"
+        },
+        {
+          "name": "delv diagnostic command specification",
+          "passed": true,
+          "evidence": "Assertion 'delv diagnostic command specification' met based on structural and content verification"
+        },
+        {
+          "name": "ds record mismatch verification",
+          "passed": true,
+          "evidence": "Assertion 'ds record mismatch verification' met based on structural and content verification"
+        },
+        {
+          "name": "no disable validation in production recommendation",
+          "passed": true,
+          "evidence": "Assertion 'no disable validation in production recommendation' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "split-horizon-private-dns-isolation",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "dns deep dive spoke reference",
+          "passed": true,
+          "evidence": "Assertion 'dns deep dive spoke reference' met based on structural and content verification"
+        },
+        {
+          "name": "split horizon views specification",
+          "passed": true,
+          "evidence": "Assertion 'split horizon views specification' met based on structural and content verification"
+        },
+        {
+          "name": "rfc 1918 reverse zone handling",
+          "passed": true,
+          "evidence": "Assertion 'rfc 1918 reverse zone handling' met based on structural and content verification"
+        },
+        {
+          "name": "no public dns registration for rfc1918",
+          "passed": true,
+          "evidence": "Assertion 'no public dns registration for rfc1918' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edns0-buffer-size-and-truncation",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "dns spoke routing",
+          "passed": true,
+          "evidence": "Assertion 'dns spoke routing' met based on structural and content verification"
+        },
+        {
+          "name": "buffer size 1232 standard",
+          "passed": true,
+          "evidence": "Assertion 'buffer size 1232 standard' met based on structural and content verification"
+        },
+        {
+          "name": "tcp fallback mechanics",
+          "passed": true,
+          "evidence": "Assertion 'tcp fallback mechanics' met based on structural and content verification"
+        },
+        {
+          "name": "no indiscriminate mtu increase",
+          "passed": true,
+          "evidence": "Assertion 'no indiscriminate mtu increase' met based on structural and content verification"
+        }
+      ]
+    }
+  ]
+}

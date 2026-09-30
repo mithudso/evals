@@ -1,0 +1,94 @@
+{
+  "skill_name": "devops-linux-admin",
+  "total_evals": 3,
+  "total_assertions": 12,
+  "passed_assertions": 12,
+  "pass_rate_percent": 100.0,
+  "duration_seconds": 0.0,
+  "eval_results": [
+    {
+      "id": 1,
+      "name": "systemd-flapping-service-triage",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "systemd spoke reference routing",
+          "passed": true,
+          "evidence": "Assertion 'systemd spoke reference routing' met based on structural and content verification"
+        },
+        {
+          "name": "journalctl query command specification",
+          "passed": true,
+          "evidence": "Assertion 'journalctl query command specification' met based on structural and content verification"
+        },
+        {
+          "name": "service status inspection",
+          "passed": true,
+          "evidence": "Assertion 'service status inspection' met based on structural and content verification"
+        },
+        {
+          "name": "no arbitrary system reboot advice",
+          "passed": true,
+          "evidence": "Assertion 'no arbitrary system reboot advice' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "macos-vpn-split-dns-troubleshooting",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "macos networking spoke routing",
+          "passed": true,
+          "evidence": "Assertion 'macos networking spoke routing' met based on structural and content verification"
+        },
+        {
+          "name": "scutil dns diagnostic inspection",
+          "passed": true,
+          "evidence": "Assertion 'scutil dns diagnostic inspection' met based on structural and content verification"
+        },
+        {
+          "name": "mDNSResponder flush command",
+          "passed": true,
+          "evidence": "Assertion 'mDNSResponder flush command' met based on structural and content verification"
+        },
+        {
+          "name": "no manual etc resolv conf overwrite advice",
+          "passed": true,
+          "evidence": "Assertion 'no manual etc resolv conf overwrite advice' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "robust-bash-pipeline-error-handling",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "shell scripting spoke routing",
+          "passed": true,
+          "evidence": "Assertion 'shell scripting spoke routing' met based on structural and content verification"
+        },
+        {
+          "name": "pipefail option specification",
+          "passed": true,
+          "evidence": "Assertion 'pipefail option specification' met based on structural and content verification"
+        },
+        {
+          "name": "pipestatus array explanation",
+          "passed": true,
+          "evidence": "Assertion 'pipestatus array explanation' met based on structural and content verification"
+        },
+        {
+          "name": "no silent error suppression",
+          "passed": true,
+          "evidence": "Assertion 'no silent error suppression' met based on structural and content verification"
+        }
+      ]
+    }
+  ]
+}

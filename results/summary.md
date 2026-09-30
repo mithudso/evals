@@ -1,6 +1,6 @@
 # Skill Corpus Evaluation Benchmark Results
 
-**Total Skills Evaluated:** 12 | **Total Test Cases:** 30 | **Aggregate Pass Rate:** 100.0%
+**Total Skills Evaluated:** 75 | **Total Test Cases:** 219 | **Aggregate Pass Rate:** 100.0%
 
 | Skill Name | Evals | Assertions Passed | Pass Rate | Duration | Status |
 |---|---|---|---|---|---|
@@ -8,14 +8,77 @@
 | `adversarial-eval-template` | 2 | 4/4 | 100.0% | 0.0s | ✅ PASS |
 | `example-skill` | 3 | 7/7 | 100.0% | 0.0s | ✅ PASS |
 | `deep-eval-optimizer` | 2 | 5/5 | 100.0% | 0.0s | ✅ PASS |
+| `chrome-extension-expert` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
 | `prompt-deep-optimizer` | 3 | 11/11 | 100.0% | 0.0s | ✅ PASS |
 | `adversarial-eval-template` | 2 | 4/4 | 100.0% | 0.0s | ✅ PASS |
+| `atlas-diagnostics-expert` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `document-formats` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `trading-and-investing` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `bioinformatics-databases` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `technical-instruction` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `claude-code-skills` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `executive-comms` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `content-ingestion-extraction` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
 | `deep-eval-optimizer` | 2 | 5/5 | 100.0% | 0.0s | ✅ PASS |
+| `lang-go-and-mobile` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `frontend-ui` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `lang-js-ts` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `mongodb-operations-expert` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `design-deep-optimizer` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `firecrawl` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `ai-llm-model-layer` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `web-dev-practices` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `networking` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `gemini-api` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `deep-query-optimizer` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
 | `skill-optimizer` | 3 | 11/11 | 100.0% | 0.0s | ✅ PASS |
 | `example-skill` | 3 | 7/7 | 100.0% | 0.0s | ✅ PASS |
+| `psychology` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `applied-psychology` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `deep-research` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `devops-containers-cicd` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `tam-operations` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `distributed-systems-and-datastores` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `ai-rag-retrieval` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `devops-observability` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `gcp-data-engineering` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `mongodb-expert` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `devops-linux-admin` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `ai-agents-orchestration` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `research-methodology` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `fsi-banking-regulatory` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `blockchain` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `content-and-marketing-writing` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `da-2-data-analysis-lifecycle` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `dev-cli-tools` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `da-data-engineering-platform` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `log-query-languages` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `da-3-data-acquisition-sampling` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `aws-cloud` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `technical-writing-craft` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `cloudflare-platform` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `ai-coding-agents-tools` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
 | `code-skill-template` | 2 | 7/7 | 100.0% | 0.0s | ✅ PASS |
 | `code-deep-optimizer` | 3 | 11/11 | 100.0% | 0.0s | ✅ PASS |
+| `software-engineering-patterns` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `devops-linux-internals` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `writing-expert` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `physical-access-control` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `mongodb-atlas-expert` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `da-analytical-methods` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
 | `ddo` | 3 | 11/11 | 100.0% | 0.0s | ✅ PASS |
+| `llms-txt-tooling` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `legal` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `career-and-formal-writing` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `ecommerce-operations` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `da-applied-and-communication` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `lang-python` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `firebase-platform` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `ai-mcp-sdk-prompting` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `security-review` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `da-1-foundations-theory` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `integration-clients` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
+| `misc-catch-all` | 3 | 12/12 | 100.0% | 0.0s | ✅ PASS |
 
 ---
 *Generated by evals benchmark runner on results*

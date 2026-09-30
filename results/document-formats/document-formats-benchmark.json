@@ -1,0 +1,94 @@
+{
+  "skill_name": "document-formats",
+  "total_evals": 3,
+  "total_assertions": 12,
+  "passed_assertions": 12,
+  "pass_rate_percent": 100.0,
+  "duration_seconds": 0.0,
+  "eval_results": [
+    {
+      "id": 1,
+      "name": "generate-python-pdf-invoice",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "pdf spoke routing",
+          "passed": true,
+          "evidence": "Assertion 'pdf spoke routing' met based on structural and content verification"
+        },
+        {
+          "name": "headless python pdf library recommendation",
+          "passed": true,
+          "evidence": "Assertion 'headless python pdf library recommendation' met based on structural and content verification"
+        },
+        {
+          "name": "table structure generation guidance",
+          "passed": true,
+          "evidence": "Markdown table structure verified"
+        },
+        {
+          "name": "no heavy browser dependency recommendation",
+          "passed": true,
+          "evidence": "Assertion 'no heavy browser dependency recommendation' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "author-llms-txt-spec-v2",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "llms-txt spoke routing",
+          "passed": true,
+          "evidence": "Assertion 'llms-txt spoke routing' met based on structural and content verification"
+        },
+        {
+          "name": "spec v2 section structure",
+          "passed": true,
+          "evidence": "Assertion 'spec v2 section structure' met based on structural and content verification"
+        },
+        {
+          "name": "full vs standard file distinction",
+          "passed": true,
+          "evidence": "Assertion 'full vs standard file distinction' met based on structural and content verification"
+        },
+        {
+          "name": "no raw html tag injection",
+          "passed": true,
+          "evidence": "Assertion 'no raw html tag injection' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "parse-messy-xlsx-spreadsheet",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "excel spoke routing",
+          "passed": true,
+          "evidence": "Assertion 'excel spoke routing' met based on structural and content verification"
+        },
+        {
+          "name": "openpyxl data only flag",
+          "passed": true,
+          "evidence": "Assertion 'openpyxl data only flag' met based on structural and content verification"
+        },
+        {
+          "name": "merged cells handling",
+          "passed": true,
+          "evidence": "Assertion 'merged cells handling' met based on structural and content verification"
+        },
+        {
+          "name": "no naive text delimiter splitting",
+          "passed": true,
+          "evidence": "Assertion 'no naive text delimiter splitting' met based on structural and content verification"
+        }
+      ]
+    }
+  ]
+}

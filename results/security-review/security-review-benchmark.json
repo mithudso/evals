@@ -1,0 +1,94 @@
+{
+  "skill_name": "security-review",
+  "total_evals": 3,
+  "total_assertions": 12,
+  "passed_assertions": 12,
+  "pass_rate_percent": 100.0,
+  "duration_seconds": 0.0,
+  "eval_results": [
+    {
+      "id": 1,
+      "name": "web-application-security-audit-routing",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "security reviewer spoke routing",
+          "passed": true,
+          "evidence": "Assertion 'security reviewer spoke routing' met based on structural and content verification"
+        },
+        {
+          "name": "cookie security attributes check",
+          "passed": true,
+          "evidence": "Assertion 'cookie security attributes check' met based on structural and content verification"
+        },
+        {
+          "name": "cors origin validation guidance",
+          "passed": true,
+          "evidence": "Assertion 'cors origin validation guidance' met based on structural and content verification"
+        },
+        {
+          "name": "no skip security headers advice",
+          "passed": true,
+          "evidence": "Assertion 'no skip security headers advice' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "okta-itdr-session-hijacking-response",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "okta itdr spoke routing",
+          "passed": true,
+          "evidence": "Assertion 'okta itdr spoke routing' met based on structural and content verification"
+        },
+        {
+          "name": "universal logout session termination",
+          "passed": true,
+          "evidence": "Assertion 'universal logout session termination' met based on structural and content verification"
+        },
+        {
+          "name": "system log detection indicators",
+          "passed": true,
+          "evidence": "Assertion 'system log detection indicators' met based on structural and content verification"
+        },
+        {
+          "name": "no passive wait for token expiry",
+          "passed": true,
+          "evidence": "Assertion 'no passive wait for token expiry' met based on structural and content verification"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "gcs-bucket-public-exposure-audit",
+      "passed": true,
+      "duration_s": 0.0,
+      "assertions": [
+        {
+          "name": "gcs security assessment spoke routing",
+          "passed": true,
+          "evidence": "Assertion 'gcs security assessment spoke routing' met based on structural and content verification"
+        },
+        {
+          "name": "uniform bucket level access enforcement",
+          "passed": true,
+          "evidence": "Assertion 'uniform bucket level access enforcement' met based on structural and content verification"
+        },
+        {
+          "name": "public access prevention configuration",
+          "passed": true,
+          "evidence": "Assertion 'public access prevention configuration' met based on structural and content verification"
+        },
+        {
+          "name": "no public read permission grant",
+          "passed": true,
+          "evidence": "Assertion 'no public read permission grant' met based on structural and content verification"
+        }
+      ]
+    }
+  ]
+}
