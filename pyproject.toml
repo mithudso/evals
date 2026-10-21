@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evals"
+version = "0.1.0"
+description = "Eval runners and benchmarks for Claude skills"
+requires-python = ">=3.11"
+dependencies = [
+  "pyyaml>=6",
+  "ollama-client @ git+https://github.com/mithudso/ollama-client.git",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.setuptools]
+py-modules = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["runner"]

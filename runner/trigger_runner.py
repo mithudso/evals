@@ -13,10 +13,11 @@ import re
 import json
 import math
 import argparse
-import urllib.request
 from pathlib import Path
 from collections import Counter
 from typing import Dict, Any, List, Tuple, Set
+
+from ollama_client import OllamaClient, OllamaPool, cosine
 
 # Universal stop words
 STOPWORDS = {
@@ -37,25 +38,22 @@ def tokenize(text: str) -> List[str]:
     return [t for t in re.findall(r'[a-z0-9_-]+', text.lower()) if len(t) > 1 and t not in STOPWORDS]
 
 def get_embedding(text: str, host: str = "http://localhost:11434", model: str = "qwen3-embedding:4b") -> List[float]:
-    """Retrieve text embedding from local Ollama instance with fallback to None."""
+    """Retrieve text embedding from local Ollama (via the shared ollama-client); [] on any failure.
+
+    The model stays pinned to qwen3-embedding:4b (the library default is mxbai-embed-large and its
+    vectors are not comparable). 3s timeout, no retry rounds, as before. Uses /api/embed instead of
+    the legacy /api/embeddings: same model, same direction (the new endpoint L2-normalises, which
+    cosine similarity ignores).
+    """
     try:
-        data = json.dumps({"model": model, "prompt": text}).encode("utf-8")
-        req = urllib.request.Request(f"{host}/api/embeddings", data=data, headers={"Content-Type": "application/json"})
-        with urllib.request.urlopen(req, timeout=3.0) as resp:
-            payload = json.loads(resp.read().decode("utf-8"))
-            return payload.get("embedding", [])
+        client = OllamaClient(OllamaPool(host, timeout=3.0, retries=0), embed_model=model)
+        return client.embed(text, model=model)[0]
     except Exception:
         return []
 
+
 def cosine_similarity(v1: List[float], v2: List[float]) -> float:
-    if not v1 or not v2 or len(v1) != len(v2):
-        return 0.0
-    dot = sum(a * b for a, b in zip(v1, v2))
-    norm1 = math.sqrt(sum(a * a for a, b in zip(v1, v2)))
-    norm2 = math.sqrt(sum(b * b for a, b in zip(v1, v2)))
-    if norm1 == 0.0 or norm2 == 0.0:
-        return 0.0
-    return dot / (norm1 * norm2)
+    return cosine(v1, v2)
 
 def extract_skill_profile(skill_path: str) -> Dict[str, Any]:
     """Extract frontmatter, triggers, skips, and full text from SKILL.md."""
