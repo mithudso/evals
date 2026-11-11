@@ -1670,6 +1670,29 @@ index 0000000..5400a05
 +]
 ````
 Preview truncated: 742 additional diff lines.
+### `.github/actions/private-dependency/action.yml`
+
+````diff
++name: Read private embedding dependency
++description: Configure a dedicated read-only key for the single pinned dependency
++inputs:
++  deploy-key:
++    description: Read-only deploy key for mithudso/ollama-client
++    required: true
++runs:
++  using: composite
++  steps:
++    - shell: bash
++      env:
++        OLLAMA_CLIENT_DEPLOY_KEY: ${{ inputs.deploy-key }}
++      run: |
++        if [ -z "$OLLAMA_CLIENT_DEPLOY_KEY" ]; then
++          echo '::error::OLLAMA_CLIENT_DEPLOY_KEY is required to read the private pinned dependency.'
++          exit 1
++        fi
++        umask 077
+````
+
 ## 6. Independent blind re-audit
 
 Two separate fresh-context read-only reviewers received current source and all 18 pass definitions without prior findings or fix rationale. The first gate corroborated five residuals. Iteration 2 repaired those and a related input-overwrite edge. The second gate corroborated one Medium fenced-structure false pass. The run exited BLIND-AUDIT-DISSENT. The subsequent targeted parser correction has passing regressions but was not independently re-audited. Neither gate ran real models or mutated source.
@@ -1768,9 +1791,20 @@ index: n/a (source target outside prose-index corpus roots). Repository nonembed
 
 memory-central: none for evals. Stele repository-specific decisions preserve legacy provenance and require supplied responses; the maintained-wiki decision shaped the documentation baseline. No private research bodies were copied into new outputs.
 
+## Delivery access blocker
+
+[PR #1](https://github.com/mithudso/evals/pull/1) contains the reviewable change.
+Initial CI failed while fetching private `mithudso/ollama-client`: Git reported
+that it could not read a Username with terminal prompts disabled. The prepared
+composite action uses a dedicated read-only deploy key via
+`OLLAMA_CLIENT_DEPLOY_KEY`, scopes the SSH URL rewrite, pins the host key, disables
+private-source caching and removes temporary key files. No key or access grant
+has been created. Owner approval is required before that cross-repository access
+can be enabled and final CI/merge completed.
+
 ## File completion manifest
 
-Files written: 61. Files updated: 9. Applicable baseline is implemented; remaining policy/service-standard gaps are in the bootstrap ledger.
+Files written: 62. Files updated: 9. CI access is pending approval; the branch is a recoverable unmerged checkpoint.
 
 | File | Lines | Status |
 |---|---:|---|
@@ -1782,9 +1816,10 @@ Files written: 61. Files updated: 9. Applicable baseline is implemented; remaini
 | `.github/ISSUE_TEMPLATE/feature_request.md` | 12 | New |
 | `.github/PULL_REQUEST_TEMPLATE.md` | 15 | New |
 | `.github/SECURITY.md` | 9 | New |
+| `.github/actions/private-dependency/action.yml` | 22 | New |
 | `.github/copilot-instructions.md` | 32 | New |
 | `.github/dependabot.yml` | 12 | New |
-| `.github/workflows/ci.yml` | 48 | New |
+| `.github/workflows/ci.yml` | 61 | New |
 | `.gitignore` | 15 | Updated |
 | `.mcp.json` | 3 | New |
 | `.vscode/extensions.json` | 3 | New |
@@ -1803,27 +1838,27 @@ Files written: 61. Files updated: 9. Applicable baseline is implemented; remaini
 | `benchmarks/suite_validator.py` | 308 | Updated |
 | `docs/ARCHITECTURE.md` | 67 | New |
 | `docs/COMPONENTS.md` | 67 | New |
-| `docs/DEVELOPMENT.md` | 84 | New |
-| `docs/INSTALLATION.md` | 43 | New |
+| `docs/DEVELOPMENT.md` | 94 | New |
+| `docs/INSTALLATION.md` | 45 | New |
 | `docs/MCP.md` | 13 | New |
-| `docs/SECURITY.md` | 52 | New |
+| `docs/SECURITY.md` | 61 | New |
 | `docs/TESTING.md` | 61 | New |
 | `docs/archive/README.md` | 15 | New |
 | `docs/caching-and-optimization.md` | 30 | New |
-| `docs/code-optimizer-report-2026-11-11.md` | 1846 | New |
-| `docs/codebase-overview.md` | 127 | New |
+| `docs/code-optimizer-report-2026-11-11.md` | 1881 | New |
+| `docs/codebase-overview.md` | 131 | New |
 | `docs/external-calls.md` | 41 | New |
-| `docs/high_signal_file_index.json` | 679 | New |
-| `docs/integrations-and-assumptions.md` | 54 | New |
-| `docs/known-issues.md` | 21 | New |
-| `docs/llm-repo-index.json` | 1841 | New |
+| `docs/high_signal_file_index.json` | 686 | New |
+| `docs/integrations-and-assumptions.md` | 63 | New |
+| `docs/known-issues.md` | 22 | New |
+| `docs/llm-repo-index.json` | 1848 | New |
 | `docs/logging.md` | 31 | New |
 | `docs/onboarding.md` | 17 | New |
-| `docs/repo-bootstrap-audit-2026-11-11.md` | 66 | New |
+| `docs/repo-bootstrap-audit-2026-11-11.md` | 69 | New |
 | `docs/requirements.md` | 43 | New |
 | `docs/runbooks/validation-and-replay.md` | 87 | New |
 | `docs/wiki/README.md` | 43 | New |
-| `memory.md` | 48 | New |
+| `memory.md` | 49 | New |
 | `prompts.md` | 6 | New |
 | `pyproject.toml` | 38 | Updated |
 | `runner/__init__.py` | 1 | New |
@@ -1844,14 +1879,3 @@ Files written: 61. Files updated: 9. Applicable baseline is implemented; remaini
 | `tests/test_trigger_runner.py` | 251 | Updated |
 | `tests/test_validation.py` | 103 | New |
 | `uv.lock` | 754 | New |
-
-## Delivery access blocker
-
-[PR #1](https://github.com/mithudso/evals/pull/1) contains the reviewable change.
-Initial CI failed while fetching private `mithudso/ollama-client`: Git reported
-that it could not read a Username with terminal prompts disabled. The prepared
-composite action uses a dedicated read-only deploy key via
-`OLLAMA_CLIENT_DEPLOY_KEY`, scopes the SSH URL rewrite, pins the host key, disables
-private-source caching and removes temporary key files. No key or access grant
-has been created. Owner approval is required before that cross-repository access
-can be enabled and final CI/merge completed.
