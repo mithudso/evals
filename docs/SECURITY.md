@@ -50,3 +50,12 @@ Follow [security reporting guidance](../.github/SECURITY.md). No on-call service
 security response SLA, or compliance certification is claimed. For an accidental
 credential exposure, stop publishing the affected output, rotate the credential
 with its provider, and arrange a private report with the repository owner.
+
+## CI dependency authentication
+
+`OLLAMA_CLIENT_DEPLOY_KEY` is a repository Actions secret for read-only access
+to the private pinned embedding client. Granting that access requires the owner
+to approve the cross-repository credential. The prepared workflow writes the key
+only under runner temporary storage, pins the host key, restricts the Git URL
+rewrite, disables dependency caches and removes temporary key files. It does not
+publish private source or run a privileged fork-PR workflow.

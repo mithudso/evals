@@ -12,7 +12,8 @@ make check
 ```
 
 `make setup` runs `uv sync --extra dev --frozen`. It creates `.venv/` from
-`uv.lock`, including the pinned Git revision of `ollama-client`. No model or
+`uv.lock`, including the pinned Git revision of the private `ollama-client` repository.
+Your Git credentials must have read access to that repository. No model or
 embedding server is needed for the test suite. There is no development server,
 watch mode, or live-reload process to start.
 
@@ -61,6 +62,15 @@ Rotate oversized logs with `scripts/rotate_workflow_logs.py`; keep archives unde
 jobs install the frozen development environment, run `make check`, and build.
 A separate job runs the package advisory audit. GitHub Actions are pinned by
 commit. Dependabot checks the uv and GitHub Actions ecosystems weekly.
+
+CI requires the `OLLAMA_CLIENT_DEPLOY_KEY` Actions secret: a dedicated read-only
+deploy key installed on the private dependency repository. The local composite
+action rewrites only that dependency URL to SSH, pins the GitHub host key, and
+removes the temporary key after the job. Dependency caches are disabled because
+this is a public repository and the dependency source is private. A missing
+secret fails clearly; fork PRs do not receive an alternative privileged workflow.
+The workflow uses `pull_request`, not `pull_request_target`. Do not store a key in
+the repository or substitute a broad personal token.
 
 For an intentional dependency change, edit `pyproject.toml`, run `uv lock`, review
 `uv.lock`, then rerun validation. Do not replace the pinned `ollama-client` revision

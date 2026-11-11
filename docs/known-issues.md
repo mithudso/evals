@@ -10,6 +10,7 @@
 | Historical percentages have no confirmed execution provenance | Existing `results/` JSON exports omit mode/output-source metadata | Preserve the files; aggregate them as legacy unknown and collect new replay evidence separately |
 | Four historical exports have identical copies | Top-level and per-skill result paths contain duplicate records | The aggregator deduplicates identical content; do not sum files independently |
 | Suite audit does not implement every named A–L category | Implemented checks cover A, C, D, F, G, H, I, and L | Treat the audit as a partial static check, not comprehensive eval optimization |
+| Anonymous setup or CI cannot fetch `ollama-client` | The pinned source repository is private | Local users need GitHub read access; CI needs the dedicated read-only deploy key described in development guidance |
 | Package advisory coverage may omit `ollama-client` | The dependency is pinned to a Git revision rather than a normal audited release record | Review the pinned source and audit output; an omitted package is not attested clean |
 | Full mdb-tam operations standard is unmet | No central JSONL error sink, remediation registry, or generated dashboard exists in this CLI toolkit | See [external calls](external-calls.md); adding those systems would need an explicit product scope |
 | No semantic retrieval pipeline or watcher exists | Bootstrap maintains path/symbol indexes only | Use generated indexes; any embedding/index service must be deliberately configured and run |

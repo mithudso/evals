@@ -37,6 +37,10 @@ Generated indexes exclude themselves to avoid recursive drift.
 - `.github/ISSUE_TEMPLATE/bug_report.md`: Repository docs: bug_report.md.
 - `.github/ISSUE_TEMPLATE/feature_request.md`: Repository docs: feature_request.md.
 
+## `.github/actions/private-dependency/`
+
+- `.github/actions/private-dependency/action.yml`: Repository config: action.yml.
+
 ## `.github/workflows/`
 
 - `.github/workflows/ci.yml`: Repository config: ci.yml.

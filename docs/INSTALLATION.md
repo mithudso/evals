@@ -4,9 +4,11 @@
 
 - Python 3.11 or newer. CI exercises Python 3.11 and 3.14.
 - Git, `make`, and [uv](https://docs.astral.sh/uv/getting-started/installation/).
-- Network access for the initial dependency installation.
+- Network access and GitHub read access to the private `mithudso/ollama-client`
+  repository for the initial dependency installation.
 
-There is no required API key, database, Node runtime, or MCP server. Ollama is
+Git authentication is required for the private dependency. No model-service API
+key, database, Node runtime, or MCP server is required. Ollama is
 optional and is needed only when intentionally using embedding-backed scoring.
 
 ## Install and verify

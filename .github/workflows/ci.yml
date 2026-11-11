@@ -27,11 +27,17 @@ jobs:
           python-version: ${{ matrix.python }}
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
-          enable-cache: true
+          enable-cache: false
           version: '0.13.7'
+      - uses: ./.github/actions/private-dependency
+        with:
+          deploy-key: ${{ secrets.OLLAMA_CLIENT_DEPLOY_KEY }}
       - run: uv sync --extra dev --frozen --python ${{ matrix.python }}
       - run: make check
       - run: make build
+      - name: Remove dependency key
+        if: always()
+        run: rm -f "$RUNNER_TEMP/ollama-client-key" "$RUNNER_TEMP/ollama-client-known-hosts"
 
   dependencies:
     name: Dependency audit
@@ -44,5 +50,12 @@ jobs:
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
           version: '0.13.7'
+          enable-cache: false
+      - uses: ./.github/actions/private-dependency
+        with:
+          deploy-key: ${{ secrets.OLLAMA_CLIENT_DEPLOY_KEY }}
       - run: uv sync --extra dev --frozen
       - run: make audit
+      - name: Remove dependency key
+        if: always()
+        run: rm -f "$RUNNER_TEMP/ollama-client-key" "$RUNNER_TEMP/ollama-client-known-hosts"

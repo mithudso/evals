@@ -90,7 +90,7 @@ branch on both runtimes.
 | `make build` | Reproduced: wheel contains zero runtime modules | Wheel and source archive build; runtime modules present | PASS |
 | Installed console scripts outside checkout | Not installed by baseline wheel | Fresh wheel install: four CLI imports; replay and aggregation pass | PASS |
 | `make audit` | No configured gate | No known package advisories; editable root skipped | PASS |
-| Remote CI on Python 3.11 and 3.14 | No workflow | Must pass on final PR commit before merge | Pending remote |
+| Remote CI on Python 3.11 and 3.14 | No workflow | Initial run failed private dependency authentication; read-only-key configuration prepared | Access approval required |
 
 Tests use synthetic fixtures, fake localhost HTTP and mocked embeddings. Red-before-green evidence: initial functional/grader regressions had 25 failures and 3 passes; trigger/validator/aggregate regressions had 45 failures and 5 passes. New maintenance tests first failed collection before their implementation. A baseline-wheel build independently verified the packaging defect.
 
@@ -1844,3 +1844,14 @@ Files written: 61. Files updated: 9. Applicable baseline is implemented; remaini
 | `tests/test_trigger_runner.py` | 251 | Updated |
 | `tests/test_validation.py` | 103 | New |
 | `uv.lock` | 754 | New |
+
+## Delivery access blocker
+
+[PR #1](https://github.com/mithudso/evals/pull/1) contains the reviewable change.
+Initial CI failed while fetching private `mithudso/ollama-client`: Git reported
+that it could not read a Username with terminal prompts disabled. The prepared
+composite action uses a dedicated read-only deploy key via
+`OLLAMA_CLIENT_DEPLOY_KEY`, scopes the SSH URL rewrite, pins the host key, disables
+private-source caching and removes temporary key files. No key or access grant
+has been created. Owner approval is required before that cross-repository access
+can be enabled and final CI/merge completed.

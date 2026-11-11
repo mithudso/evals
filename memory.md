@@ -5,8 +5,9 @@
 - User request:
   - Run the deep code optimizer and the repo-bootstrapper on this repo.
 - Active task:
-  - No remaining implementation work for this version. The GitHub delivery record
-    for branch `codex/evals-optimize-bootstrap-20261111` is authoritative for CI and merge state.
+  - Implementation and local checks are complete. CI requires owner approval of a
+    read-only deploy-key grant for the private dependency. The GitHub delivery record
+    [PR #1](https://github.com/mithudso/evals/pull/1) is authoritative for CI and merge state.
 - Completed context:
   - Baseline commit `9eb718a` had four passing trigger transport/cosine tests.
   - The audit identified synthetic functional outputs, grader false passes,
@@ -38,7 +39,7 @@
   - No real model calls, embedding/index pipeline, watcher, or research refresh is
     part of this maintenance task. Tests use fakes.
 - Delivery record:
-  - The task branch and its GitHub PR contain the final diff, CI checks and merge
+  - [PR #1](https://github.com/mithudso/evals/pull/1) contains the final diff, CI checks and merge
     record. A local log does not substitute for the PR merged state.
   - See `docs/code-optimizer-report-2026-11-11.md` and
     `docs/repo-bootstrap-audit-2026-11-11.md` for evidence and applicability.

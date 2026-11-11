@@ -1,0 +1,22 @@
+name: Read private embedding dependency
+description: Configure a dedicated read-only key for the single pinned dependency
+inputs:
+  deploy-key:
+    description: Read-only deploy key for mithudso/ollama-client
+    required: true
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env:
+        OLLAMA_CLIENT_DEPLOY_KEY: ${{ inputs.deploy-key }}
+      run: |
+        if [ -z "$OLLAMA_CLIENT_DEPLOY_KEY" ]; then
+          echo '::error::OLLAMA_CLIENT_DEPLOY_KEY is required to read the private pinned dependency.'
+          exit 1
+        fi
+        umask 077
+        printf '%s\n' "$OLLAMA_CLIENT_DEPLOY_KEY" > "$RUNNER_TEMP/ollama-client-key"
+        printf '%s\n' 'github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl' > "$RUNNER_TEMP/ollama-client-known-hosts"
+        git config --global url.'git@github.com:mithudso/ollama-client.git'.insteadOf https://github.com/mithudso/ollama-client.git
+        printf 'GIT_SSH_COMMAND=ssh -F /dev/null -i "%s" -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile="%s"\n' "$RUNNER_TEMP/ollama-client-key" "$RUNNER_TEMP/ollama-client-known-hosts" >> "$GITHUB_ENV"

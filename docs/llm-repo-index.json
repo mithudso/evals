@@ -58,6 +58,13 @@
       "depends_on": []
     },
     {
+      "path": ".github/actions/private-dependency/action.yml",
+      "purpose": "Repository config: action.yml.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
       "path": ".github/copilot-instructions.md",
       "purpose": "Repository docs: copilot-instructions.md.",
       "layer": "docs",
