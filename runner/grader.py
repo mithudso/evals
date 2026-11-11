@@ -1,128 +1,271 @@
 #!/usr/bin/env python3
-"""
-Assertion Grader Engine for Skill Evals.
-Evaluates assertions against generated outputs programmatically, structurally,
-deterministically, and through explicit negative tripwires.
-Falsifiable: returns False with explicit evidence whenever constraints are violated.
+"""Grade literal and structural checks; label token overlap as a heuristic.
+
+This module never executes code or validates an unspecified JSON Schema. An
+unsupported check fails with evidence instead of being treated as successful.
 """
 
-import re
 import json
-from typing import Dict, Any, List, Tuple, Set
+import re
+from collections.abc import Mapping
+from typing import Any
+
+from markdown_it import MarkdownIt
+
+from runner.config import CONTENT_OVERLAP_MIN, MIN_OUTPUT_WORDS
+from runner.validation import SUPPORTED_ASSERTION_TYPES
+
+_QUOTED = re.compile(r"(`[^`\n]+`|'[^'\n]+'|\"[^\"\n]+\")")
+_REFERENCE = re.compile(r"(?:references/[A-Za-z0-9_./-]+|\b[A-Za-z0-9_]+(?:\.[A-Za-z0-9_]+)+\b)")
+_NEGATIVE = re.compile(
+    r"\b(?:not|never|without|forbids|prohibits|no|cannot|can['’]t|don['’]t|doesn['’]t|mustn['’]t)\b"
+)
+_CODE_FENCE = re.compile(r"^```([^`\n]*)\n(.*?)^```[ \t]*$", re.MULTILINE | re.DOTALL)
+_MARKDOWN = MarkdownIt("commonmark").enable("table")
+_HUNK_HEADER = re.compile(r"@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@(?: .*)?")
+_DIFF_METADATA = (
+    "diff --git ",
+    "index ",
+    "new file mode ",
+    "deleted file mode ",
+    "old mode ",
+    "new mode ",
+    "similarity index ",
+    "dissimilarity index ",
+    "rename from ",
+    "rename to ",
+    "copy from ",
+    "copy to ",
+)
+
+
+def _targets(check: str) -> list[str]:
+    quoted = [match.group()[1:-1].strip() for match in _QUOTED.finditer(check)]
+    # Explicit literals take precedence over guessed filenames. This prevents a
+    # filename inside a literal from becoming a second, contradictory requirement.
+    values = quoted if quoted else _REFERENCE.findall(check)
+    return list(dict.fromkeys(value for value in values if value))
+
+
+def _reject_json_constant(value: str) -> None:
+    raise ValueError("non-finite JSON constant")
+
+
+def _complete_unified_diff(text: str) -> bool:
+    """Check text-file hunk headers and exact old/new line counts without execution.
+
+    This accepts optional Git metadata and multiple files or hunks. It does not
+    prove that a patch applies to a particular checkout, or support binary diffs.
+    """
+    lines = text.strip("\n").splitlines()
+    index = 0
+    files = 0
+    any_change = False
+    while index < len(lines):
+        while index < len(lines) and lines[index].startswith(_DIFF_METADATA):
+            index += 1
+        if index + 1 >= len(lines) or not lines[index].startswith("--- "):
+            return False
+        if not lines[index][4:].strip() or not lines[index + 1].startswith("+++ "):
+            return False
+        if not lines[index + 1][4:].strip():
+            return False
+        index += 2
+        hunks = 0
+        while index < len(lines) and (header := _HUNK_HEADER.fullmatch(lines[index])):
+            try:
+                old_start = int(header[1])
+                old_expected = int(header[2]) if header[2] is not None else 1
+                new_start = int(header[3])
+                new_expected = int(header[4]) if header[4] is not None else 1
+            except ValueError:
+                return False
+            if (old_expected and old_start == 0) or (new_expected and new_start == 0):
+                return False
+            if old_expected == new_expected == 0:
+                return False
+            index += 1
+            old_seen = new_seen = 0
+            hunk_changed = False
+            previous_was_content = False
+            while old_seen < old_expected or new_seen < new_expected:
+                if index >= len(lines):
+                    return False
+                line = lines[index]
+                if line == "\\ No newline at end of file":
+                    if not previous_was_content:
+                        return False
+                    previous_was_content = False
+                    index += 1
+                    continue
+                if not line or line[0] not in " +-":
+                    return False
+                if line[0] in " -":
+                    old_seen += 1
+                if line[0] in " +":
+                    new_seen += 1
+                hunk_changed |= line[0] in "+-"
+                if old_seen > old_expected or new_seen > new_expected:
+                    return False
+                previous_was_content = True
+                index += 1
+            if index < len(lines) and lines[index] == "\\ No newline at end of file":
+                if not previous_was_content:
+                    return False
+                index += 1
+            if not hunk_changed:
+                return False
+            any_change = True
+            hunks += 1
+        if hunks == 0:
+            return False
+        files += 1
+    return files > 0 and any_change
+
+
+def _structural(check: str, output: str) -> tuple[bool, str]:
+    if _NEGATIVE.search(_QUOTED.sub("", check)):
+        return (
+            False,
+            "Unsupported mixed structural check: separate positive and negative requirements",
+        )
+    recognized = False
+    fences = list(_CODE_FENCE.finditer(output))
+    markdown_types = (
+        {token.type for token in _MARKDOWN.parse(output)}
+        if re.search(r"\b(?:table|headings?|sections?)\b", check)
+        else set()
+    )
+    if re.search(r"\b(?:json|schema)\b", check):
+        recognized = True
+        if re.search(r"\bschema\b", check):
+            return False, "Unsupported schema check: JSON parsing does not validate a JSON Schema"
+        json_blocks = [m.group(2) for m in fences if m.group(1).strip().lower() in {"", "json"}]
+        raw = json_blocks[0] if json_blocks else output.strip()
+        try:
+            json.loads(raw, parse_constant=_reject_json_constant)
+        except (ValueError, TypeError, RecursionError):
+            return False, "Structural check failed: invalid JSON"
+    if re.search(r"\btable\b", check):
+        recognized = True
+        if "table_open" not in markdown_types:
+            return False, "Structural check failed: expected markdown table"
+    if re.search(r"\b(?:diff|replacement|code block)\b", check):
+        recognized = True
+        wants_code = re.search(r"\b(?:replacement|code block)\b", check)
+        wants_diff = re.search(r"\bdiff\b", check)
+        has_code = any(m.group(2).strip() for m in fences)
+        has_diff = _complete_unified_diff(output) or any(
+            m.group(1).strip().lower() == "diff" and _complete_unified_diff(m.group(2))
+            for m in fences
+        )
+        if wants_code and wants_diff and re.search(r"\bor\b", check):
+            valid = has_code or has_diff
+        else:
+            valid = (not wants_code or has_code) and (not wants_diff or has_diff)
+        if not valid:
+            return False, "Structural check failed: expected a complete code block or unified diff"
+    if re.search(r"\b(?:headings?|sections?)\b", check):
+        recognized = True
+        if "heading_open" not in markdown_types:
+            return False, "Structural check failed: expected markdown headings"
+    if not recognized:
+        return False, "Unsupported structural check: no recognized criterion"
+    return (
+        True,
+        "Structural criteria satisfied; this does not prove execution or semantic correctness",
+    )
 
 
 class AssertionGrader:
     @staticmethod
-    def extract_expected_patterns(check_text: str) -> List[str]:
-        """Extract explicit targets in quotes, backticks, or paths."""
-        quoted = re.findall(r"['`]([^'`]+)['`]", check_text)
-        refs = re.findall(r"references/[a-zA-Z0-9_\-\.\/]+", check_text)
-        symbols = re.findall(r"\b(?:[A-Z][a-zA-Z0-9_]{2,}|[a-z0-9_]+(?:\.[a-z0-9_]+)+)\b", check_text)
-        combined = []
-        for item in quoted + refs + symbols:
-            cleaned = item.strip()
-            if len(cleaned) > 2 and cleaned not in combined:
-                combined.append(cleaned)
-        return combined
+    def extract_expected_patterns(check_text: str) -> list[str]:
+        """Return ordered explicit literals, or unquoted reference paths/symbols.
+
+        Single quotes, double quotes and backticks preserve short nonempty
+        literals. General English capitalized words are not inferred targets.
+        """
+        return _targets(check_text) if isinstance(check_text, str) else []
 
     @staticmethod
-    def grade(assertion: Dict[str, Any], output_text: str, context: Dict[str, Any] = None) -> Tuple[bool, str]:
-        """
-        Grades a single assertion against generated output text.
-        Returns: (passed: bool, evidence: str)
-        """
-        if not output_text or not output_text.strip():
-            return False, "Output text is empty"
+    def grade(
+        assertion: Any, output_text: str, context: Mapping[str, Any] | None = None
+    ) -> tuple[bool, str]:
+        """Return ``(passed, evidence)`` without executing an assertion or output.
 
-        name = assertion.get("name", "unnamed assertion")
-        check = assertion.get("check", "").strip()
+        ``context`` is reserved for callers; it does not authorize execution.
+        ``content``, ``behavioral`` and ``heuristic`` use token overlap only.
+        """
+        if not isinstance(assertion, Mapping):
+            return False, "Invalid assertion: expected an object"
+        check = assertion.get("check")
+        kind = assertion.get("type", "heuristic")
+        if not isinstance(check, str) or not check.strip():
+            return False, "Invalid assertion: check must be a nonempty string"
+        if not isinstance(kind, str) or kind.strip().lower() not in SUPPORTED_ASSERTION_TYPES:
+            return False, "Invalid assertion: unsupported type"
+        if not isinstance(output_text, str) or not output_text.strip():
+            return False, "Output text is empty or is not a string"
+
+        kind = kind.strip().lower()
+        check = check.strip()
         check_lower = check.lower()
-        assertion_type = assertion.get("type", "heuristic").lower()
-        out_lower = output_text.lower()
+        unquoted_check = _QUOTED.sub("", check_lower)
+        output_lower = output_text.lower()
+        targets = _targets(check)
+        if kind == "schema":
+            return False, "Unsupported schema check: no JSON Schema evaluator is configured"
+        if kind == "negative":
+            if not targets:
+                return False, "Unsupported negative check: provide explicit prohibited literals"
+            violations = [target for target in targets if target.lower() in output_lower]
+            if violations:
+                return False, "Negative check failed: prohibited literal(s): " + ", ".join(
+                    violations
+                )
+            return True, "Negative literal check satisfied"
+        if kind == "deterministic":
+            if not targets:
+                return False, "Unsupported deterministic check: provide explicit required literals"
+            if _NEGATIVE.search(unquoted_check):
+                return False, "Unsupported mixed check: separate required and prohibited literals"
+            missing = [target for target in targets if target.lower() not in output_lower]
+            if missing:
+                return (
+                    False,
+                    "Deterministic check failed: missing required literal(s): "
+                    + ", ".join(missing),
+                )
+            return True, "Deterministic literal check satisfied"
+        if kind == "structural":
+            return _structural(check_lower, output_text)
 
-        # ── 1. NEGATIVE TRIPWIRES (must not, does not, without, never, no ...) ──
-        is_negative = assertion_type == "negative" or any(
-            neg in check_lower for neg in ["does not", "must not", "no ", "without", "never", "forbids", "prohibits"]
+        # Legacy heuristic assertions may infer a structural or negative check,
+        # but explicit assertion types above always control their own dispatch.
+        if kind == "heuristic" and _NEGATIVE.search(unquoted_check):
+            return AssertionGrader.grade({"check": check, "type": "negative"}, output_text)
+        if kind == "heuristic" and re.search(
+            r"\b(?:table|json|schema|headings?|sections?|diff|code block)\b", unquoted_check
+        ):
+            passed, evidence = _structural(check_lower, output_text)
+            return passed, "Heuristic dispatch: " + evidence
+
+        check_tokens = [
+            word
+            for word in re.findall(r"[a-z0-9_-]+", check_lower)
+            if len(word) > 3
+            and word
+            not in {"identifies", "specifies", "explains", "provides", "details", "check", "output"}
+        ]
+        if not check_tokens:
+            return False, "Unsupported heuristic check: no meaningful tokens"
+        output_words = set(re.findall(r"[a-z0-9_-]+", output_lower))
+        coverage = sum(token in output_words for token in check_tokens) / len(check_tokens)
+        if coverage < CONTENT_OVERLAP_MIN:
+            return False, f"Heuristic token overlap below threshold ({coverage:.1%})"
+        if len(output_text.split()) < MIN_OUTPUT_WORDS:
+            return False, "Heuristic check failed: output is too short"
+        return (
+            True,
+            f"Heuristic token overlap satisfied ({coverage:.1%}); no semantic or execution proof",
         )
-        if is_negative:
-            # Extract target prohibited patterns
-            prohibited_targets = AssertionGrader.extract_expected_patterns(check)
-            if not prohibited_targets:
-                # Default safety and hallucination tripwires
-                if any(w in check_lower for w in ["forbidden", "hallucinated", "banned", "apologize", "disclaimer"]):
-                    prohibited_targets = ["sorry", "as an ai", "apologize", "furthermore", "delve into", "i cannot"]
-                elif "unverified" in check_lower:
-                    prohibited_targets = ["deprecated", "unsupported", "legacy-only"]
-
-            found_violations = []
-            for target in prohibited_targets:
-                target_clean = target.lower().strip()
-                if len(target_clean) > 2 and target_clean in out_lower:
-                    found_violations.append(target)
-
-            if found_violations:
-                return False, f"Negative assertion violated: found prohibited term(s): {', '.join(found_violations)}"
-            return True, f"Negative assertion satisfied: no prohibited terms detected ({name})"
-
-        # ── 2. STRUCTURAL / FORMAT CHECKS ──
-        if assertion_type == "structural" or any(k in check_lower for k in ["table", "json", "schema", "heading", "section", "diff", "code block"]):
-            if "table" in check_lower:
-                has_table = "|" in output_text and ("-|-" in output_text.replace(" ", "") or "--|" in output_text.replace(" ", ""))
-                if not has_table:
-                    return False, "Structural check failed: expected markdown table not found in output"
-
-            if "json" in check_lower or "schema" in check_lower:
-                match = re.search(r"```(?:json)?\s*(\{.*?\}|\[.*?\])\s*```", output_text, re.DOTALL)
-                raw = match.group(1) if match else output_text.strip()
-                try:
-                    json.loads(raw)
-                except Exception as e:
-                    if "valid json" in check_lower or assertion_type == "structural":
-                        return False, f"Structural check failed: invalid JSON ({str(e)})"
-
-            if "diff" in check_lower or "replacement" in check_lower or "code block" in check_lower:
-                has_code = "```" in output_text or "diff" in out_lower or "---" in output_text
-                if not has_code:
-                    return False, "Structural check failed: expected code block or diff deliverable"
-
-            if "heading" in check_lower or "section" in check_lower:
-                headings = re.findall(r"^#+\s+(.+)$", output_text, re.MULTILINE)
-                if not headings:
-                    return False, "Structural check failed: missing structured markdown headings (#)"
-
-            if assertion_type == "structural":
-                return True, f"Structural requirements verified for '{name}'"
-
-        # ── 3. DETERMINISTIC IDENTIFIER & SPOKE CHECKS ──
-        # Check for explicit expected reference paths, function names, commands
-        expected_patterns = AssertionGrader.extract_expected_patterns(check)
-        if expected_patterns:
-            matched_patterns = []
-            missing_patterns = []
-            for pat in expected_patterns:
-                pat_lower = pat.lower().strip()
-                if pat_lower in out_lower:
-                    matched_patterns.append(pat)
-                else:
-                    missing_patterns.append(pat)
-
-            if assertion_type == "deterministic" and missing_patterns:
-                return False, f"Deterministic check failed: missing required pattern(s): {', '.join(missing_patterns)}"
-            elif matched_patterns:
-                return True, f"Deterministic patterns confirmed: {', '.join(matched_patterns)}"
-
-        # ── 4. CONTENT / TOKEN COVERAGE HEURISTICS ──
-        # Calculate meaningful word token overlap between assertion requirements and output
-        check_tokens = [w for w in re.findall(r"[a-z0-9_-]+", check_lower) if len(w) > 3 and w not in ["identifies", "specifies", "explains", "provides", "details", "check", "output"]]
-        if check_tokens:
-            out_words = set(re.findall(r"[a-z0-9_-]+", out_lower))
-            overlap = [t for t in check_tokens if t in out_words]
-            coverage = len(overlap) / len(check_tokens)
-            if coverage < 0.25:
-                return False, f"Content verification failed: low semantic overlap ({coverage:.1%}, matched: {', '.join(overlap)})"
-
-        words = output_text.split()
-        if len(words) < 5:
-            return False, f"Output too short ({len(words)} words) to satisfy instruction"
-
-        return True, f"Assertion '{name}' met based on structural and content verification"

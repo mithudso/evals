@@ -1,97 +1,89 @@
-# Evals: Skill Corpus Benchmark & Evaluation Suite
+# Evals: skill evaluation tools
 
-A standardized evaluation, benchmarking, and optimization harness for AI agent skills. Designed to pair with the **Deep Eval Optimizer** (`deep-eval-optimizer` / `/deo`).
+A Python CLI toolkit for grading supplied skill responses, testing trigger
+boundaries, auditing evaluation suites, and aggregating benchmark exports. It
+includes reusable templates and an existing research corpus for skill evaluation.
 
-## Architecture
+Functional replay grades responses supplied by the caller. It does not execute an
+agent. A dry run grades expected answers only, and is labelled separately. Live
+agent execution is not implemented. Content heuristics are not evidence that code
+compiled, a model followed instructions, or a JSON Schema was satisfied.
 
-```
-~/dev/evals/
-├── templates/              # Reusable evaluation templates
-│   ├── functional-eval-template.json   # Multi-step execution & assertions
-│   ├── trigger-eval-template.json      # 20-query routing calibration
-│   ├── code-eval-template.json         # AST, compilation, diff minimalism
-│   └── adversarial-eval-template.json  # Prompt injection & corruption tests
-├── runner/                 # Execution engines
-│   ├── eval_runner.py      # Functional eval harness & timing
-│   ├── trigger_runner.py   # Trigger accuracy & near-miss tester
-│   └── grader.py           # Multi-strategy assertion engine
-├── benchmarks/             # Analysis & aggregation
-│   ├── suite_validator.py  # Passes A-L eval suite grader (Deep Eval Optimizer)
-│   └── aggregate.py        # Corpus-wide markdown & JSON report builder
-└── results/                # Per-skill evaluation logs & summaries
-    ├── summary.md
-    └── <skill-name>/
+## Quick start
+
+Prerequisites: Python 3.11 or newer, Git, `make`, and
+[uv](https://docs.astral.sh/uv/getting-started/installation/).
+
+```sh
+git clone https://github.com/mithudso/evals.git
+cd evals
+make setup
+make check
 ```
 
-## Quick Start
+To inspect a template's expectations without calling a model:
 
-### 1. Run Functional Evals
-```bash
-python3 runner/eval_runner.py templates/functional-eval-template.json --output-dir results/my-skill
+```sh
+uv run --extra dev --frozen python -m runner.eval_runner \
+  templates/functional-eval-template.json --dry-run
 ```
 
-### 2. Run Trigger Accuracy Test
-```bash
-python3 runner/trigger_runner.py templates/trigger-eval-template.json
-```
+The example templates contain broad checks and placeholder fixtures; their checks
+can fail. See [the replay walkthrough](docs/runbooks/validation-and-replay.md) for
+a self-contained input and the difference between replay and expectation checks.
 
-### 3. Audit & Grade an Eval Suite (Deep Eval Optimizer)
-```bash
-python3 benchmarks/suite_validator.py templates/functional-eval-template.json
-```
+## Commands
 
-### 4. Aggregate Corpus Benchmarks
-```bash
-python3 benchmarks/aggregate.py results results/summary.md
-```
+| Task | Command |
+|---|---|
+| Grade supplied responses | `uv run --frozen skill-eval suite.json --outputs outputs.json` |
+| Check trigger boundaries without embeddings | `uv run --frozen skill-triggers trigger-eval.json --skill-path /path/to/SKILL.md --lexical-only` |
+| Audit a suite | `uv run --frozen skill-suite-audit suite.json` |
+| Aggregate exports into a new report | `uv run --frozen skill-benchmarks results /tmp/evals-summary.md` |
+| Run tests, lint, formatting, and documentation checks | `make check` |
+| Build wheel and source archive | `make build` |
+| Check package advisories | `make audit` |
 
-## Eval Types
+Trigger evaluation requires both positive and negative queries. The acceptance
+bars are at least 90% positive triggers and at most 10% false triggers. Embedding
+mode uses the pinned `qwen3-embedding:4b` model and reports lexical fallback when
+embeddings are unavailable. Use `--lexical-only` to make no embedding requests.
 
-### 1. Functional Evals (`evals.json`)
-Measures whether an agent executes the skill correctly according to instructions, adheres to schemas, and satisfies all negative/positive constraints.
-- Fields: `id`, `name`, `prompt`, `expected_output`, `files`, `assertions`.
-- Assertions can be structural (JSON, tables, headings), deterministic, or semantic.
+## Repository map
 
-### 2. Trigger Accuracy Evals (`trigger-eval.json`)
-Measures routing precision:
-- **10 Positives (`should_trigger: true`)**: Varied natural user requests.
-- **10 Negatives (`should_trigger: false`)**: Near-misses with overlapping keywords that belong to sister skills or baseline queries.
-- Pass Bar: $\ge 90\%$ Positive Trigger Rate, $\le 10\%$ False Positive Rate.
+`runner/` contains grading, validation, trigger scoring, and shared defaults.
+`benchmarks/` contains suite audits and aggregation. `templates/` contains starting
+fixtures; `tests/` covers runtime behavior. `scripts/` maintains path indexes and
+workflow logs. See [architecture](docs/ARCHITECTURE.md) and
+[components](docs/COMPONENTS.md) for the APIs and data flow.
 
-## Research & Knowledge Dossiers
+Historical `results/` exports lack response provenance. Aggregation deduplicates
+identical records and reports legacy records separately from replay and dry-run
+records. These historical rates do not establish measured skill performance.
 
-Complete multi-source deep research (`/dr`), 5-neighborhood conceptual maps (`CFE`), and depth-first saturation dossiers (`rabbithole`) for all 5 core concepts:
+## Documentation
 
-- [Trigger Accuracy & Calibration](research/trigger-accuracy-and-calibration/) ([DR Report](research/trigger-accuracy-and-calibration/dr-report.md) · [Family Map](research/trigger-accuracy-and-calibration/concept-family.md) · [Rabbithole Dossier](research/trigger-accuracy-and-calibration/rabbithole-dossier.md))
-- [Functional Execution Benchmarking](research/functional-execution-benchmarking/) ([DR Report](research/functional-execution-benchmarking/dr-report.md) · [Family Map](research/functional-execution-benchmarking/concept-family.md) · [Rabbithole Dossier](research/functional-execution-benchmarking/rabbithole-dossier.md))
-- [Objective Assertion Engineering](research/objective-assertion-engineering/) ([DR Report](research/objective-assertion-engineering/dr-report.md) · [Family Map](research/objective-assertion-engineering/concept-family.md) · [Rabbithole Dossier](research/objective-assertion-engineering/rabbithole-dossier.md))
-- [Eval-Driven Iteration Loop](research/eval-driven-iteration-loop/) ([DR Report](research/eval-driven-iteration-loop/dr-report.md) · [Family Map](research/eval-driven-iteration-loop/concept-family.md) · [Rabbithole Dossier](research/eval-driven-iteration-loop/rabbithole-dossier.md))
-- [Deep Eval Optimization](research/deep-eval-optimization/) ([DR Report](research/deep-eval-optimization/dr-report.md) · [Family Map](research/deep-eval-optimization/concept-family.md) · [Rabbithole Dossier](research/deep-eval-optimization/rabbithole-dossier.md))
+Start with [the project wiki](docs/wiki/README.md), then use:
 
-### Second-Tier Depth Expansion Dossiers (`research/depth-expansion/`)
-Exhaustive `/dr`, `CFE`, and `rabbithole` passes on primary operational child concepts:
-- [Near-Miss Distractor Engineering](research/depth-expansion/near-miss-distractor-engineering/) ([DR Report](research/depth-expansion/near-miss-distractor-engineering/dr-report.md) · [Family Map](research/depth-expansion/near-miss-distractor-engineering/concept-family.md) · [Rabbithole Dossier](research/depth-expansion/near-miss-distractor-engineering/rabbithole-dossier.md))
-- [Delta Scoring & Lift Analysis](research/depth-expansion/delta-scoring-lift-analysis/) ([DR Report](research/depth-expansion/delta-scoring-lift-analysis/dr-report.md) · [Family Map](research/depth-expansion/delta-scoring-lift-analysis/concept-family.md) · [Rabbithole Dossier](research/depth-expansion/delta-scoring-lift-analysis/rabbithole-dossier.md))
-- [Negative Boundary Tripwires](research/depth-expansion/negative-boundary-tripwires/) ([DR Report](research/depth-expansion/negative-boundary-tripwires/dr-report.md) · [Family Map](research/depth-expansion/negative-boundary-tripwires/concept-family.md) · [Rabbithole Dossier](research/depth-expansion/negative-boundary-tripwires/rabbithole-dossier.md))
-- [Champion-Challenger Canary Gating](research/depth-expansion/champion-challenger-canary-gating/) ([DR Report](research/depth-expansion/champion-challenger-canary-gating/dr-report.md) · [Family Map](research/depth-expansion/champion-challenger-canary-gating/concept-family.md) · [Rabbithole Dossier](research/depth-expansion/champion-challenger-canary-gating/rabbithole-dossier.md))
-- [Answer Leakage Decontamination](research/depth-expansion/answer-leakage-decontamination/) ([DR Report](research/depth-expansion/answer-leakage-decontamination/dr-report.md) · [Family Map](research/depth-expansion/answer-leakage-decontamination/concept-family.md) · [Rabbithole Dossier](research/depth-expansion/answer-leakage-decontamination/rabbithole-dossier.md))
+- [Installation](docs/INSTALLATION.md), [onboarding](docs/onboarding.md), and [development](docs/DEVELOPMENT.md).
+- [Testing](docs/TESTING.md), [security](docs/SECURITY.md), and [known issues](docs/known-issues.md).
+- [Requirements](docs/requirements.md), [external calls](docs/external-calls.md), and [integration assumptions](docs/integrations-and-assumptions.md).
+- [Logging](docs/logging.md), [caching and optimization](docs/caching-and-optimization.md), and [MCP applicability](docs/MCP.md).
+- [Codebase overview](docs/codebase-overview.md) and [machine-readable file index](docs/high_signal_file_index.json).
 
-### Third-Tier Depth Expansion Dossiers (`research/tier3-expansion/`)
-Exhaustive `/dr`, `CFE`, and `rabbithole` passes on granular micro-architectural sub-concepts:
-- [Semantic Vector Boundary Mining](research/tier3-expansion/semantic-vector-boundary-mining/) ([DR Report](research/tier3-expansion/semantic-vector-boundary-mining/dr-report.md) · [Family Map](research/tier3-expansion/semantic-vector-boundary-mining/concept-family.md) · [Rabbithole Dossier](research/tier3-expansion/semantic-vector-boundary-mining/rabbithole-dossier.md))
-- [Causal Shapley Token Attribution](research/tier3-expansion/causal-shapley-token-attribution/) ([DR Report](research/tier3-expansion/causal-shapley-token-attribution/dr-report.md) · [Family Map](research/tier3-expansion/causal-shapley-token-attribution/concept-family.md) · [Rabbithole Dossier](research/tier3-expansion/causal-shapley-token-attribution/rabbithole-dossier.md))
-- [Dynamic Honeypot Syscall Interception](research/tier3-expansion/dynamic-honeypot-syscall-interception/) ([DR Report](research/tier3-expansion/dynamic-honeypot-syscall-interception/dr-report.md) · [Family Map](research/tier3-expansion/dynamic-honeypot-syscall-interception/concept-family.md) · [Rabbithole Dossier](research/tier3-expansion/dynamic-honeypot-syscall-interception/rabbithole-dossier.md))
-- [Bayesian Sequential Canary Early Stopping](research/tier3-expansion/bayesian-sequential-canary-early-stopping/) ([DR Report](research/tier3-expansion/bayesian-sequential-canary-early-stopping/dr-report.md) · [Family Map](research/tier3-expansion/bayesian-sequential-canary-early-stopping/concept-family.md) · [Rabbithole Dossier](research/tier3-expansion/bayesian-sequential-canary-early-stopping/rabbithole-dossier.md))
-- [Attention Gradient Saliency Decontamination](research/tier3-expansion/attention-gradient-saliency-decontamination/) ([DR Report](research/tier3-expansion/attention-gradient-saliency-decontamination/dr-report.md) · [Family Map](research/tier3-expansion/attention-gradient-saliency-decontamination/concept-family.md) · [Rabbithole Dossier](research/tier3-expansion/attention-gradient-saliency-decontamination/rabbithole-dossier.md))
+## Research corpus
 
-### Fourth-Tier Depth Expansion Dossiers (`research/tier4-expansion/`)
-Exhaustive `/dr`, `CFE`, and `rabbithole` passes on nano-architectural execution sub-concepts:
-- [HotFlip Token Gradient Projection](research/tier4-expansion/hotflip-token-gradient-projection/) ([DR Report](research/tier4-expansion/hotflip-token-gradient-projection/dr-report.md) · [Family Map](research/tier4-expansion/hotflip-token-gradient-projection/concept-family.md) · [Rabbithole Dossier](research/tier4-expansion/hotflip-token-gradient-projection/rabbithole-dossier.md))
-- [Kernel SHAP Power Set Stratification](research/tier4-expansion/kernel-shap-power-set-stratification/) ([DR Report](research/tier4-expansion/kernel-shap-power-set-stratification/dr-report.md) · [Family Map](research/tier4-expansion/kernel-shap-power-set-stratification/concept-family.md) · [Rabbithole Dossier](research/tier4-expansion/kernel-shap-power-set-stratification/rabbithole-dossier.md))
-- [eBPF VFS Kprobe & Tracepoint Harness](research/tier4-expansion/ebpf-vfs-kprobe-tracepoint-harness/) ([DR Report](research/tier4-expansion/ebpf-vfs-kprobe-tracepoint-harness/dr-report.md) · [Family Map](research/tier4-expansion/ebpf-vfs-kprobe-tracepoint-harness/concept-family.md) · [Rabbithole Dossier](research/tier4-expansion/ebpf-vfs-kprobe-tracepoint-harness/rabbithole-dossier.md))
-- [Wald SPRT Log-Odds Martingale Gating](research/tier4-expansion/wald-sprt-log-odds-martingale-gating/) ([DR Report](research/tier4-expansion/wald-sprt-log-odds-martingale-gating/dr-report.md) · [Family Map](research/tier4-expansion/wald-sprt-log-odds-martingale-gating/concept-family.md) · [Rabbithole Dossier](research/tier4-expansion/wald-sprt-log-odds-martingale-gating/rabbithole-dossier.md))
-- [Riemann Integrated Gradients Attribution](research/tier4-expansion/riemann-integrated-gradients-attribution/) ([DR Report](research/tier4-expansion/riemann-integrated-gradients-attribution/dr-report.md) · [Family Map](research/tier4-expansion/riemann-integrated-gradients-attribution/concept-family.md) · [Rabbithole Dossier](research/tier4-expansion/riemann-integrated-gradients-attribution/rabbithole-dossier.md))
+The existing research and context packs are retained as reference material; this
+bootstrap does not independently reverify their claims or refresh their research.
 
+- [Trigger calibration](research/trigger-accuracy-and-calibration/), [functional execution](research/functional-execution-benchmarking/), and [assertion engineering](research/objective-assertion-engineering/).
+- [Iteration loops](research/eval-driven-iteration-loop/) and [deep eval optimization](research/deep-eval-optimization/).
+- [Depth expansion](research/depth-expansion/), [tier 3](research/tier3-expansion/), [tier 4](research/tier4-expansion/), and [context packs](packs/).
 
+## Contributing and license
 
+Read [contributing guidance](CONTRIBUTING.md), [agent guidance](AGENTS.md), and the
+[code of conduct](CODE_OF_CONDUCT.md). Report security issues through
+[the security reporting guidance](.github/SECURITY.md).
 
+No `LICENSE` file is currently present. License selection remains open.
