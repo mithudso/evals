@@ -620,12 +620,12 @@ index 1771508..d9f2ff4 100644
 @@ -1,97 +1,89 @@
 -# Evals: Skill Corpus Benchmark & Evaluation Suite
 +# Evals: skill evaluation tools
- 
+
 -A standardized evaluation, benchmarking, and optimization harness for AI agent skills. Designed to pair with the **Deep Eval Optimizer** (`deep-eval-optimizer` / `/deo`).
 +A Python CLI toolkit for grading supplied skill responses, testing trigger
 +boundaries, auditing evaluation suites, and aggregating benchmark exports. It
 +includes reusable templates and an existing research corpus for skill evaluation.
- 
+
 -## Architecture
 +Functional replay grades responses supplied by the caller. It does not execute an
 +agent. A dry run grades expected answers only, and is labelled separately. Live
@@ -664,7 +664,7 @@ index 03c74d0..a24d2e7 100644
 +when they name the same skill. Replay rates describe supplied responses; they do
 +not authenticate how those responses were produced.
  """
- 
+
 -import sys
 +import argparse
 ````
@@ -687,7 +687,7 @@ index 5e6ea34..0a0f5c8 100644
 +Implemented checks cover A, C, D, F, G, H, I, and L. The results explicitly
 +identify B, E, J, and K as unimplemented rather than claiming those checks passed.
  """
- 
+
 -import sys
 +import argparse
  import json
@@ -1247,7 +1247,7 @@ index 89b91c6..cb25527 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -4,20 +4,35 @@ build-backend = "setuptools.build_meta"
- 
+
  [project]
  name = "evals"
 -version = "0.1.0"
@@ -1342,7 +1342,7 @@ index a3b3b84..c41dbcb 100644
 +This module never executes code or validates an unspecified JSON Schema. An
 +unsupported check fails with evidence instead of being treated as successful.
  """
- 
+
 -import re
 ````
 Preview truncated: 371 additional diff lines.
@@ -1364,7 +1364,7 @@ index 2a3a1f6..d964c59 100644
 +1. Cosine similarity (via Ollama embeddings) + plain token overlap.
  2. Explicit boundary checks: checks match against TRIGGER clauses and penalty for SKIP clauses.
  """
- 
+
 -import sys
 -import os
 -import re
@@ -1616,7 +1616,7 @@ index 8c67550..f419b48 100644
  import threading
  from http.server import BaseHTTPRequestHandler, HTTPServer
 +from pathlib import Path
- 
+
  import pytest
 -
  import trigger_runner as t
@@ -1823,7 +1823,7 @@ Files written: 61. Files updated: 9. Applicable baseline is implemented; remaini
 | `docs/requirements.md` | 43 | New |
 | `docs/runbooks/validation-and-replay.md` | 87 | New |
 | `docs/wiki/README.md` | 43 | New |
-| `memory.md` | 34 | New |
+| `memory.md` | 48 | New |
 | `prompts.md` | 6 | New |
 | `pyproject.toml` | 38 | Updated |
 | `runner/__init__.py` | 1 | New |
