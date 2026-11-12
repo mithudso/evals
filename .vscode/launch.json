@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Check functional expectations (dry run)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "runner.eval_runner",
+      "args": ["templates/functional-eval-template.json", "--dry-run"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    }
+  ]
+}

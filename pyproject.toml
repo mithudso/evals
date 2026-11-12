@@ -4,20 +4,35 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "evals"
-version = "0.1.0"
+version = "0.1.1"
 description = "Eval runners and benchmarks for Claude skills"
 requires-python = ">=3.11"
 dependencies = [
   "pyyaml>=6",
-  "ollama-client @ git+https://github.com/mithudso/ollama-client.git",
+  "markdown-it-py>=4,<5",
+  "ollama-client @ git+https://github.com/mithudso/ollama-client.git@740aca7cbc5aab4941779f35f1ca17b59fe73c7f",
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8"]
+dev = ["pytest>=8,<10", "ruff>=0.16.3,<0.17", "pip-audit>=2.9,<3"]
 
-[tool.setuptools]
-py-modules = []
+[project.scripts]
+skill-eval = "runner.eval_runner:main"
+skill-triggers = "runner.trigger_runner:main"
+skill-suite-audit = "benchmarks.suite_validator:main"
+skill-benchmarks = "benchmarks.aggregate:main"
+
+[tool.setuptools.packages.find]
+include = ["runner*", "benchmarks*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["runner"]
+pythonpath = [".", "runner"]
+filterwarnings = ["error::ResourceWarning"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

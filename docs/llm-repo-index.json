@@ -1,0 +1,1848 @@
+{
+  "schema_version": 1,
+  "files": [
+    {
+      "path": ".editorconfig",
+      "purpose": "Repository config: .editorconfig.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".env.example",
+      "purpose": "Repository config: .env.example.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".gitattributes",
+      "purpose": "Repository config: .gitattributes.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".github/CODEOWNERS",
+      "purpose": "Repository config: CODEOWNERS.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "purpose": "Repository docs: bug_report.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "purpose": "Repository docs: feature_request.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "purpose": "Repository docs: PULL_REQUEST_TEMPLATE.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".github/SECURITY.md",
+      "purpose": "Repository docs: SECURITY.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".github/actions/private-dependency/action.yml",
+      "purpose": "Repository config: action.yml.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".github/copilot-instructions.md",
+      "purpose": "Repository docs: copilot-instructions.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "purpose": "Repository config: dependabot.yml.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "purpose": "Repository config: ci.yml.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".gitignore",
+      "purpose": "Repository config: .gitignore.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".mcp.json",
+      "purpose": "Repository config: .mcp.json.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".vscode/extensions.json",
+      "purpose": "Repository config: extensions.json.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".vscode/launch.json",
+      "purpose": "Repository config: launch.json.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".vscode/mcp.json",
+      "purpose": "Repository config: mcp.json.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": ".vscode/settings.json",
+      "purpose": "Repository config: settings.json.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "AGENTS.md",
+      "purpose": "Repository docs: AGENTS.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "CLAUDE.md",
+      "purpose": "Repository docs: CLAUDE.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "purpose": "Repository docs: CODE_OF_CONDUCT.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "purpose": "Repository docs: CONTRIBUTING.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "GEMINI.md",
+      "purpose": "Repository docs: GEMINI.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "Makefile",
+      "purpose": "Repository config: Makefile.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "README.md",
+      "purpose": "Repository docs: README.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "benchmarks/__init__.py",
+      "purpose": "Suite audits and provenance-aware benchmark reports.",
+      "layer": "library",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "benchmarks/aggregate.py",
+      "purpose": "Aggregate benchmark exports without mixing their output provenance.",
+      "layer": "library",
+      "exports": [
+        "aggregate_results",
+        "main"
+      ],
+      "depends_on": [
+        "runner/config.py"
+      ]
+    },
+    {
+      "path": "benchmarks/suite_validator.py",
+      "purpose": "Audit JSON suite inputs and a documented subset of Deep Eval Optimizer checks.",
+      "layer": "library",
+      "exports": [
+        "validate_suite",
+        "main"
+      ],
+      "depends_on": [
+        "runner/config.py",
+        "runner/validation.py"
+      ]
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "purpose": "Repository docs: ARCHITECTURE.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/COMPONENTS.md",
+      "purpose": "Repository docs: COMPONENTS.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/DEVELOPMENT.md",
+      "purpose": "Repository docs: DEVELOPMENT.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/INSTALLATION.md",
+      "purpose": "Repository docs: INSTALLATION.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/MCP.md",
+      "purpose": "Repository docs: MCP.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/SECURITY.md",
+      "purpose": "Repository docs: SECURITY.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/TESTING.md",
+      "purpose": "Repository docs: TESTING.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/archive/README.md",
+      "purpose": "Repository docs: README.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/caching-and-optimization.md",
+      "purpose": "Repository docs: caching-and-optimization.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/code-optimizer-report-2026-11-11.md",
+      "purpose": "Repository docs: code-optimizer-report-2026-11-11.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/external-calls.md",
+      "purpose": "Repository docs: external-calls.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/integrations-and-assumptions.md",
+      "purpose": "Repository docs: integrations-and-assumptions.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/known-issues.md",
+      "purpose": "Repository docs: known-issues.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/logging.md",
+      "purpose": "Repository docs: logging.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/onboarding.md",
+      "purpose": "Repository docs: onboarding.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/repo-bootstrap-audit-2026-11-11.md",
+      "purpose": "Repository docs: repo-bootstrap-audit-2026-11-11.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/requirements.md",
+      "purpose": "Repository docs: requirements.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/runbooks/validation-and-replay.md",
+      "purpose": "Repository docs: validation-and-replay.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "docs/wiki/README.md",
+      "purpose": "Repository docs: README.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "llms.txt",
+      "purpose": "Repository docs: llms.txt.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "memory.md",
+      "purpose": "Repository docs: memory.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/deep-eval-optimization/llms-facts.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/deep-eval-optimization/llms-full.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/deep-eval-optimization/llms-small.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/deep-eval-optimization/llms-vocabulary.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/deep-eval-optimization/llms.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/eval-driven-iteration-loop/llms-facts.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/eval-driven-iteration-loop/llms-full.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/eval-driven-iteration-loop/llms-small.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/eval-driven-iteration-loop/llms-vocabulary.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/eval-driven-iteration-loop/llms.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/functional-execution-benchmarking/llms-facts.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/functional-execution-benchmarking/llms-full.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/functional-execution-benchmarking/llms-small.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/functional-execution-benchmarking/llms-vocabulary.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/functional-execution-benchmarking/llms.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/objective-assertion-engineering/llms-facts.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/objective-assertion-engineering/llms-full.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/objective-assertion-engineering/llms-small.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/objective-assertion-engineering/llms-vocabulary.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/objective-assertion-engineering/llms.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/skill-evals/llms-facts.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/skill-evals/llms-full.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/skill-evals/llms-small.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/skill-evals/llms-vocabulary.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/skill-evals/llms.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/trigger-accuracy-and-calibration/llms-facts.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/trigger-accuracy-and-calibration/llms-full.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/trigger-accuracy-and-calibration/llms-small.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/trigger-accuracy-and-calibration/llms-vocabulary.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "packs/trigger-accuracy-and-calibration/llms.txt",
+      "purpose": "Existing LLM reference pack; no embeddings are generated by this index.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "prompts.md",
+      "purpose": "Repository docs: prompts.md.",
+      "layer": "docs",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "pyproject.toml",
+      "purpose": "Repository config: pyproject.toml.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/deep-eval-optimization/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/deep-eval-optimization/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/deep-eval-optimization/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/depth-expansion/answer-leakage-decontamination/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/depth-expansion/answer-leakage-decontamination/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/depth-expansion/answer-leakage-decontamination/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/depth-expansion/champion-challenger-canary-gating/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/depth-expansion/champion-challenger-canary-gating/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/depth-expansion/champion-challenger-canary-gating/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/depth-expansion/delta-scoring-lift-analysis/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/depth-expansion/delta-scoring-lift-analysis/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/depth-expansion/delta-scoring-lift-analysis/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/depth-expansion/near-miss-distractor-engineering/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/depth-expansion/near-miss-distractor-engineering/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/depth-expansion/near-miss-distractor-engineering/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/depth-expansion/negative-boundary-tripwires/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/depth-expansion/negative-boundary-tripwires/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/depth-expansion/negative-boundary-tripwires/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/eval-driven-iteration-loop/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/eval-driven-iteration-loop/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/eval-driven-iteration-loop/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/functional-execution-benchmarking/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/functional-execution-benchmarking/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/functional-execution-benchmarking/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/objective-assertion-engineering/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/objective-assertion-engineering/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/objective-assertion-engineering/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier3-expansion/attention-gradient-saliency-decontamination/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier3-expansion/attention-gradient-saliency-decontamination/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier3-expansion/attention-gradient-saliency-decontamination/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier3-expansion/bayesian-sequential-canary-early-stopping/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier3-expansion/bayesian-sequential-canary-early-stopping/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier3-expansion/bayesian-sequential-canary-early-stopping/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier3-expansion/causal-shapley-token-attribution/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier3-expansion/causal-shapley-token-attribution/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier3-expansion/causal-shapley-token-attribution/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier3-expansion/dynamic-honeypot-syscall-interception/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier3-expansion/dynamic-honeypot-syscall-interception/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier3-expansion/dynamic-honeypot-syscall-interception/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier3-expansion/semantic-vector-boundary-mining/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier3-expansion/semantic-vector-boundary-mining/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier3-expansion/semantic-vector-boundary-mining/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier4-expansion/ebpf-vfs-kprobe-tracepoint-harness/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier4-expansion/ebpf-vfs-kprobe-tracepoint-harness/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier4-expansion/ebpf-vfs-kprobe-tracepoint-harness/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier4-expansion/hotflip-token-gradient-projection/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier4-expansion/hotflip-token-gradient-projection/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier4-expansion/hotflip-token-gradient-projection/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier4-expansion/kernel-shap-power-set-stratification/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier4-expansion/kernel-shap-power-set-stratification/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier4-expansion/kernel-shap-power-set-stratification/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier4-expansion/riemann-integrated-gradients-attribution/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier4-expansion/riemann-integrated-gradients-attribution/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier4-expansion/riemann-integrated-gradients-attribution/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier4-expansion/wald-sprt-log-odds-martingale-gating/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier4-expansion/wald-sprt-log-odds-martingale-gating/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/tier4-expansion/wald-sprt-log-odds-martingale-gating/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/trigger-accuracy-and-calibration/concept-family.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/trigger-accuracy-and-calibration/dr-report.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "research/trigger-accuracy-and-calibration/rabbithole-dossier.md",
+      "purpose": "Existing research reference; claims were not reverified in this bootstrap.",
+      "layer": "reference",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/adversarial-eval-template-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/ai-agents-orchestration/ai-agents-orchestration-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/ai-coding-agents-tools/ai-coding-agents-tools-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/ai-llm-model-layer/ai-llm-model-layer-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/ai-mcp-sdk-prompting/ai-mcp-sdk-prompting-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/ai-rag-retrieval/ai-rag-retrieval-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/applied-psychology/applied-psychology-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/atlas-diagnostics-expert/atlas-diagnostics-expert-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/aws-cloud/aws-cloud-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/bioinformatics-databases/bioinformatics-databases-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/blockchain/blockchain-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/career-and-formal-writing/career-and-formal-writing-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/chrome-extension-expert/chrome-extension-expert-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/claude-code-skills/claude-code-skills-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/cloudflare-platform/cloudflare-platform-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/code-deep-optimizer/code-deep-optimizer-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/code-deep-optimizer/code-skill-template-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/code-skill-template-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/content-and-marketing-writing/content-and-marketing-writing-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/content-ingestion-extraction/content-ingestion-extraction-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/da-1-foundations-theory/da-1-foundations-theory-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/da-2-data-analysis-lifecycle/da-2-data-analysis-lifecycle-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/da-3-data-acquisition-sampling/da-3-data-acquisition-sampling-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/da-analytical-methods/da-analytical-methods-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/da-applied-and-communication/da-applied-and-communication-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/da-data-engineering-platform/da-data-engineering-platform-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/ddo/ddo-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/deep-eval-optimizer-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/deep-eval-optimizer/deep-eval-optimizer-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/deep-query-optimizer/deep-query-optimizer-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/deep-research/deep-research-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/design-deep-optimizer/design-deep-optimizer-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/dev-cli-tools/dev-cli-tools-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/devops-containers-cicd/devops-containers-cicd-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/devops-linux-admin/devops-linux-admin-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/devops-linux-internals/devops-linux-internals-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/devops-observability/devops-observability-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/distributed-systems-and-datastores/distributed-systems-and-datastores-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/document-formats/document-formats-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/ecommerce-operations/ecommerce-operations-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/example-skill-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/executive-comms/executive-comms-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/firebase-platform/firebase-platform-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/firecrawl/firecrawl-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/frontend-ui/frontend-ui-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/fsi-banking-regulatory/fsi-banking-regulatory-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/gcp-data-engineering/gcp-data-engineering-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/gemini-api/gemini-api-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/integration-clients/integration-clients-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/lang-go-and-mobile/lang-go-and-mobile-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/lang-js-ts/lang-js-ts-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/lang-python/lang-python-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/legal/legal-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/llms-txt-tooling/llms-txt-tooling-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/log-query-languages/log-query-languages-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/misc-catch-all/misc-catch-all-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/mongodb-atlas-expert/mongodb-atlas-expert-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/mongodb-expert/mongodb-expert-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/mongodb-operations-expert/mongodb-operations-expert-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/networking/networking-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/physical-access-control/physical-access-control-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/prompt-deep-optimizer/adversarial-eval-template-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/prompt-deep-optimizer/prompt-deep-optimizer-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/psychology/psychology-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/research-methodology/research-methodology-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/security-review/security-review-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/skill-optimizer/example-skill-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/skill-optimizer/skill-optimizer-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/software-engineering-patterns/software-engineering-patterns-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/summary.md",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/tam-operations/tam-operations-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/technical-instruction/technical-instruction-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/technical-writing-craft/technical-writing-craft-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/trading-and-investing/trading-and-investing-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/web-dev-practices/web-dev-practices-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "results/writing-expert/writing-expert-benchmark.json",
+      "purpose": "Historical benchmark artifact; execution provenance is unverified.",
+      "layer": "data",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "runner/__init__.py",
+      "purpose": "Skill evaluation runners, grading, and shared validation.",
+      "layer": "library",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "runner/config.py",
+      "purpose": "Default evaluation settings; public CLI parameters may override these values.",
+      "layer": "library",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "runner/eval_runner.py",
+      "purpose": "Grade supplied functional responses or explicitly check expectations.",
+      "layer": "library",
+      "exports": [
+        "run_suite",
+        "main"
+      ],
+      "depends_on": [
+        "runner/grader.py",
+        "runner/validation.py"
+      ]
+    },
+    {
+      "path": "runner/grader.py",
+      "purpose": "Grade literal and structural checks; label token overlap as a heuristic.",
+      "layer": "library",
+      "exports": [
+        "AssertionGrader"
+      ],
+      "depends_on": [
+        "runner/config.py",
+        "runner/validation.py"
+      ]
+    },
+    {
+      "path": "runner/trigger_runner.py",
+      "purpose": "Trigger Evaluation Runner.",
+      "layer": "library",
+      "exports": [
+        "tokenize",
+        "get_embedding",
+        "cosine_similarity",
+        "extract_skill_profile",
+        "score_query_match",
+        "evaluate_triggers",
+        "main"
+      ],
+      "depends_on": [
+        "runner/config.py",
+        "runner/validation.py"
+      ]
+    },
+    {
+      "path": "runner/validation.py",
+      "purpose": "Pure validation shared by evaluation runners and suite auditing.",
+      "layer": "library",
+      "exports": [
+        "is_safe_skill_name",
+        "validate_functional_suite",
+        "validate_trigger_suite"
+      ],
+      "depends_on": []
+    },
+    {
+      "path": "scripts/__init__.py",
+      "purpose": "Repository maintenance utilities; no model or embedding execution.",
+      "layer": "tooling",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "scripts/check_doc_indexes.py",
+      "purpose": "Check retrieval-index drift and local links in maintained project guidance.",
+      "layer": "tooling",
+      "exports": [
+        "check_indexes",
+        "check_links",
+        "main"
+      ],
+      "depends_on": [
+        "scripts/generate_doc_indexes.py"
+      ]
+    },
+    {
+      "path": "scripts/generate_doc_indexes.py",
+      "purpose": "Generate deterministic path indexes without embedding or executing source.",
+      "layer": "tooling",
+      "exports": [
+        "source_paths",
+        "file_card",
+        "render_indexes",
+        "write_indexes"
+      ],
+      "depends_on": []
+    },
+    {
+      "path": "scripts/rotate_workflow_logs.py",
+      "purpose": "Archive old workflow sections without deleting history or active editor buffers.",
+      "layer": "tooling",
+      "exports": [
+        "rotate_logs",
+        "main"
+      ],
+      "depends_on": []
+    },
+    {
+      "path": "templates/adversarial-eval-template.json",
+      "purpose": "Repository config: adversarial-eval-template.json.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "templates/code-eval-template.json",
+      "purpose": "Repository config: code-eval-template.json.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "templates/functional-eval-template.json",
+      "purpose": "Repository config: functional-eval-template.json.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "templates/trigger-eval-template.json",
+      "purpose": "Repository config: trigger-eval-template.json.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    },
+    {
+      "path": "tests/test_aggregate.py",
+      "purpose": "Aggregation preserves provenance, validates counters, and renders safe reports.",
+      "layer": "test",
+      "exports": [
+        "record",
+        "write_record",
+        "test_rates_are_derived_from_counts",
+        "test_identical_exports_deduplicate_but_distinct_runs_remain",
+        "test_provenance_groups_do_not_mix_measured_totals",
+        "test_invalid_numeric_records_fail_clearly",
+        "test_invalid_record_shape_fails_clearly",
+        "test_markdown_name_is_escaped_and_order_is_stable",
+        "test_nested_output_directories_are_created",
+        "test_cli_reports_invalid_record_without_traceback",
+        "test_oversized_duration_has_a_file_addressed_validation_error",
+        "test_nonfinite_nested_values_have_a_file_addressed_validation_error",
+        "test_report_destination_cannot_alias_a_source_export",
+        "test_report_destination_cannot_poison_future_export_discovery",
+        "test_deeply_nested_benchmark_json_has_a_clean_file_addressed_error"
+      ],
+      "depends_on": [
+        "benchmarks/__init__.py"
+      ]
+    },
+    {
+      "path": "tests/test_bootstrap_tools.py",
+      "purpose": "Behavioral checks for index drift and non-destructive workflow log rotation.",
+      "layer": "test",
+      "exports": [
+        "repo",
+        "test_index_generation_is_deterministic_and_detects_new_files",
+        "test_checker_rejects_dead_or_escaping_paths",
+        "test_links_inside_nested_diff_fences_are_examples",
+        "test_rotate_retains_recent_sections_and_archives_old_content",
+        "test_rotate_refuses_active_editor_without_writing",
+        "test_rotate_preserves_a_concurrent_edit",
+        "test_append_after_final_guard_is_preserved_in_archive",
+        "test_rotation_preserves_a_source_recreated_during_publication"
+      ],
+      "depends_on": [
+        "scripts/__init__.py",
+        "scripts/check_doc_indexes.py",
+        "scripts/generate_doc_indexes.py",
+        "scripts/rotate_workflow_logs.py"
+      ]
+    },
+    {
+      "path": "tests/test_eval_runner.py",
+      "purpose": "Replay evaluates observed responses; dry-run only checks supplied expectations.",
+      "layer": "test",
+      "exports": [
+        "write_suite",
+        "test_replay_uses_observed_response_without_prompt_or_expected_leakage",
+        "test_dry_run_grades_expectation_verbatim_without_synthetic_structure",
+        "test_outputs_mapping_can_supply_observed_response",
+        "test_missing_observed_output_is_error_before_output_directory_write",
+        "test_live_execution_is_rejected_before_output_write",
+        "test_unsafe_skill_filename_and_existing_output_symlink_are_rejected",
+        "test_case_timing_includes_grading",
+        "test_operational_errors_log_without_response_or_prompt_content",
+        "test_cli_reports_failed_assertions_and_accepts_outputs_file",
+        "test_cli_rejects_ambiguous_or_non_object_outputs_file",
+        "test_outputs_mapping_rejects_unknown_id_and_non_string_response",
+        "test_cli_rejects_deeply_nested_json_without_a_traceback",
+        "test_benchmark_destination_cannot_overwrite_input_suite",
+        "test_cli_benchmark_destination_cannot_overwrite_outputs_input"
+      ],
+      "depends_on": [
+        "runner/__init__.py"
+      ]
+    },
+    {
+      "path": "tests/test_grader.py",
+      "purpose": "Regression guards for unsupported checks and falsely successful assertions.",
+      "layer": "test",
+      "exports": [
+        "grade",
+        "test_explicit_targets_keep_double_quotes_and_short_literals",
+        "test_deterministic_requires_every_literal",
+        "test_without_does_not_override_deterministic_type",
+        "test_mixed_positive_and_negative_requirements_fail_closed",
+        "test_negative_requires_identifiable_prohibited_targets",
+        "test_invalid_assertions_fail_without_crashing",
+        "test_schema_cannot_claim_validation_from_keyword_overlap",
+        "test_structural_check_cannot_succeed_without_supported_criterion",
+        "test_diff_or_code_requires_actual_complete_artifact",
+        "test_complete_code_fence_and_unified_diff_are_supported",
+        "test_structural_json_fails_invalid_and_accepts_valid_json",
+        "test_heuristic_result_names_its_limit",
+        "test_explicit_positive_literal_is_not_reinterpreted_as_prohibition",
+        "test_ordinary_negation_cannot_bypass_explicit_positive_types",
+        "test_negation_words_remain_valid_when_explicitly_quoted",
+        "test_unified_diff_requires_complete_consistent_hunks",
+        "test_unified_diff_accepts_multiple_files_hunks_and_no_newline_markers",
+        "test_deep_json_grading_matches_runtime_parser_capability",
+        "test_json_decoder_recursion_is_a_failed_grade",
+        "test_structural_examples_do_not_count_as_document_structure",
+        "test_actual_markdown_structure_still_passes"
+      ],
+      "depends_on": [
+        "runner/grader.py"
+      ]
+    },
+    {
+      "path": "tests/test_suite_validator.py",
+      "purpose": "Suite validation rejects malformed schemas and checks real fixture paths.",
+      "layer": "test",
+      "exports": [
+        "suite",
+        "test_schema_errors_are_pass_l_findings",
+        "test_missing_and_directory_fixtures_are_findings",
+        "test_fixture_paths_are_relative_to_suite",
+        "test_leakage_detection_is_case_insensitive",
+        "test_malformed_json_is_reported_without_traceback",
+        "test_validator_reports_implemented_coverage",
+        "test_cli_returns_failure_for_analytical_findings",
+        "test_cli_returns_failure_for_missing_file",
+        "test_one_repeated_token_is_detected_as_low_entropy",
+        "test_deeply_nested_suite_json_is_a_clean_file_addressed_error"
+      ],
+      "depends_on": [
+        "benchmarks/__init__.py"
+      ]
+    },
+    {
+      "path": "tests/test_trigger_runner.py",
+      "purpose": "trigger_runner embedding path: model pinned, [] on failure, cosine semantics preserved.",
+      "layer": "test",
+      "exports": [
+        "Fake",
+        "host",
+        "test_default_model_is_pinned_qwen3",
+        "test_model_override_respected",
+        "test_unreachable_returns_empty_list_fast",
+        "test_cosine_semantics",
+        "test_valid_nonpositive_cosine_keeps_hybrid_weights",
+        "test_stopword_only_query_reports_the_selected_lexical_mode",
+        "test_incompatible_embeddings_use_explicit_lexical_fallback",
+        "test_invalid_trigger_suites_are_rejected_before_embedding",
+        "test_oversized_integer_threshold_is_a_validation_error",
+        "test_invalid_skill_frontmatter_has_clear_validation_error",
+        "test_lexical_only_evaluation_never_requests_embeddings",
+        "test_embedding_fallback_warning_does_not_expose_input_or_error",
+        "test_server_fixture_closes_listening_socket",
+        "test_lexical_cli_supports_offline_runs",
+        "test_deeply_nested_trigger_json_is_a_clean_cli_error"
+      ],
+      "depends_on": []
+    },
+    {
+      "path": "tests/test_validation.py",
+      "purpose": "Pure suite validation protects callers before any execution or output write.",
+      "layer": "test",
+      "exports": [
+        "functional",
+        "test_valid_suite_is_not_mutated",
+        "test_skill_name_rejects_unsafe_filename_components",
+        "test_invalid_root_and_empty_cases_return_errors",
+        "test_nested_errors_report_field_locations",
+        "test_duplicate_ids_include_numeric_string_output_key_collision",
+        "test_vacuous_or_malformed_assertions_are_invalid",
+        "test_trigger_validates_types_query_and_both_classes"
+      ],
+      "depends_on": [
+        "runner/validation.py"
+      ]
+    },
+    {
+      "path": "uv.lock",
+      "purpose": "Repository config: uv.lock.",
+      "layer": "config",
+      "exports": [],
+      "depends_on": []
+    }
+  ]
+}
