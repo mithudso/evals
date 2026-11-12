@@ -61,7 +61,7 @@ Rotate oversized logs with `scripts/rotate_workflow_logs.py`; keep archives unde
 `.github/workflows/ci.yml` runs on PRs and pushes to `main`. Python 3.11 and 3.14
 jobs install the frozen development environment, run `make check`, and build.
 A separate job runs the package advisory audit. GitHub Actions are pinned by
-commit. Dependabot checks the uv and GitHub Actions ecosystems weekly.
+commit. Dependabot is scheduled weekly for the uv and GitHub Actions ecosystems.
 
 CI requires the `OLLAMA_CLIENT_DEPLOY_KEY` Actions secret: a dedicated read-only
 deploy key installed on the private dependency repository. The local composite
@@ -71,6 +71,13 @@ this is a public repository and the dependency source is private. A missing
 secret fails clearly; fork PRs do not receive an alternative privileged workflow.
 The workflow uses `pull_request`, not `pull_request_target`. Do not store a key in
 the repository or substitute a broad personal token.
+
+The first post-merge GitHub Actions update job succeeded. The separate uv update
+job failed with `git_dependencies_not_reachable` for the private dependency.
+The Actions-only deploy key does not configure the Dependabot updater's Git
+credentials. Python dependency version updates remain limited until that service
+receives separately approved private-source access. Reviewed local lockfile updates and
+the CI package advisory check remain available. See [known issues](known-issues.md).
 
 For an intentional dependency change, edit `pyproject.toml`, run `uv lock`, review
 `uv.lock`, then rerun validation. Do not replace the pinned `ollama-client` revision

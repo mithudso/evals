@@ -1,5 +1,28 @@
 # Evals memory log
 
+## v0.1.2 - 2026-11-11
+
+- Request context:
+  - Complete the original optimization/bootstrap delivery after the owner's
+    approval of the scoped read-only CI dependency key.
+- Completed:
+  - PR #1 merged as `b474f3dc925142cc00c213d6337583584734b2ce`.
+  - GitHub CI passed Python 3.11, Python 3.14 and dependency audit on the final
+    PR commit and merged `main`; both Python jobs passed 154 tests.
+  - The read-only dependency key and Actions secret are configured. Temporary
+    local key files were removed. No private source was vendored or cached.
+  - Documented the separate Dependabot uv updater's private Git access failure.
+- Active task:
+  - No remaining runtime implementation. The documentation follow-up PR and its
+    checks are the delivery record for this version.
+- Known gap:
+  - The Actions-only credential does not configure Dependabot's updater. The uv
+    job failed with `git_dependencies_not_reachable`; private access for that
+    service requires a separately scoped grant.
+- Next steps:
+  - Use reviewed local lock updates while automated uv updates lack access.
+    Keep the GitHub Actions updater and CI advisory checks distinct from that gap.
+
 ## v0.1.1 - 2026-11-11
 
 - User request:
