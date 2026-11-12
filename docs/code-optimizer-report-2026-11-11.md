@@ -90,7 +90,7 @@ branch on both runtimes.
 | `make build` | Reproduced: wheel contains zero runtime modules | Wheel and source archive build; runtime modules present | PASS |
 | Installed console scripts outside checkout | Not installed by baseline wheel | Fresh wheel install: four CLI imports; replay and aggregation pass | PASS |
 | `make audit` | No configured gate | No known package advisories; editable root skipped | PASS |
-| Remote CI on Python 3.11 and 3.14 | No workflow | Initial run failed private dependency authentication; read-only-key configuration prepared | Access approval required |
+| Remote CI on Python 3.11 and 3.14 | No workflow | Python 3.11, Python 3.14 and dependency audit passed on 39ba3f5; final PR checks are authoritative | PASS |
 
 Tests use synthetic fixtures, fake localhost HTTP and mocked embeddings. Red-before-green evidence: initial functional/grader regressions had 25 failures and 3 passes; trigger/validator/aggregate regressions had 45 failures and 5 passes. New maintenance tests first failed collection before their implementation. A baseline-wheel build independently verified the packaging defect.
 
@@ -1791,20 +1791,23 @@ index: n/a (source target outside prose-index corpus roots). Repository nonembed
 
 memory-central: none for evals. Stele repository-specific decisions preserve legacy provenance and require supplied responses; the maintained-wiki decision shaped the documentation baseline. No private research bodies were copied into new outputs.
 
-## Delivery access blocker
+## CI dependency access
 
 [PR #1](https://github.com/mithudso/evals/pull/1) contains the reviewable change.
 Initial CI failed while fetching private `mithudso/ollama-client`: Git reported
 that it could not read a Username with terminal prompts disabled. The prepared
 composite action uses a dedicated read-only deploy key via
 `OLLAMA_CLIENT_DEPLOY_KEY`, scopes the SSH URL rewrite, pins the host key, disables
-private-source caching and removes temporary key files. No key or access grant
-has been created. Owner approval is required before that cross-repository access
-can be enabled and final CI/merge completed.
+private-source caching and removes temporary key files. The owner approved the
+dedicated read-only deploy key, and the Actions secret is configured. Temporary
+local key files were removed without printing their contents. All three checks passed on the source-complete checkpoint `39ba3f5` in
+[CI run 43121048635](https://github.com/mithudso/evals/actions/runs/43121048635).
+The final metadata commit must pass the same checks before merge; PR #1 records
+that final result and the merge state.
 
 ## File completion manifest
 
-Files written: 62. Files updated: 9. CI access is pending approval; the branch is a recoverable unmerged checkpoint.
+Files written: 62. Files updated: 9. The approved read-only CI dependency access is configured; PR #1 records final checks and delivery.
 
 | File | Lines | Status |
 |---|---:|---|
@@ -1845,7 +1848,7 @@ Files written: 62. Files updated: 9. CI access is pending approval; the branch i
 | `docs/TESTING.md` | 61 | New |
 | `docs/archive/README.md` | 15 | New |
 | `docs/caching-and-optimization.md` | 30 | New |
-| `docs/code-optimizer-report-2026-11-11.md` | 1881 | New |
+| `docs/code-optimizer-report-2026-11-11.md` | 1884 | New |
 | `docs/codebase-overview.md` | 131 | New |
 | `docs/external-calls.md` | 41 | New |
 | `docs/high_signal_file_index.json` | 686 | New |
@@ -1854,12 +1857,12 @@ Files written: 62. Files updated: 9. CI access is pending approval; the branch i
 | `docs/llm-repo-index.json` | 1848 | New |
 | `docs/logging.md` | 31 | New |
 | `docs/onboarding.md` | 17 | New |
-| `docs/repo-bootstrap-audit-2026-11-11.md` | 69 | New |
+| `docs/repo-bootstrap-audit-2026-11-11.md` | 70 | New |
 | `docs/requirements.md` | 43 | New |
 | `docs/runbooks/validation-and-replay.md` | 87 | New |
 | `docs/wiki/README.md` | 43 | New |
-| `memory.md` | 49 | New |
-| `prompts.md` | 6 | New |
+| `memory.md` | 50 | New |
+| `prompts.md` | 14 | New |
 | `pyproject.toml` | 38 | Updated |
 | `runner/__init__.py` | 1 | New |
 | `runner/config.py` | 30 | New |

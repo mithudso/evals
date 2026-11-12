@@ -62,8 +62,9 @@ full mdb-tam service-standard compliance.
 Baseline: four tests passed; Python compilation passed. Initial GitHub CI failed
 with `fatal: could not read Username for https://github.com: terminal prompts
 disabled` while fetching the private dependency. A dedicated read-only-key
-configuration is prepared; the access grant requires owner approval. Counterexample tests were
-run before code fixes. Final integrated validation and independent review are
+configuration was prepared and the owner approved the scoped access grant. The
+read-only key and Actions secret are configured. Counterexample tests were run
+before code fixes. Final integrated validation and independent review are
 recorded in [the optimizer report](code-optimizer-report-2026-11-11.md).
 
 No prior audit ledger or retracted finding existed at the baseline.

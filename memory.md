@@ -5,8 +5,9 @@
 - User request:
   - Run the deep code optimizer and the repo-bootstrapper on this repo.
 - Active task:
-  - Implementation and local checks are complete. CI requires owner approval of a
-    read-only deploy-key grant for the private dependency. The GitHub delivery record
+  - Implementation and local checks are complete. The owner approved the dedicated
+    read-only CI deploy key, and the Actions secret is configured. GitHub CI passes
+    Python 3.11, Python 3.14 and dependency audit on checkpoint `39ba3f5`. The delivery record
     [PR #1](https://github.com/mithudso/evals/pull/1) is authoritative for CI and merge state.
 - Completed context:
   - Baseline commit `9eb718a` had four passing trigger transport/cosine tests.

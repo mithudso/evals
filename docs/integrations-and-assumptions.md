@@ -57,7 +57,7 @@ coverage gaps.
 
 The pinned `mithudso/ollama-client` source repository is private. Local setup
 needs authenticated Git read access. CI expects a dedicated read-only deploy key
-through the `OLLAMA_CLIENT_DEPLOY_KEY` GitHub Actions secret. The prepared
-configuration does not itself grant access; the owner must approve that grant.
+through the `OLLAMA_CLIENT_DEPLOY_KEY` GitHub Actions secret. The owner approved
+that scoped grant, and the key and secret are configured.
 No private dependency source is vendored into this public repository. CI caches
 are disabled for the private dependency.
